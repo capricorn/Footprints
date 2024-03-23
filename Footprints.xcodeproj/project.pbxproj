@@ -16,6 +16,9 @@
 		F0FAEE052BAE73370015CF67 /* FootprintsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE042BAE73370015CF67 /* FootprintsUITests.swift */; };
 		F0FAEE072BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE062BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift */; };
 		F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE152BAE74970015CF67 /* GPSProvider.swift */; };
+		F0FAEE192BAE7AF30015CF67 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F0FAEE182BAE7AF30015CF67 /* GRDB */; };
+		F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */; };
+		F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 		F0FAEE042BAE73370015CF67 /* FootprintsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsUITests.swift; sourceTree = "<group>"; };
 		F0FAEE062BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F0FAEE152BAE74970015CF67 /* GPSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSProvider.swift; sourceTree = "<group>"; };
+		F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerView.swift; sourceTree = "<group>"; };
+		F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0FAEE192BAE7AF30015CF67 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +104,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0FAEE1A2BAE7AF90015CF67 /* Logger */,
 				F0FAEE132BAE742E0015CF67 /* Core */,
 				F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */,
 				F0FAEDE92BAE73350015CF67 /* ContentView.swift */,
@@ -149,6 +156,15 @@
 			path = GPS;
 			sourceTree = "<group>";
 		};
+		F0FAEE1A2BAE7AF90015CF67 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */,
+				F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +181,9 @@
 			dependencies = (
 			);
 			name = Footprints;
+			packageProductDependencies = (
+				F0FAEE182BAE7AF30015CF67 /* GRDB */,
+			);
 			productName = Footprints;
 			productReference = F0FAEDE42BAE73350015CF67 /* Footprints.app */;
 			productType = "com.apple.product-type.application";
@@ -237,6 +256,9 @@
 				Base,
 			);
 			mainGroup = F0FAEDDB2BAE73350015CF67;
+			packageReferences = (
+				F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */,
+			);
 			productRefGroup = F0FAEDE52BAE73350015CF67 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -283,6 +305,8 @@
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
+				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
+				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0FAEE182BAE7AF30015CF67 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F0FAEDDC2BAE73350015CF67 /* Project object */;
 }
