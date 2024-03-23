@@ -15,6 +15,7 @@
 		F0FAEDFB2BAE73370015CF67 /* FootprintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDFA2BAE73370015CF67 /* FootprintsTests.swift */; };
 		F0FAEE052BAE73370015CF67 /* FootprintsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE042BAE73370015CF67 /* FootprintsUITests.swift */; };
 		F0FAEE072BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE062BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift */; };
+		F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE152BAE74970015CF67 /* GPSProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		F0FAEE002BAE73370015CF67 /* FootprintsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootprintsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FAEE042BAE73370015CF67 /* FootprintsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsUITests.swift; sourceTree = "<group>"; };
 		F0FAEE062BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F0FAEE152BAE74970015CF67 /* GPSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0FAEE132BAE742E0015CF67 /* Core */,
 				F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */,
 				F0FAEDE92BAE73350015CF67 /* ContentView.swift */,
 				F0FAEDEB2BAE73350015CF67 /* Item.swift */,
@@ -128,6 +131,22 @@
 				F0FAEE062BAE73370015CF67 /* FootprintsUITestsLaunchTests.swift */,
 			);
 			path = FootprintsUITests;
+			sourceTree = "<group>";
+		};
+		F0FAEE132BAE742E0015CF67 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F0FAEE142BAE74330015CF67 /* GPS */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F0FAEE142BAE74330015CF67 /* GPS */ = {
+			isa = PBXGroup;
+			children = (
+				F0FAEE152BAE74970015CF67 /* GPSProvider.swift */,
+			);
+			path = GPS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
+				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
 			);
