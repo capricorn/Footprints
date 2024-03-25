@@ -51,13 +51,19 @@ struct LoggerView: View {
 private struct PreviewView: View {
     @StateObject var model: LoggerViewModel = LoggerViewModel()
     @StateObject var gpsProvider: LoggerMockGPSProvider = LoggerMockGPSProvider()
+    @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
     
     var logCommandLabel: String {
         gpsProvider.logging ? "Stop" : "Start"
     }
     
+    var dbName: String {
+        URL(filePath: dbQueue.path).lastPathComponent
+    }
+    
     var body: some View {
         VStack {
+            Text("DB: \(dbName)")
             Button("\(logCommandLabel) logging") {
                 if gpsProvider.logging {
                     gpsProvider.stop()
@@ -67,10 +73,10 @@ private struct PreviewView: View {
             }
             LoggerView(model: model, gpsProvider: gpsProvider)
         }
-        .environment(\.databaseQueue, try! DatabaseQueue.createTemporaryDBQueue())
     }
 }
 
 #Preview {
     PreviewView()
+        .environment(\.databaseQueue, try! DatabaseQueue.createTemporaryDBQueue())
 }
