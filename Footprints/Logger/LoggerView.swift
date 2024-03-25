@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoggerView: View {
     @StateObject var model: LoggerViewModel
+    // TODO: Provide default
+    let gpsProvider: GPSProvider
     
     var body: some View {
         ZStack {
@@ -34,9 +36,39 @@ struct LoggerView: View {
                     .animation(.easeInOut, value: model.recording)
             }
         }
+        .onReceive(gpsProvider.location, perform: { loc in
+            do {
+                print("Received location update: \(loc)")
+                try model.recordLocation(loc)
+            } catch {
+                print("Failed to record location: \(error)")
+            }
+        })
+    }
+}
+
+private struct PreviewView: View {
+    @StateObject var model: LoggerViewModel = LoggerViewModel()
+    @StateObject var gpsProvider: LoggerMockGPSProvider = LoggerMockGPSProvider()
+    
+    var logCommandLabel: String {
+        gpsProvider.logging ? "Stop" : "Start"
+    }
+    
+    var body: some View {
+        VStack {
+            Button("\(logCommandLabel) logging") {
+                if gpsProvider.logging {
+                    gpsProvider.stop()
+                } else {
+                    gpsProvider.start()
+                }
+            }
+            LoggerView(model: model, gpsProvider: gpsProvider)
+        }
     }
 }
 
 #Preview {
-    LoggerView(model: LoggerViewModel())
+    PreviewView()
 }

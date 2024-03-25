@@ -47,4 +47,8 @@ class LoggerViewModel: ObservableObject {
             logStartDate = Date.now
         }
     }
+    
+    func recordLocation(_ loc: GPSLocation) throws {
+        
+    }
 }

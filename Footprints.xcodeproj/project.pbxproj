@@ -21,6 +21,7 @@
 		F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */; };
 		F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */; };
 		F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */; };
+		F0FAEE252BB11C0C0015CF67 /* LoggerMockGPSProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE242BB11C0C0015CF67 /* LoggerMockGPSProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel.swift; sourceTree = "<group>"; };
 		F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBExtensions.swift; sourceTree = "<group>"; };
+		F0FAEE242BB11C0C0015CF67 /* LoggerMockGPSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerMockGPSProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			children = (
 				F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */,
 				F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */,
+				F0FAEE242BB11C0C0015CF67 /* LoggerMockGPSProvider.swift */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
+				F0FAEE252BB11C0C0015CF67 /* LoggerMockGPSProvider.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
 				F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */,
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
