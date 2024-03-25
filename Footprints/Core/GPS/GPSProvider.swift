@@ -7,8 +7,9 @@
 
 import Foundation
 import Combine
+import GRDB
 
-struct GPSLocation: Identifiable {
+struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
     let latitude: CGFloat
     let longitude: CGFloat
@@ -20,4 +21,3 @@ struct GPSLocation: Identifiable {
 protocol GPSProvider {
     var location: AnyPublisher<GPSLocation, Never> { get }
 }
-
