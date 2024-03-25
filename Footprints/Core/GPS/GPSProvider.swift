@@ -8,11 +8,13 @@
 import Foundation
 import Combine
 
-struct GPSLocation {
+struct GPSLocation: Identifiable {
+    let id: UUID
     let latitude: CGFloat
     let longitude: CGFloat
     /// Altitude in meters.
     let altitude: Measurement<UnitLength>
+    let timestamp: Float
 }
 
 protocol GPSProvider {

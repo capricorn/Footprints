@@ -19,6 +19,8 @@
 		F0FAEE192BAE7AF30015CF67 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F0FAEE182BAE7AF30015CF67 /* GRDB */; };
 		F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */; };
 		F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */; };
+		F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */; };
+		F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		F0FAEE152BAE74970015CF67 /* GPSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSProvider.swift; sourceTree = "<group>"; };
 		F0FAEE1B2BAE7B080015CF67 /* LoggerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerView.swift; sourceTree = "<group>"; };
 		F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel.swift; sourceTree = "<group>"; };
+		F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0FAEE212BB116B70015CF67 /* Extensions */,
 				F0FAEE1A2BAE7AF90015CF67 /* Logger */,
 				F0FAEE132BAE742E0015CF67 /* Core */,
 				F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */,
@@ -111,6 +116,7 @@
 				F0FAEDEB2BAE73350015CF67 /* Item.swift */,
 				F0FAEDED2BAE73360015CF67 /* Assets.xcassets */,
 				F0FAEDEF2BAE73360015CF67 /* Preview Content */,
+				F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */,
 			);
 			path = Footprints;
 			sourceTree = "<group>";
@@ -163,6 +169,14 @@
 				F0FAEE1D2BAE7B110015CF67 /* LoggerViewModel.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		F0FAEE212BB116B70015CF67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +319,9 @@
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
+				F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */,
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
+				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
