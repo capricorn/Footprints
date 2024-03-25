@@ -44,7 +44,7 @@ class LoggerViewModel: ObservableObject {
             timerTask = nil
             logStartDate = nil
         } else {
-            timerTask = Task.detached {
+            timerTask = Task.detached { @MainActor in
                 while Task.isCancelled == false {
                     self.logNowDate = Date.now
                     try? await Task.sleep(nanoseconds: UInt64(1e9/60))
