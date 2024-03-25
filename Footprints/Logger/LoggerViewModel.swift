@@ -7,12 +7,18 @@
 
 import Foundation
 import SwiftUI
+import GRDB
 
 class LoggerViewModel: ObservableObject {
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
     
     private var timerTask: Task<Void, Never>?
+    private let dbQueue: DatabaseQueue!
+    
+    init(dbQueue: DatabaseQueue = try! .default) {
+        self.dbQueue = dbQueue
+    }
     
     /// `true` if a session is currently being recorded.
     var recording: Bool {
@@ -48,7 +54,10 @@ class LoggerViewModel: ObservableObject {
         }
     }
     
+    /// Record the location data to the database.
     func recordLocation(_ loc: GPSLocation) throws {
-        
+        try dbQueue.write { db in
+            try loc.insert(db)
+        }
     }
 }

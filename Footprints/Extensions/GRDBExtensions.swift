@@ -20,4 +20,25 @@ extension DatabaseQueue {
             return try DatabaseQueue(path: dbURL.path)
         }
     }
+    
+    static func createTemporaryDBQueue() throws -> DatabaseQueue {
+        let tmpDBURL = FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString).sqlite")
+        let dbQueue = try DatabaseQueue(path: tmpDBURL.path)
+        
+        try dbQueue.setupFootprintsSchema()
+        
+        return dbQueue
+    }
+    
+    func setupFootprintsSchema() throws {
+        try self.write { db in
+            try db.create(table: "GPSLocation", options: .ifNotExists) { table in
+                table.primaryKey("id", .text)
+                table.column("latitude", .double)
+                table.column("longitude", .double)
+                table.column("altitude", .double)
+                table.column("timestamp", .double)
+            }
+        }
+    }
 }

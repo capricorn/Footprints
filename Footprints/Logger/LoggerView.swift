@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GRDB
 
 struct LoggerView: View {
     @StateObject var model: LoggerViewModel
@@ -66,6 +67,7 @@ private struct PreviewView: View {
             }
             LoggerView(model: model, gpsProvider: gpsProvider)
         }
+        .environment(\.databaseQueue, try! DatabaseQueue.createTemporaryDBQueue())
     }
 }
 

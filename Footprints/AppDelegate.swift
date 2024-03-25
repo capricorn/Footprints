@@ -15,16 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         dbQueue = try! .default
-        
-        try! dbQueue.write { db in
-            try! db.create(table: "GPSLocation", options: .ifNotExists) { table in
-                table.primaryKey("id", .text)
-                table.column("latitude", .double)
-                table.column("longitude", .double)
-                table.column("altitude", .double)
-                table.column("timestamp", .double)
-            }
-        }
+        try! dbQueue.setupFootprintsSchema()
         
         return true
     }
