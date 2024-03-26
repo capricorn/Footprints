@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-struct Session: Identifiable, Codable, FetchableRecord, PersistableRecord {
+struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
     let startTimestamp: Float
     let endTimestamp: Float

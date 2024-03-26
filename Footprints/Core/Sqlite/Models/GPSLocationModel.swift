@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
+struct GPSLocationModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
     let sessionId: UUID
     let latitude: CGFloat

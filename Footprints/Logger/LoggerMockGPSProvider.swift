@@ -11,17 +11,17 @@ import Combine
 class LoggerMockGPSProvider: GPSProvider, ObservableObject {
     @Published var logging: Bool = false
     
-    private var locSubject: PassthroughSubject<GPSLocation, Never> = PassthroughSubject()
+    private var locSubject: PassthroughSubject<GPSLocationModel, Never> = PassthroughSubject()
     private var gpsTask: Task<Void, Never>?
     
-    var location: AnyPublisher<GPSLocation, Never> {
+    var location: AnyPublisher<GPSLocationModel, Never> {
         locSubject.eraseToAnyPublisher()
     }
     
     func start() {
         gpsTask = Task.detached {
             while Task.isCancelled == false {
-                self.locSubject.send(GPSLocation(
+                self.locSubject.send(GPSLocationModel(
                     id: UUID(), 
                     sessionId: UUID(),  // TODO
                     latitude: 0,

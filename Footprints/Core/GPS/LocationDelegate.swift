@@ -12,9 +12,9 @@ import Combine
 class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
     
     private let locManager: CLLocationManager = CLLocationManager()
-    private let locationSubject: PassthroughSubject<GPSLocation, Never> = PassthroughSubject()
+    private let locationSubject: PassthroughSubject<GPSLocationModel, Never> = PassthroughSubject()
     
-    var location: AnyPublisher<GPSLocation, Never> {
+    var location: AnyPublisher<GPSLocationModel, Never> {
         locationSubject.eraseToAnyPublisher()
     }
     
@@ -33,7 +33,7 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for loc in locations {
-            let gpsLoc = GPSLocation(
+            let gpsLoc = GPSLocationModel(
                 id: UUID(),
                 sessionId: UUID(),  // TODO
                 latitude: loc.coordinate.latitude,
