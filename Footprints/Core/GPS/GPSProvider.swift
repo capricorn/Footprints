@@ -7,17 +7,7 @@
 
 import Foundation
 import Combine
-import GRDB
 import CoreLocation
-
-struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
-    let id: UUID
-    let latitude: CGFloat
-    let longitude: CGFloat
-    /// Altitude in meters.
-    let altitude: Measurement<UnitLength>
-    let timestamp: Float
-}
 
 protocol GPSProvider {
     typealias LocationProvider = AnyPublisher<GPSLocation, Never>
