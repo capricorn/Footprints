@@ -32,12 +32,19 @@ extension DatabaseQueue {
     
     func setupFootprintsSchema() throws {
         try self.write { db in
-            try db.create(table: "GPSLocation", options: .ifNotExists) { table in
+            try db.create(table: "gpsLocationModel", options: .ifNotExists) { table in
                 table.primaryKey("id", .text)
+                table.column("sessionId", .text)
                 table.column("latitude", .double)
                 table.column("longitude", .double)
                 table.column("altitude", .double)
                 table.column("timestamp", .double)
+            }
+            
+            try db.create(table: "sessionModel", options: .ifNotExists) { table in
+                table.primaryKey("id", .text)
+                table.column("startTimestamp", .double)
+                table.column("endTimestamp", .double)
             }
         }
     }

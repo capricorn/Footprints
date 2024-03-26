@@ -10,7 +10,7 @@ import Combine
 import CoreLocation
 
 protocol GPSProvider {
-    typealias LocationProvider = AnyPublisher<GPSLocationModel, Never>
+    typealias LocationProvider = AnyPublisher<GPSLocation, Never>
     var location: LocationProvider { get }
     var authorizationStatus: CLAuthorizationStatus { get }
     

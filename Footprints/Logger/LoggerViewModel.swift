@@ -70,15 +70,16 @@ class LoggerViewModel: ObservableObject {
     }
     
     /// Record the location data to the database.
-    func recordLocation(_ loc: GPSLocationModel) throws {
+    func recordLocation(_ loc: GPSLocation) throws {
         guard case .recordingInProgress(let sessionId) = state else {
             assertionFailure("Incorrect recording state: \(String(describing: state))")
             return
         }
         
+        let locEntry = GPSLocationModel.from(loc, sessionId: sessionId)
         // TODO: Need to be able to set location session id..
         try dbQueue.write { db in
-            try loc.insert(db)
+            try locEntry.insert(db)
         }
     }
     

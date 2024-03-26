@@ -7,6 +7,7 @@
 
 import XCTest
 import Combine
+import GRDB
 @testable import Footprints
 
 final class LoggerViewModel_Tests: XCTestCase {
@@ -43,5 +44,34 @@ final class LoggerViewModel_Tests: XCTestCase {
         } else {
             XCTFail("Bad state: \(model.state)")
         }
+    }
+    
+    func testLocationRecording() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
+        let sessionId = UUID()
+        
+        model.state = .recordingInProgress(sessionId: sessionId)
+        try model.recordLocation(GPSLocation(
+            latitude: 10,
+            longitude: 10,
+            altitude: .init(value: 5, unit: .meters),
+            timestamp: 1000))
+        
+        try model.recordLocation(GPSLocation(
+            latitude: 10,
+            longitude: 10,
+            altitude: .init(value: 5, unit: .meters),
+            timestamp: 2000))
+        
+        // Verify that the locations are available via their session id
+        let results = try dbQueue.read { db in
+            return try GPSLocationModel
+                .filter(Column("sessionId") == sessionId)
+                .fetchAll(db)
+        }
+        
+        XCTAssert(results.count == 2, "\(results.count)")
     }
 }

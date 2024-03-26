@@ -10,6 +10,7 @@
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
+		F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CF2BB365C700E8DF04 /* GPSLocation.swift */; };
 		F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */; };
 		F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE92BAE73350015CF67 /* ContentView.swift */; };
 		F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDEB2BAE73350015CF67 /* Item.swift */; };
@@ -49,6 +50,7 @@
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
+		F0F045CF2BB365C700E8DF04 /* GPSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocation.swift; sourceTree = "<group>"; };
 		F0FAEDE42BAE73350015CF67 /* Footprints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsApp.swift; sourceTree = "<group>"; };
 		F0FAEDE92BAE73350015CF67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				F0FAEE152BAE74970015CF67 /* GPSProvider.swift */,
 				F0FAEE262BB22CA90015CF67 /* LocationDelegate.swift */,
+				F0F045CF2BB365C700E8DF04 /* GPSLocation.swift */,
 			);
 			path = GPS;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
+				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */,
