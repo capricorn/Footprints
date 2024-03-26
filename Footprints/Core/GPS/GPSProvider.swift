@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import GRDB
+import CoreLocation
 
 struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
@@ -19,5 +20,21 @@ struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
 }
 
 protocol GPSProvider {
-    var location: AnyPublisher<GPSLocation, Never> { get }
+    typealias LocationProvider = AnyPublisher<GPSLocation, Never>
+    var location: LocationProvider { get }
+    var authorizationStatus: CLAuthorizationStatus { get }
+    
+    /// Start recording location updates
+    func start()
+    /// Stop recording location updates
+    func stop()
+    
+    func requestAuthorization()
+}
+
+extension GPSProvider {
+    func requestAuthorization() {}
+    var authorizationStatus: CLAuthorizationStatus {
+        .authorizedAlways
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import Footprints
 
 final class FootprintsTests: XCTestCase {
@@ -18,19 +19,15 @@ final class FootprintsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testLocationDelegateLocationPublisher() async throws {
+        let model = LocationDelegate()
+        let expectation = XCTestExpectation()
+        let subscriber = model.location.sink { loc in
+            print("Received location: \(loc)")
+            expectation.fulfill()
         }
+        
+        model.locationManager(CLLocationManager(), didUpdateLocations: [CLLocation(latitude: 0, longitude: 0)])
+        await fulfillment(of: [expectation], timeout: 3)
     }
-
 }

@@ -7,11 +7,10 @@
 
 import SwiftUI
 import GRDB
+import Combine
 
 struct LoggerView: View {
-    @StateObject var model: LoggerViewModel
-    // TODO: Provide default
-    let gpsProvider: GPSProvider
+    @StateObject var model: LoggerViewModel = LoggerViewModel()
     
     var body: some View {
         ZStack {
@@ -37,7 +36,7 @@ struct LoggerView: View {
                     .animation(.easeInOut, value: model.recording)
             }
         }
-        .onReceive(gpsProvider.location, perform: { loc in
+        .onReceive(model.locationPublisher, perform: { loc in
             do {
                 print("Received location update: \(loc)")
                 try model.recordLocation(loc)
@@ -45,17 +44,15 @@ struct LoggerView: View {
                 print("Failed to record location: \(error)")
             }
         })
+        .onAppear {
+            model.requestAuthorization()
+        }
     }
 }
 
 private struct PreviewView: View {
-    @StateObject var model: LoggerViewModel = LoggerViewModel()
-    @StateObject var gpsProvider: LoggerMockGPSProvider = LoggerMockGPSProvider()
+    @StateObject var model: LoggerViewModel = LoggerViewModel(gpsProvider: LoggerMockGPSProvider())
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
-    
-    var logCommandLabel: String {
-        gpsProvider.logging ? "Stop" : "Start"
-    }
     
     var dbName: String {
         URL(filePath: dbQueue.path).lastPathComponent
@@ -64,14 +61,7 @@ private struct PreviewView: View {
     var body: some View {
         VStack {
             Text("DB: \(dbName)")
-            Button("\(logCommandLabel) logging") {
-                if gpsProvider.logging {
-                    gpsProvider.stop()
-                } else {
-                    gpsProvider.start()
-                }
-            }
-            LoggerView(model: model, gpsProvider: gpsProvider)
+            LoggerView(model: model)
         }
     }
 }

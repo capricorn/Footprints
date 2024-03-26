@@ -13,11 +13,16 @@ class LoggerViewModel: ObservableObject {
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
     
-    private var timerTask: Task<Void, Never>?
-    private let dbQueue: DatabaseQueue!
+    let locationPublisher: GPSProvider.LocationProvider
     
-    init(dbQueue: DatabaseQueue = try! .default) {
+    private var timerTask: Task<Void, Never>?
+    private let dbQueue: DatabaseQueue
+    private let gpsProvider: GPSProvider
+    
+    init(dbQueue: DatabaseQueue = try! .default, gpsProvider: GPSProvider = LocationDelegate()) {
         self.dbQueue = dbQueue
+        self.gpsProvider = gpsProvider
+        self.locationPublisher = gpsProvider.location
     }
     
     /// `true` if a session is currently being recorded.
@@ -40,10 +45,12 @@ class LoggerViewModel: ObservableObject {
     
     func record() {
         if recording {
+            gpsProvider.stop()
             timerTask?.cancel()
             timerTask = nil
             logStartDate = nil
         } else {
+            gpsProvider.start()
             timerTask = Task.detached { @MainActor in
                 while Task.isCancelled == false {
                     self.logNowDate = Date.now
@@ -58,6 +65,13 @@ class LoggerViewModel: ObservableObject {
     func recordLocation(_ loc: GPSLocation) throws {
         try dbQueue.write { db in
             try loc.insert(db)
+        }
+    }
+    
+    func requestAuthorization() {
+        let authorized = (gpsProvider.authorizationStatus == .authorizedAlways || gpsProvider.authorizationStatus == .authorizedWhenInUse)
+        if authorized {
+            gpsProvider.requestAuthorization()
         }
     }
 }
