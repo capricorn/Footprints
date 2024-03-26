@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0F045CA2BB26D9B00E8DF04 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* Session.swift */; };
 		F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */; };
 		F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE92BAE73350015CF67 /* ContentView.swift */; };
 		F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDEB2BAE73350015CF67 /* Item.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F0F045C92BB26D9B00E8DF04 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F0FAEDE42BAE73350015CF67 /* Footprints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsApp.swift; sourceTree = "<group>"; };
 		F0FAEDE92BAE73350015CF67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0F045C72BB26D7600E8DF04 /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				F0F045C82BB26D8800E8DF04 /* Models */,
+			);
+			path = Sqlite;
+			sourceTree = "<group>";
+		};
+		F0F045C82BB26D8800E8DF04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0F045C92BB26D9B00E8DF04 /* Session.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F0FAEDDB2BAE73350015CF67 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +173,7 @@
 		F0FAEE132BAE742E0015CF67 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F0F045C72BB26D7600E8DF04 /* Sqlite */,
 				F0FAEE142BAE74330015CF67 /* GPS */,
 			);
 			path = Core;
@@ -330,6 +349,7 @@
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
 				F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */,
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
+				F0F045CA2BB26D9B00E8DF04 /* Session.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 				F0FAEE272BB22CA90015CF67 /* LocationDelegate.swift in Sources */,
