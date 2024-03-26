@@ -10,6 +10,7 @@ import GRDB
 
 struct GPSLocation: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
+    let sessionId: UUID
     let latitude: CGFloat
     let longitude: CGFloat
     /// Altitude in meters.

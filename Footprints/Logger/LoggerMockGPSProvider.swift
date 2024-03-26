@@ -22,7 +22,8 @@ class LoggerMockGPSProvider: GPSProvider, ObservableObject {
         gpsTask = Task.detached {
             while Task.isCancelled == false {
                 self.locSubject.send(GPSLocation(
-                    id: UUID(),
+                    id: UUID(), 
+                    sessionId: UUID(),  // TODO
                     latitude: 0,
                     longitude: 0,
                     altitude: .init(value: 0, unit: .meters),

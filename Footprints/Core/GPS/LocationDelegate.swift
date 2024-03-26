@@ -35,6 +35,7 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
         for loc in locations {
             let gpsLoc = GPSLocation(
                 id: UUID(),
+                sessionId: UUID(),  // TODO
                 latitude: loc.coordinate.latitude,
                 longitude: loc.coordinate.longitude,
                 altitude: .init(value: loc.altitude, unit: .meters),
