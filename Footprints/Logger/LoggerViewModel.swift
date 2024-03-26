@@ -10,8 +10,14 @@ import SwiftUI
 import GRDB
 
 class LoggerViewModel: ObservableObject {
+    enum State {
+        case recordingInProgress(sessionId: UUID)
+        case recordingComplete
+    }
+    
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
+    @Published var state: State? = nil
     
     let locationPublisher: GPSProvider.LocationProvider
     
@@ -45,11 +51,13 @@ class LoggerViewModel: ObservableObject {
     
     func record() {
         if recording {
+            state = .recordingComplete
             gpsProvider.stop()
             timerTask?.cancel()
             timerTask = nil
             logStartDate = nil
         } else {
+            state = .recordingInProgress(sessionId: UUID())
             gpsProvider.start()
             timerTask = Task.detached { @MainActor in
                 while Task.isCancelled == false {

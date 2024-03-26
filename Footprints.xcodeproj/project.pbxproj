@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F0F045CA2BB26D9B00E8DF04 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* Session.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocation.swift */; };
+		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
 		F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */; };
 		F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDE92BAE73350015CF67 /* ContentView.swift */; };
 		F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEDEB2BAE73350015CF67 /* Item.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		F0F045C92BB26D9B00E8DF04 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocation.swift; sourceTree = "<group>"; };
+		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
 		F0FAEDE42BAE73350015CF67 /* Footprints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsApp.swift; sourceTree = "<group>"; };
 		F0FAEDE92BAE73350015CF67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				F0FAEDFA2BAE73370015CF67 /* FootprintsTests.swift */,
+				F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */,
 			);
 			path = FootprintsTests;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */,
 				F0FAEDFB2BAE73370015CF67 /* FootprintsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
