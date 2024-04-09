@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0082EFB2BC5E3990006A36C /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFA2BC5E3990006A36C /* SessionListView.swift */; };
+		F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F0082EFA2BC5E3990006A36C /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
+		F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemView.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0082EF92BC5E38C0006A36C /* SessionList */ = {
+			isa = PBXGroup;
+			children = (
+				F0082EFA2BC5E3990006A36C /* SessionListView.swift */,
+				F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */,
+			);
+			path = SessionList;
+			sourceTree = "<group>";
+		};
 		F0F045C72BB26D7600E8DF04 /* Sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +151,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0082EF92BC5E38C0006A36C /* SessionList */,
 				F0FAEE282BB2332B0015CF67 /* Info.plist */,
 				F0FAEE212BB116B70015CF67 /* Extensions */,
 				F0FAEE1A2BAE7AF90015CF67 /* Logger */,
@@ -354,6 +368,7 @@
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
+				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */,
 				F0FAEE252BB11C0C0015CF67 /* LoggerMockGPSProvider.swift in Sources */,
@@ -362,6 +377,7 @@
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
+				F0082EFB2BC5E3990006A36C /* SessionListView.swift in Sources */,
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 				F0FAEE272BB22CA90015CF67 /* LocationDelegate.swift in Sources */,
 			);
