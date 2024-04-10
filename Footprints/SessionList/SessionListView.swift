@@ -14,17 +14,30 @@ struct SessionListView: View {
     @State var sessions: [SessionModel] = []
     @State private var sessionSubscriber: AnyDatabaseCancellable?
     
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Sessions")
-                    .font(.title)
-                ForEach(sessions) { session in
-                    SessionListItemView(sessionItem: session)
-                        .padding()
-                }
-                Spacer()
+    var exportDataView: some View {
+        HStack {
+            ShareLink(item: dbQueue.url) {
+                Text("Export Data")
             }
+            .padding()
+            Spacer()
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            Text("Sessions")
+                    .font(.title)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(sessions) { session in
+                        SessionListItemView(sessionItem: session)
+                            .padding()
+                    }
+                }
+            }
+            Spacer()
+            exportDataView
         }
         .onAppear {
             // TODO: Move to vm

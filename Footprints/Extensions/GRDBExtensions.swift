@@ -26,6 +26,10 @@ extension DatabaseQueue {
         }
     }
     
+    var url: URL {
+        URL(filePath: self.path)
+    }
+    
     static func createTemporaryDBQueue() throws -> DatabaseQueue {
         let tmpDBURL = FileManager.default.temporaryDirectory.appending(path: "\(UUID().uuidString).sqlite")
         let dbQueue = try DatabaseQueue(path: tmpDBURL.path)
