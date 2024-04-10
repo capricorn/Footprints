@@ -46,13 +46,21 @@ final class LoggerViewModel_Tests: XCTestCase {
         }
     }
     
-    func testLocationRecording() throws {
+    /// Verify that each location entry has the (current) recording session id
+    func testLocationEntryHasSessionId() throws {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
-        let session = SessionModel(id: UUID(), startTimestamp: 0, endTimestamp: 0)
         
-        model.state = .recordingInProgress(session: session)
+        model.record()
+        
+        var session: SessionModel!
+        if case .recordingInProgress(let currentSession) = model.state {
+            session = currentSession
+        } else {
+            XCTFail("Unexpected record state: \(model.state.debugDescription)")
+        }
+        
         try model.recordLocation(GPSLocation(
             latitude: 10,
             longitude: 10,
