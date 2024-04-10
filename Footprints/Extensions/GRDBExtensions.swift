@@ -9,15 +9,20 @@ import Foundation
 import GRDB
 
 extension DatabaseQueue {
-    static var `default`: DatabaseQueue {
+    static var dbURL: URL {
         get throws {
             let dbDir = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             .appending(path: Bundle.main.bundleIdentifier!)
-            
             try FileManager.default.createDirectory(at: dbDir, withIntermediateDirectories: true)
             let dbURL = dbDir.appending(path: "db.sqlite")
-        
-            return try DatabaseQueue(path: dbURL.path)
+            
+            return dbURL
+        }
+    }
+    
+    static var `default`: DatabaseQueue {
+        get throws {
+            try DatabaseQueue(path: try dbURL.path)
         }
     }
     
