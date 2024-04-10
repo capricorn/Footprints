@@ -10,6 +10,6 @@ import GRDB
 
 struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
-    let startTimestamp: Float
-    let endTimestamp: Float
+    var startTimestamp: Float
+    var endTimestamp: Float
 }

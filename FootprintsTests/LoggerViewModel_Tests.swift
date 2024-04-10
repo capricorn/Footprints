@@ -50,9 +50,9 @@ final class LoggerViewModel_Tests: XCTestCase {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
-        let sessionId = UUID()
+        let session = SessionModel(id: UUID(), startTimestamp: 0, endTimestamp: 0)
         
-        model.state = .recordingInProgress(sessionId: sessionId)
+        model.state = .recordingInProgress(session: session)
         try model.recordLocation(GPSLocation(
             latitude: 10,
             longitude: 10,
@@ -68,10 +68,37 @@ final class LoggerViewModel_Tests: XCTestCase {
         // Verify that the locations are available via their session id
         let results = try dbQueue.read { db in
             return try GPSLocationModel
-                .filter(Column("sessionId") == sessionId)
+                .filter(Column("sessionId") == session.id)
                 .fetchAll(db)
         }
         
         XCTAssert(results.count == 2, "\(results.count)")
+    }
+    
+    func testRecordCreatesSession() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
+        
+        model.record()
+        
+        let sessions = try dbQueue.read { db in
+            return try SessionModel.fetchAll(db)
+        }
+        
+        XCTAssert(sessions.count == 1)
+        // On initial recording, the start timestamp should be set and the
+        // end timestamp should be set to 0.
+        XCTAssert(sessions.first?.startTimestamp != 0)
+        XCTAssert(sessions.first?.endTimestamp == 0)
+        
+        model.record()
+        
+        // Once the recording is finished the end timestamp should be updated.
+        let session = try dbQueue.read { db in
+            try SessionModel.find(db, id: sessions.first!.id)
+        }
+        
+        XCTAssert(session.endTimestamp != 0)
     }
 }

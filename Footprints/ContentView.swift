@@ -28,12 +28,20 @@ struct ContentView: View {
             ForEach(Navigation.allCases) { selection in
                 //Text("\(selection.rawValue)")
                 NavigationLink(selection.rawValue, destination: {
-                    Text("\(selection.rawValue)")
+                    //Text("\(selection.rawValue)")
+                    switch selection {
+                    case .logger:
+                        LoggerView()
+                    case .sessions:
+                        SessionListView()
+                    }
                 })
             }
         }, detail: {
             // TODO: Handle navigation here
-            LoggerView()
+            Text("Placeholder")
+            //LoggerView()
+            //switch
         })
         /*
         NavigationStack {

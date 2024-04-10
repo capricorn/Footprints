@@ -11,7 +11,7 @@ import GRDB
 
 class LoggerViewModel: ObservableObject {
     enum State {
-        case recordingInProgress(sessionId: UUID)
+        case recordingInProgress(session: SessionModel)
         case recordingComplete
     }
     
@@ -51,13 +51,29 @@ class LoggerViewModel: ObservableObject {
     
     func record() {
         if recording {
+            if case .recordingInProgress(let session) = state {
+                var session = session
+                try! dbQueue.write { db in
+                    session.endTimestamp = Float(Date.now.timeIntervalSince1970)
+                    try! session.save(db)
+                }
+            } else {
+                assertionFailure("Expected state == .recordingInProgress")
+            }
+            
             state = .recordingComplete
             gpsProvider.stop()
             timerTask?.cancel()
             timerTask = nil
             logStartDate = nil
         } else {
-            state = .recordingInProgress(sessionId: UUID())
+            let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0)
+            // TODO: Just throw / handle..?
+            try! dbQueue.write { db in
+                try! session.insert(db)
+            }
+            
+            state = .recordingInProgress(session: session)
             gpsProvider.start()
             timerTask = Task.detached { @MainActor in
                 while Task.isCancelled == false {
@@ -71,12 +87,12 @@ class LoggerViewModel: ObservableObject {
     
     /// Record the location data to the database.
     func recordLocation(_ loc: GPSLocation) throws {
-        guard case .recordingInProgress(let sessionId) = state else {
+        guard case .recordingInProgress(let session) = state else {
             assertionFailure("Incorrect recording state: \(String(describing: state))")
             return
         }
         
-        let locEntry = GPSLocationModel.from(loc, sessionId: sessionId)
+        let locEntry = GPSLocationModel.from(loc, session: session)
         // TODO: Need to be able to set location session id..
         try dbQueue.write { db in
             try locEntry.insert(db)
