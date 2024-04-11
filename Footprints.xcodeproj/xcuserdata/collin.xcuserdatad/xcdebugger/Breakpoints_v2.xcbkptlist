@@ -3,4 +3,150 @@
    uuid = "1943B657-29D4-436B-ACFB-89BAAA706411"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8B2F274-371B-4371-B389-5A340CEEF2A8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Footprints/Core/Combine/OldNewPublisher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "receive(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F8B2F274-371B-4371-B389-5A340CEEF2A8 - d4bcbbbe2732fcaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(&#x3c4;_0_0) -&gt; Combine.Subscribers.Demand"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  uuid = "F8B2F274-371B-4371-B389-5A340CEEF2A8 - d4bcbbbe2732fce8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(&#x3c4;_0_0) -&gt; Combine.Subscribers.Demand"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "328">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F55AD721-579D-4EE7-B6C6-70498627A164"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Footprints/Core/Combine/OldNewPublisher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "receive(subscription:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F55AD721-579D-4EE7-B6C6-70498627A164 - 606446f78ebf45a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(subscription: Combine.Subscription) -&gt; ()"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "F55AD721-579D-4EE7-B6C6-70498627A164 - 606446f78ebf45c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(subscription: Combine.Subscription) -&gt; ()"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4985AD2-6EF3-47AC-A633-5B00ADB4BFED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Footprints/Core/Combine/OldNewPublisher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "receive(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F4985AD2-6EF3-47AC-A633-5B00ADB4BFED - 4270dfac56be07fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(completion: Combine.Subscribers.Completion&lt;&#x3c4;_0_1&gt;) -&gt; ()"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "F4985AD2-6EF3-47AC-A633-5B00ADB4BFED - 4270dfac56be07bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Footprints.CacheSubscriber.receive(completion: Combine.Subscribers.Completion&lt;&#x3c4;_0_1&gt;) -&gt; ()"
+                  moduleName = "Footprints"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/collin/prog/apple/Footprints/Footprints/Core/Combine/OldNewPublisher.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

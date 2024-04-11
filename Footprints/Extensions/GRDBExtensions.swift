@@ -55,6 +55,7 @@ extension DatabaseQueue {
                 table.column("startTimestamp", .double)
                 table.column("endTimestamp", .double)
                 table.column("count", .integer)
+                table.column("totalDistance", .double)
             }
         }
     }

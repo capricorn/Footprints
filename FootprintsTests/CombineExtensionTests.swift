@@ -1,0 +1,41 @@
+//
+//  CombineExtensionTests.swift
+//  FootprintsTests
+//
+//  Created by Collin Palmer on 4/11/24.
+//
+
+import XCTest
+import Combine
+@testable import Footprints
+
+final class CombineExtensionTests: XCTestCase {
+
+    override func setUpWithError() throws {}
+    override func tearDownWithError() throws {}
+    
+    func testOldNewPublisher() throws {
+        let testSubject = PassthroughSubject<Int, Never>()
+        let expectation = XCTestExpectation()
+        var firstPass = true
+        
+        let subscriber = testSubject
+            .eraseToAnyPublisher()
+            .cachePrevious()
+            .sink { old, new in
+                if firstPass {
+                    XCTAssert(old == nil)
+                    XCTAssert(new == 1)
+                    firstPass = false
+                } else {
+                    XCTAssert(old == 1)
+                    XCTAssert(new == 3)
+                    expectation.fulfill()
+                }
+            }
+        
+        testSubject.send(1)
+        testSubject.send(3)
+        wait(for: [expectation], timeout: 3)
+    }
+}

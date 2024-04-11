@@ -13,4 +13,5 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var startTimestamp: Float
     var endTimestamp: Float
     var count: Int
+    var totalDistance: Double = 0.0
 }
