@@ -93,9 +93,13 @@ class LoggerViewModel: ObservableObject {
         }
         
         let locEntry = GPSLocationModel.from(loc, session: session)
+        var mutableSession = session
         // TODO: Need to be able to set location session id..
         try dbQueue.write { db in
             try locEntry.insert(db)
+            
+            mutableSession.count += 1
+            try mutableSession.update(db)
         }
     }
     

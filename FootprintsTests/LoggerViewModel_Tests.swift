@@ -109,4 +109,32 @@ final class LoggerViewModel_Tests: XCTestCase {
         
         XCTAssert(session.endTimestamp != 0)
     }
+    
+    func testRecordIncrementsSessionCount() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        model.record()
+        
+        guard let session = try dbQueue.read({ db in
+            return try SessionModel.fetchAll(db)
+        }).first else {
+            XCTFail("Failed to find the current recording session.")
+            return
+        }
+        
+        XCTAssert(session.count == 0)
+        try model.recordLocation(GPSLocation(
+            latitude: 0,
+            longitude: 0,
+            altitude: .init(value: 0, unit: .meters),
+            timestamp: Float(Date.now.timeIntervalSince1970)))
+        
+        let updatedSession = try dbQueue.read { db in
+            try SessionModel.find(db, id: session.id)
+        }
+        
+        XCTAssert(updatedSession.count == 1)
+    }
 }
