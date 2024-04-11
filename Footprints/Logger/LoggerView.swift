@@ -36,10 +36,11 @@ struct LoggerView: View {
                     .animation(.easeInOut, value: model.recording)
             }
         }
-        .onReceive(model.locationPublisher, perform: { loc in
+        .onReceive(model.locationPublisher.cachePrevious(), perform: { prevLoc, loc in
             do {
                 print("Received location update: \(loc)")
-                try model.recordLocation(loc)
+                // TODO: Take new struct that contains distance alongside loc update
+                try model.recordLocation(loc, prevLoc: prevLoc)
             } catch {
                 print("Failed to record location: \(error)")
             }

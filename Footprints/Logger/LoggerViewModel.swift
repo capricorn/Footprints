@@ -86,7 +86,7 @@ class LoggerViewModel: ObservableObject {
     }
     
     /// Record the location data to the database.
-    func recordLocation(_ loc: GPSLocation) throws {
+    func recordLocation(_ loc: GPSLocation, prevLoc: GPSLocation? = nil) throws {
         guard case .recordingInProgress(let session) = state else {
             assertionFailure("Incorrect recording state: \(String(describing: state))")
             return
