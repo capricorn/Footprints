@@ -17,10 +17,16 @@ struct SessionListItemView: View {
         return "\(startDate.formatted(.dateTime)) - \(endDate.formatted(.dateTime))"
     }
     
+    var countLabel: String {
+        (sessionItem.count == 1) ? "point" : "points"
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
                 .lineLimit(1)
+            Text("\(sessionItem.count) \(countLabel)")
+                .font(.caption)
         }
     }
 }
