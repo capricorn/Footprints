@@ -101,7 +101,7 @@ class LoggerViewModel: ObservableObject {
     
     func requestAuthorization() {
         let authorized = (gpsProvider.authorizationStatus == .authorizedAlways || gpsProvider.authorizationStatus == .authorizedWhenInUse)
-        if authorized {
+        if authorized == false {
             gpsProvider.requestAuthorization()
         }
     }
