@@ -67,7 +67,7 @@ class LoggerViewModel: ObservableObject {
             timerTask = nil
             logStartDate = nil
         } else {
-            let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0)
+            let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
             // TODO: Just throw / handle..?
             try! dbQueue.write { db in
                 try! session.insert(db)

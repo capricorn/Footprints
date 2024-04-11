@@ -12,4 +12,5 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
     var startTimestamp: Float
     var endTimestamp: Float
+    var count: Int
 }

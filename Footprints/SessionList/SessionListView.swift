@@ -65,7 +65,11 @@ private struct PreviewView: View {
                         let startTime = Float(Date.now.timeIntervalSince1970)
                         let endTime = Float(Date.now.addingTimeInterval(342).timeIntervalSince1970)
                         
-                        try! SessionModel(id: UUID(), startTimestamp: startTime, endTimestamp: endTime).insert(db)
+                        try! SessionModel(
+                            id: UUID(),
+                            startTimestamp: startTime,
+                            endTimestamp: endTime,
+                            count: Int.random(in: 0...50)).insert(db)
                     }
                 }
             }

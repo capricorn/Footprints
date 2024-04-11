@@ -29,5 +29,6 @@ struct SessionListItemView: View {
     SessionListItemView(sessionItem: SessionModel(
         id: UUID(),
         startTimestamp: Float(Date.now.timeIntervalSince1970),
-        endTimestamp: Float(Date.now.addingTimeInterval(600).timeIntervalSince1970)))
+        endTimestamp: Float(Date.now.addingTimeInterval(600).timeIntervalSince1970), 
+        count: 5))
 }

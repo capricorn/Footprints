@@ -54,6 +54,7 @@ extension DatabaseQueue {
                 table.primaryKey("id", .text)
                 table.column("startTimestamp", .double)
                 table.column("endTimestamp", .double)
+                table.column("count", .integer)
             }
         }
     }
