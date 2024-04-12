@@ -57,6 +57,14 @@ extension DatabaseQueue {
                 table.column("count", .integer)
                 table.column("totalDistance", .double)
             }
+            
+            try db.create(table: "deviceAccelerationModel", options: .ifNotExists) { table in
+                table.primaryKey("id", .text)
+                table.column("sessionId", .text)
+                table.column("x", .double)
+                table.column("y", .double)
+                table.column("z", .double)
+            }
         }
     }
 }
