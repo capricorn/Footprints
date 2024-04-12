@@ -29,6 +29,8 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
         self.locManager.distanceFilter = kCLDistanceFilterNone
         self.locManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locManager.delegate = self
+        self.locManager.allowsBackgroundLocationUpdates = true
+        self.locManager.showsBackgroundLocationIndicator = true
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -56,6 +58,6 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
     }
     
     func requestAuthorization() {
-        locManager.requestWhenInUseAuthorization()
+        locManager.requestAlwaysAuthorization()
     }
 }
