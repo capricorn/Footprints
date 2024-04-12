@@ -54,6 +54,18 @@ class LoggerViewModel: ObservableObject {
         return logNowDate.timeIntervalSince(logStartDate)
     }
     
+    // TODO: Should actually be called when totally resetting the state
+    func resetRecordingState() {
+        gpsProvider.stop()
+        timerTask?.cancel()
+        timerTask = nil
+        logStartDate = nil
+        
+        pointsCountSubscriber?.cancel()
+        pointsCountSubscriber = nil
+        pointsCount = 0
+    }
+    
     func record() {
         if recording {
             if case .recordingInProgress(let session) = state {
@@ -67,14 +79,7 @@ class LoggerViewModel: ObservableObject {
             }
             
             state = .recordingComplete
-            gpsProvider.stop()
-            timerTask?.cancel()
-            timerTask = nil
-            logStartDate = nil
-            
-            pointsCountSubscriber?.cancel()
-            pointsCountSubscriber = nil
-            pointsCount = 0
+            resetRecordingState()
         } else {
             let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
             // TODO: Just throw / handle..?

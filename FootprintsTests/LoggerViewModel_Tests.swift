@@ -137,4 +137,17 @@ final class LoggerViewModel_Tests: XCTestCase {
         
         XCTAssert(updatedSession.count == 1)
     }
+    
+    func testResetRecordingState() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
+        
+        model.record()
+        model.resetRecordingState()
+        
+        XCTAssert(model.recording == false)
+        XCTAssert(model.pointsCount == 0)
+        XCTAssert(model.logStartDate == nil)
+    }
 }
