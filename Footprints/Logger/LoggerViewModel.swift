@@ -15,11 +15,13 @@ class LoggerViewModel: ObservableObject {
         case recordingComplete
     }
     
+    static let SPEED_UNDETERMINED: Double = -1
+    
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
     @Published var state: State? = nil
     @Published var pointsCount: Int = 0
-    @Published var speed: Double = 0
+    @Published var speed: Double = SPEED_UNDETERMINED
     
     let locationPublisher: GPSProvider.LocationProvider
     
