@@ -22,13 +22,14 @@ class LoggerViewModel: ObservableObject {
     @Published var state: State? = nil
     @Published var pointsCount: Int = 0
     @Published var speed: Double = SPEED_UNDETERMINED
+    @Published var distance: Double = 0
     
     let locationPublisher: GPSProvider.LocationProvider
     
     private var timerTask: Task<Void, Never>?
     private let dbQueue: DatabaseQueue
     private let gpsProvider: GPSProvider
-    private var pointsCountSubscriber: DatabaseCancellable?
+    private var sessionCountSubscriber: DatabaseCancellable?
     
     init(dbQueue: DatabaseQueue = try! .default, gpsProvider: GPSProvider = LocationDelegate()) {
         self.dbQueue = dbQueue
@@ -61,9 +62,10 @@ class LoggerViewModel: ObservableObject {
         timerTask = nil
         logStartDate = nil
         
-        pointsCountSubscriber?.cancel()
-        pointsCountSubscriber = nil
+        sessionCountSubscriber?.cancel()
+        sessionCountSubscriber = nil
         pointsCount = 0
+        distance = 0
     }
     
     func record() {
@@ -87,12 +89,13 @@ class LoggerViewModel: ObservableObject {
                 try! session.insert(db)
             }
             
-            let pointsObserver = ValueObservation.tracking { db in
+            let sessionObserver = ValueObservation.tracking { db in
                 try! SessionModel.find(db, id: session.id)
             }
             
-            pointsCountSubscriber = pointsObserver.start(in: dbQueue, onError: { _ in }) { updatedSession in
+            sessionCountSubscriber = sessionObserver.start(in: dbQueue, onError: { _ in }) { updatedSession in
                 self.pointsCount = updatedSession.count
+                self.distance = updatedSession.totalDistance
             }
             
             state = .recordingInProgress(session: session)

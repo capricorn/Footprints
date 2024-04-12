@@ -149,6 +149,7 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(model.recording == false)
         XCTAssert(model.pointsCount == 0)
         XCTAssert(model.logStartDate == nil)
+        XCTAssert(model.distance == 0)
     }
     
     func testRecordLocationDistanceUpdate() throws {

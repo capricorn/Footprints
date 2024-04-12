@@ -30,6 +30,10 @@ struct LoggerView: View {
         }
     }
     
+    var totalDistanceLabel: String {
+        return "\(String(format: "%.1f", model.distance)) mi"
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -38,7 +42,10 @@ struct LoggerView: View {
                         VStack(alignment: .leading) {
                             // TODO: Prettier display / formatting
                             Text("\(model.elapsedLogTime ?? 0)")
-                            Text(speedLabel)
+                            HStack {
+                                Text(speedLabel)
+                                Text(totalDistanceLabel)
+                            }
                             Text(pointsCountLabel)
                                 .font(.caption)
                         }
