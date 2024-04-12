@@ -8,15 +8,6 @@
 import Foundation
 import CoreLocation
 
-protocol GPSLocatable {
-    var latitude: CGFloat { get }
-    var longitude: CGFloat { get }
-    var altitude: Measurement<UnitLength> { get }
-    var timestamp: Float { get }
-    var speed: Double { get }
-    func distance(from loc: GPSLocatable) -> Measurement<UnitLength>
-}
-
 struct GPSLocation: GPSLocatable {
     let latitude: CGFloat
     let longitude: CGFloat

@@ -11,6 +11,7 @@
 		F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */; };
 		F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */; };
 		F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */; };
+		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -55,6 +56,7 @@
 		F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemView.swift; sourceTree = "<group>"; };
 		F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePreviousPublisher.swift; sourceTree = "<group>"; };
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
+		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -121,6 +123,13 @@
 				F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		F05148FB2BC9D54800CC3271 /* Accelerometer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accelerometer;
 			sourceTree = "<group>";
 		};
 		F0F045C72BB26D7600E8DF04 /* Sqlite */ = {
@@ -208,6 +217,7 @@
 		F0FAEE132BAE742E0015CF67 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F05148FB2BC9D54800CC3271 /* Accelerometer */,
 				F0082EFE2BC8842D0006A36C /* Combine */,
 				F0F045C72BB26D7600E8DF04 /* Sqlite */,
 				F0FAEE142BAE74330015CF67 /* GPS */,
@@ -221,6 +231,7 @@
 				F0FAEE152BAE74970015CF67 /* GPSProvider.swift */,
 				F0FAEE262BB22CA90015CF67 /* LocationDelegate.swift */,
 				F0F045CF2BB365C700E8DF04 /* GPSLocation.swift */,
+				F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */,
 			);
 			path = GPS;
 			sourceTree = "<group>";
@@ -384,6 +395,7 @@
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
+				F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */,
 				F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */,
 				F0FAEE252BB11C0C0015CF67 /* LoggerMockGPSProvider.swift in Sources */,
 				F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */,
