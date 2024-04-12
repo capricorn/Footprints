@@ -31,11 +31,12 @@ struct LoggerView: View {
             VStack {
                 Group {
                     if model.recording {
-                        VStack {
+                        VStack(alignment: .leading) {
+                            // TODO: Prettier display / formatting
                             Text("\(model.elapsedLogTime ?? 0)")
+                            Text(speedLabel)
                             Text(pointsCountLabel)
                                 .font(.caption)
-                            Text(speedLabel)
                         }
                     } else {
                         Text(Date.now.formatted(.dateTime))
