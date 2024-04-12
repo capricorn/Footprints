@@ -17,7 +17,7 @@ struct GPSLocationModel: Identifiable, Codable, FetchableRecord, PersistableReco
     let altitude: Measurement<UnitLength>
     let timestamp: Float
     
-    static func from(_ loc: GPSLocation, session: SessionModel) -> GPSLocationModel {
+    static func from(_ loc: GPSLocatable, session: SessionModel) -> GPSLocationModel {
         return GPSLocationModel(
             id: UUID(),
             sessionId: session.id,

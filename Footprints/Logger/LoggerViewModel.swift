@@ -108,7 +108,7 @@ class LoggerViewModel: ObservableObject {
     }
     
     /// Record the location data to the database.
-    func recordLocation(_ loc: GPSLocation, prevLoc: GPSLocation? = nil) throws {
+    func recordLocation(_ loc: GPSLocatable, prevLoc: GPSLocatable? = nil) throws {
         guard case .recordingInProgress(let session) = state else {
             assertionFailure("Incorrect recording state: \(String(describing: state))")
             return
@@ -119,11 +119,17 @@ class LoggerViewModel: ObservableObject {
             try SessionModel.find(db, id: session.id)
         }
         
+        var dist = 0.0
+        if let prevLoc {
+            dist = loc.distance(from: prevLoc).converted(to: .miles).value
+        }
+        
         // TODO: Need to be able to set location session id..
         try dbQueue.write { db in
             try locEntry.insert(db)
             
             mutableSession.count += 1
+            mutableSession.totalDistance += dist
             try mutableSession.update(db)
         }
     }

@@ -150,4 +150,39 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(model.pointsCount == 0)
         XCTAssert(model.logStartDate == nil)
     }
+    
+    func testRecordLocationDistanceUpdate() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        struct MockGPSLocation: GPSLocatable {
+            var latitude: CGFloat = 0
+            var longitude: CGFloat = 0
+            var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
+            var timestamp: Float = 0
+            var speed: Double = 0
+            
+            func distance(from loc: GPSLocatable) -> Measurement<UnitLength> {
+                return .init(value: 5, unit: .miles)
+            }
+        }
+        
+        let prevLoc = MockGPSLocation()
+        let newLoc = MockGPSLocation()
+        
+        model.record()
+        try model.recordLocation(newLoc, prevLoc: prevLoc)
+        try model.recordLocation(newLoc, prevLoc: prevLoc)
+        
+        // Verify total distance is 5
+        guard let session = try dbQueue.read({ db in
+            return try SessionModel.fetchAll(db)
+        }).first else {
+            XCTFail("Failed to find the current recording session.")
+            return
+        }
+        
+        XCTAssert(session.totalDistance == 10)
+    }
 }
