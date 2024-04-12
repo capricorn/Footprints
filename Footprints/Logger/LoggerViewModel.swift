@@ -19,6 +19,7 @@ class LoggerViewModel: ObservableObject {
     @Published var logNowDate: Date?
     @Published var state: State? = nil
     @Published var pointsCount: Int = 0
+    @Published var speed: Double = 0
     
     let locationPublisher: GPSProvider.LocationProvider
     

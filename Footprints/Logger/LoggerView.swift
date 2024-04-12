@@ -13,9 +13,17 @@ struct LoggerView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
     @StateObject var model: LoggerViewModel = LoggerViewModel()
     
+    // TODO: Eventually replace with `onReceive` equivalent
+    @State private var locSubscriber: AnyCancellable?
+    
     /// The number of points recorded in this session.
     var pointsCountLabel: String {
         (model.pointsCount == 1) ? "1 point" : "\(model.pointsCount) points"
+    }
+    
+    var speedLabel: String {
+        // TODO: Allow switching units (perhaps report speed as measurement?
+        "\(String(format: "%.1f", model.speed)) mph"
     }
     
     var body: some View {
@@ -25,8 +33,9 @@ struct LoggerView: View {
                     if model.recording {
                         VStack {
                             Text("\(model.elapsedLogTime ?? 0)")
-                            Text("\(pointsCountLabel)")
+                            Text(pointsCountLabel)
                                 .font(.caption)
+                            Text(speedLabel)
                         }
                     } else {
                         Text(Date.now.formatted(.dateTime))
@@ -46,17 +55,20 @@ struct LoggerView: View {
                     .animation(.easeInOut, value: model.recording)
             }
         }
-        .onReceive(model.locationPublisher.cachePrevious(), perform: { prevLoc, loc in
-            do {
-                print("Received location update: \(loc)")
-                // TODO: Take new struct that contains distance alongside loc update
-                try model.recordLocation(loc, prevLoc: prevLoc)
-            } catch {
-                print("Failed to record location: \(error)")
-            }
-        })
         .onAppear {
             model.requestAuthorization()
+            self.locSubscriber = model.locationPublisher.cachePrevious().sink { prevLoc, loc in
+                do {
+                    print("Received location update: \(loc)")
+                    try model.recordLocation(loc, prevLoc: prevLoc)
+                    
+                    // TODO: Method for updating statistics
+                    // TODO: Method for clearing statistics
+                    model.speed = loc.speed
+                } catch {
+                    print("Failed to record location: \(error)")
+                }
+            }
         }
     }
 }

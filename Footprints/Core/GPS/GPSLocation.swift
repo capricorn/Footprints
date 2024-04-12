@@ -14,6 +14,7 @@ struct GPSLocation {
     /// Altitude in meters.
     let altitude: Measurement<UnitLength>
     let timestamp: Float
+    var speed: Double = 0
     
     /// Compute the distance in meters between the two points.
     func distance(from loc: GPSLocation) -> Measurement<UnitLength> {
