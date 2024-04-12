@@ -18,12 +18,14 @@ class LoggerViewModel: ObservableObject {
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
     @Published var state: State? = nil
+    @Published var pointsCount: Int = 0
     
     let locationPublisher: GPSProvider.LocationProvider
     
     private var timerTask: Task<Void, Never>?
     private let dbQueue: DatabaseQueue
     private let gpsProvider: GPSProvider
+    private var pointsCountSubscriber: DatabaseCancellable?
     
     init(dbQueue: DatabaseQueue = try! .default, gpsProvider: GPSProvider = LocationDelegate()) {
         self.dbQueue = dbQueue
@@ -66,11 +68,23 @@ class LoggerViewModel: ObservableObject {
             timerTask?.cancel()
             timerTask = nil
             logStartDate = nil
+            
+            pointsCountSubscriber?.cancel()
+            pointsCountSubscriber = nil
+            pointsCount = 0
         } else {
             let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
             // TODO: Just throw / handle..?
             try! dbQueue.write { db in
                 try! session.insert(db)
+            }
+            
+            let pointsObserver = ValueObservation.tracking { db in
+                try! SessionModel.find(db, id: session.id)
+            }
+            
+            pointsCountSubscriber = pointsObserver.start(in: dbQueue, onError: { _ in }) { updatedSession in
+                self.pointsCount = updatedSession.count
             }
             
             state = .recordingInProgress(session: session)
@@ -93,7 +107,10 @@ class LoggerViewModel: ObservableObject {
         }
         
         let locEntry = GPSLocationModel.from(loc, session: session)
-        var mutableSession = session
+        var mutableSession = try dbQueue.read { db in
+            try SessionModel.find(db, id: session.id)
+        }
+        
         // TODO: Need to be able to set location session id..
         try dbQueue.write { db in
             try locEntry.insert(db)

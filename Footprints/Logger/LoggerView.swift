@@ -10,14 +10,24 @@ import GRDB
 import Combine
 
 struct LoggerView: View {
+    @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
     @StateObject var model: LoggerViewModel = LoggerViewModel()
+    
+    /// The number of points recorded in this session.
+    var pointsCountLabel: String {
+        (model.pointsCount == 1) ? "1 point" : "\(model.pointsCount) points"
+    }
     
     var body: some View {
         ZStack {
             VStack {
                 Group {
                     if model.recording {
-                        Text("\(model.elapsedLogTime ?? 0)")
+                        VStack {
+                            Text("\(model.elapsedLogTime ?? 0)")
+                            Text("\(pointsCountLabel)")
+                                .font(.caption)
+                        }
                     } else {
                         Text(Date.now.formatted(.dateTime))
                     }
