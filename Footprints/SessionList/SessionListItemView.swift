@@ -21,12 +21,20 @@ struct SessionListItemView: View {
         (sessionItem.count == 1) ? "point" : "points"
     }
     
+    // TODO: Support different units
+    var distanceLabel: String {
+        "\(String(format: "%.2f", sessionItem.totalDistance)) mi"
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
                 .lineLimit(1)
-            Text("\(sessionItem.count) \(countLabel)")
-                .font(.caption)
+            HStack {
+                Text("\(sessionItem.count) \(countLabel)")
+                Text(distanceLabel)
+            }
+            .font(.caption)
         }
     }
 }
