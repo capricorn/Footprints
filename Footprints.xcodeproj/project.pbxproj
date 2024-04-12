@@ -16,6 +16,7 @@
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
 		F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149022BC9D79C00CC3271 /* DeviceAccelerationModel.swift */; };
 		F05149052BC9D9F000CC3271 /* AccelerationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149042BC9D9F000CC3271 /* AccelerationProvider.swift */; };
+		F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -65,6 +66,7 @@
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
 		F05149022BC9D79C00CC3271 /* DeviceAccelerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAccelerationModel.swift; sourceTree = "<group>"; };
 		F05149042BC9D9F000CC3271 /* AccelerationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationProvider.swift; sourceTree = "<group>"; };
+		F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAccelerationProvider.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				F05148FE2BC9D65400CC3271 /* Acceleration.swift */,
 				F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */,
 				F05149042BC9D9F000CC3271 /* AccelerationProvider.swift */,
+				F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */,
 			);
 			path = Accelerometer;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				F0FAEE272BB22CA90015CF67 /* LocationDelegate.swift in Sources */,
 				F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */,
 				F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */,
+				F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */,
 				F05149052BC9D9F000CC3271 /* AccelerationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

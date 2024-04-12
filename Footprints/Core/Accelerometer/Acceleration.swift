@@ -12,6 +12,5 @@ protocol Acceleration {
     var x: Double { get }
     var y: Double { get }
     var z: Double { get }
+    var timestamp: Float { get }
 }
-
-extension CMAcceleration: Acceleration {}

@@ -11,6 +11,7 @@ import GRDB
 struct DeviceAccelerationModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var id: UUID
     var sessionId: UUID
+    var timestamp: Float
     var x: Double
     var y: Double
     var z: Double
