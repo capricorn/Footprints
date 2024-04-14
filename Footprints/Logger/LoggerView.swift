@@ -31,7 +31,7 @@ struct LoggerView: View {
     }
     
     var totalDistanceLabel: String {
-        return "\(String(format: "%.02f", model.distance)) mi"
+        "\(String(format: "%.02f", model.distance)) mi"
     }
     
     var body: some View {

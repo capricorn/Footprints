@@ -22,6 +22,7 @@ class LoggerViewModel: ObservableObject {
     @Published var state: State? = nil
     @Published var pointsCount: Int = 0
     @Published var speed: Double = SPEED_UNDETERMINED
+    /// Total distance traveled in miles.
     @Published var distance: Double = 0
     
     let locationPublisher: GPSProvider.LocationProvider
