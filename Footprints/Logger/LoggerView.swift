@@ -24,9 +24,9 @@ struct LoggerView: View {
     var speedLabel: String {
         // TODO: Allow switching units (perhaps report speed as measurement?
         if model.speed == LoggerViewModel.SPEED_UNDETERMINED {
-            return "\(String(format: "%.1f", model.speed)) mph"
-        } else {
             return "-- mph"
+        } else {
+            return "\(String(format: "%.1f", model.speed)) mph"
         }
     }
     
