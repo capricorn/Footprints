@@ -117,14 +117,21 @@ final class LoggerViewModel_Tests: XCTestCase {
         
         model.record()
         
-        guard let session = try dbQueue.read({ db in
-            return try SessionModel.fetchAll(db)
-        }).first else {
-            XCTFail("Failed to find the current recording session.")
+        guard case .recordingInProgress(let stateSession) = model.state else {
+            XCTFail("Record state is wrong.")
             return
         }
         
+        let session = try dbQueue.read { db in
+            return try SessionModel.find(db, id: stateSession.id)
+        }
+        
         XCTAssert(session.count == 0)
+        try model.recordLocation(GPSLocation(
+            latitude: 0,
+            longitude: 0,
+            altitude: .init(value: 0, unit: .meters),
+            timestamp: Float(Date.now.timeIntervalSince1970)))
         try model.recordLocation(GPSLocation(
             latitude: 0,
             longitude: 0,
@@ -135,7 +142,7 @@ final class LoggerViewModel_Tests: XCTestCase {
             try SessionModel.find(db, id: session.id)
         }
         
-        XCTAssert(updatedSession.count == 1)
+        XCTAssert(updatedSession.count == 2)
     }
     
     func testResetRecordingState() throws {
