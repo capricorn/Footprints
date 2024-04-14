@@ -176,14 +176,15 @@ final class LoggerViewModel_Tests: XCTestCase {
         try model.recordLocation(newLoc, prevLoc: prevLoc)
         try model.recordLocation(newLoc, prevLoc: prevLoc)
         
-        // Verify total distance is 5
-        guard let session = try dbQueue.read({ db in
-            return try SessionModel.fetchAll(db)
-        }).first else {
-            XCTFail("Failed to find the current recording session.")
+        guard case .recordingInProgress(let session) = model.state else {
+            XCTFail("Record state is wrong.")
             return
         }
         
-        XCTAssert(session.totalDistance == 10)
+        let currentSession = try dbQueue.read({ db in
+            return try SessionModel.find(db, id: session.id)
+        })
+        
+        XCTAssert(currentSession.totalDistance == 10)
     }
 }
