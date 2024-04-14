@@ -36,24 +36,16 @@ struct LoggerView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                Group {
-                    if model.recording {
-                        VStack(alignment: .leading) {
-                            Text(model.runtimeLabel)
-                            HStack {
-                                Text(speedLabel)
-                                Text(totalDistanceLabel)
-                            }
-                            Text(pointsCountLabel)
-                                .font(.caption)
-                        }
-                    } else {
-                        Text(Date.now.formatted(.dateTime))
-                    }
+            VStack(alignment: .leading) {
+                Text(model.runtimeLabel)
+                HStack {
+                    Text(speedLabel)
+                    Text(totalDistanceLabel)
                 }
-                .font(.system(size: 32))
+                Text(pointsCountLabel)
+                    .font(.caption)
             }
+            .font(.system(size: 32))
             VStack {
                 // TODO: At 1/3 boundary
                 Spacer()
