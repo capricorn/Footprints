@@ -76,7 +76,8 @@ struct LoggerView: View {
                     
                     // TODO: Method for updating statistics
                     // TODO: Method for clearing statistics
-                    model.speed = loc.speed
+                    let mph = Measurement<UnitSpeed>(value: loc.speed, unit: .metersPerSecond)
+                    model.speed = mph.converted(to: .milesPerHour).value
                 } catch {
                     print("Failed to record location: \(error)")
                 }
