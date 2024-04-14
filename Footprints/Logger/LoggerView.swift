@@ -26,7 +26,7 @@ struct LoggerView: View {
         if model.speed == LoggerViewModel.SPEED_UNDETERMINED {
             return "\(String(format: "%.1f", model.speed)) mph"
         } else {
-            return "--"
+            return "-- mph"
         }
     }
     
