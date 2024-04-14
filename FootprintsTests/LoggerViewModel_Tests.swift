@@ -138,6 +138,8 @@ final class LoggerViewModel_Tests: XCTestCase {
             altitude: .init(value: 0, unit: .meters),
             timestamp: Float(Date.now.timeIntervalSince1970)))
         
+        model.record()
+        
         let updatedSession = try dbQueue.read { db in
             try SessionModel.find(db, id: session.id)
         }
@@ -187,6 +189,8 @@ final class LoggerViewModel_Tests: XCTestCase {
             XCTFail("Record state is wrong.")
             return
         }
+        
+        model.record()
         
         let currentSession = try dbQueue.read({ db in
             return try SessionModel.find(db, id: session.id)

@@ -70,8 +70,11 @@ class LoggerViewModel: ObservableObject {
     
     func record() {
         if recording {
-            if case .recordingInProgress(let session) = state {
-                var session = session
+            if case .recordingInProgress(let stateSession) = state {
+                var session = try! dbQueue.read { db in
+                    try! SessionModel.find(db, id: stateSession.id)
+                }
+                
                 try! dbQueue.write { db in
                     session.endTimestamp = Float(Date.now.timeIntervalSince1970)
                     try! session.save(db)
@@ -133,7 +136,7 @@ class LoggerViewModel: ObservableObject {
             
             mutableSession.count += 1
             mutableSession.totalDistance += dist
-            try mutableSession.update(db)
+            try mutableSession.save(db)
         }
     }
     
