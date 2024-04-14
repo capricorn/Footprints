@@ -50,6 +50,11 @@ struct SessionListView: View {
             }, onChange: { sessions in
                 self.sessions = sessions
             })
+            
+            // TODO: Eventually migrate to lazy vstack for these
+            sessions = try! dbQueue.read { db in
+                try! SessionModel.fetchAll(db)
+            }
         }
     }
 }
