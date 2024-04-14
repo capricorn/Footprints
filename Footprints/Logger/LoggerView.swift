@@ -40,8 +40,7 @@ struct LoggerView: View {
                 Group {
                     if model.recording {
                         VStack(alignment: .leading) {
-                            // TODO: Prettier display / formatting
-                            Text("\(model.elapsedLogTime ?? 0)")
+                            Text(model.runtimeLabel)
                             HStack {
                                 Text(speedLabel)
                                 Text(totalDistanceLabel)

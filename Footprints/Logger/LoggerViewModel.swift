@@ -56,6 +56,15 @@ class LoggerViewModel: ObservableObject {
         return logNowDate.timeIntervalSince(logStartDate)
     }
     
+    var runtimeLabel: String {
+        guard let elapsedLogTime else {
+            return "--"
+        }
+        
+        let duration = Duration(secondsComponent: Int64(elapsedLogTime), attosecondsComponent: 0)
+        return duration.formatted(.time(pattern: .hourMinuteSecond))
+    }
+    
     // TODO: Should actually be called when totally resetting the state
     func resetRecordingState() {
         gpsProvider.stop()
