@@ -26,8 +26,25 @@ struct SessionListView: View {
     
     var body: some View {
         VStack {
-            Text("Sessions")
+            HStack {
+                Text("Sessions")
                     .font(.title)
+                    .padding()
+                Spacer()
+                // TODO: Scale with font size?
+                HStack {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                        .onTapGesture {
+                            // TODO -- filter popup menu
+                        }
+                    // TODO: Based on ascending/descending toggle
+                    Image(systemName: "arrow.up")
+                        .onTapGesture {
+                            // TODO: simple toggle
+                        }
+                }
+                .padding()
+            }
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(sessions) { session in
