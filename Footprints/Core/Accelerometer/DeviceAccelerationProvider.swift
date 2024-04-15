@@ -18,6 +18,10 @@ class DeviceAccelerationProvider: AccelerationProvider {
         accelSubject.eraseToAnyPublisher()
     }
     
+    init() {
+        manager.accelerometerUpdateInterval = 1/3
+    }
+    
     func start() {
         manager.startAccelerometerUpdates(to: queue, withHandler: { data, error in
             guard let data else {
