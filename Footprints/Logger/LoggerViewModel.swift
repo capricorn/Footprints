@@ -57,7 +57,7 @@ class LoggerViewModel: ObservableObject {
     }
     
     var runtimeLabel: String {
-        let duration = Duration(secondsComponent: Int64(elapsedLogTime ?? 0), attosecondsComponent: 0)
+        let duration = elapsedLogTime?.duration ?? .zero
         return duration.formatted(.time(pattern: .hourMinuteSecond))
     }
     

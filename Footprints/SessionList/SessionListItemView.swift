@@ -26,11 +26,18 @@ struct SessionListItemView: View {
         "\(String(format: "%.2f", sessionItem.totalDistance)) mi"
     }
     
+    var runtimeLabel: String {
+        (sessionItem.totalLogTime ?? .zero).duration.formatted(.time(pattern: .hourMinuteSecond))
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
                 .lineLimit(1)
             Text(sessionItem.id.uuidString)
+                .font(.caption)
+                .monospaced()
+            Text(runtimeLabel)
                 .font(.caption)
                 .monospaced()
             HStack {

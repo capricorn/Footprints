@@ -14,4 +14,13 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var endTimestamp: Float
     var count: Int
     var totalDistance: Double = 0.0
+    
+    var totalLogTime: TimeInterval? {
+        guard endTimestamp > 0 else {
+            return nil
+        }
+        
+        return TimeInterval(endTimestamp - startTimestamp)
+    }
 }
+

@@ -17,6 +17,8 @@
 		F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149022BC9D79C00CC3271 /* DeviceAccelerationModel.swift */; };
 		F05149052BC9D9F000CC3271 /* AccelerationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149042BC9D9F000CC3271 /* AccelerationProvider.swift */; };
 		F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */; };
+		F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149082BCDC54500CC3271 /* TimeExtensions.swift */; };
+		F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -67,6 +69,8 @@
 		F05149022BC9D79C00CC3271 /* DeviceAccelerationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAccelerationModel.swift; sourceTree = "<group>"; };
 		F05149042BC9D9F000CC3271 /* AccelerationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationProvider.swift; sourceTree = "<group>"; };
 		F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAccelerationProvider.swift; sourceTree = "<group>"; };
+		F05149082BCDC54500CC3271 /* TimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtensions.swift; sourceTree = "<group>"; };
+		F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemViewModel.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			children = (
 				F0082EFA2BC5E3990006A36C /* SessionListView.swift */,
 				F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */,
+				F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */,
 			);
 			path = SessionList;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */,
+				F05149082BCDC54500CC3271 /* TimeExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,11 +425,13 @@
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */,
+				F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
 				F0082EFB2BC5E3990006A36C /* SessionListView.swift in Sources */,
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 				F0FAEE272BB22CA90015CF67 /* LocationDelegate.swift in Sources */,
 				F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */,
+				F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */,
 				F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */,
 				F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */,
 				F05149052BC9D9F000CC3271 /* AccelerationProvider.swift in Sources */,
