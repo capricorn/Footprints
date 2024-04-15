@@ -73,6 +73,7 @@ class LoggerViewModel: ObservableObject {
     // TODO: Should actually be called when totally resetting the state
     func resetRecordingState() {
         gpsProvider.stop()
+        motionProvider.stop()
         timerTask?.cancel()
         timerTask = nil
         logStartDate = nil
@@ -126,6 +127,7 @@ class LoggerViewModel: ObservableObject {
             
             state = .recordingInProgress(session: session)
             gpsProvider.start()
+            motionProvider.start()
             timerTask = Task.detached { @MainActor in
                 while Task.isCancelled == false {
                     self.logNowDate = Date.now
