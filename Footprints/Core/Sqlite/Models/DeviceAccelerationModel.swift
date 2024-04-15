@@ -15,4 +15,14 @@ struct DeviceAccelerationModel: Identifiable, Codable, FetchableRecord, Persista
     var x: Double
     var y: Double
     var z: Double
+    
+    static func from(_ accel: Acceleration, session: SessionModel) -> DeviceAccelerationModel {
+        DeviceAccelerationModel(
+            id: UUID(),
+            sessionId: session.id,
+            timestamp: accel.timestamp,
+            x: accel.x,
+            y: accel.y,
+            z: accel.z)
+    }
 }

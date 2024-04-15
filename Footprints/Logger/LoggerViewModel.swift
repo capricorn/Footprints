@@ -154,6 +154,18 @@ class LoggerViewModel: ObservableObject {
         }
     }
     
+    func recordMotion(_ accel: Acceleration) throws {
+        guard case .recordingInProgress(let stateSession) = state else {
+            assertionFailure("Incorrect recording state: \(String(describing: state))")
+            return
+        }
+        
+        let accelEntry = DeviceAccelerationModel.from(accel, session: stateSession)
+        try dbQueue.write { db in
+            try accelEntry.insert(db)
+        }
+    }
+    
     func requestAuthorization() {
         let authorized = (gpsProvider.authorizationStatus == .authorizedAlways || gpsProvider.authorizationStatus == .authorizedWhenInUse)
         if authorized == false {
