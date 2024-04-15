@@ -14,6 +14,20 @@ struct SessionListView: View {
     @State var sessions: [SessionModel] = []
     @State private var sessionSubscriber: AnyDatabaseCancellable?
     
+    enum SortDirection {
+        case ascending
+        case descending
+    }
+    
+    enum SortField {
+        /// Total time that the session was recorded
+        case runtime
+        /// Date of session start
+        case startDate
+        /// The total distance traveled
+        case distance
+    }
+    
     var exportDataView: some View {
         HStack {
             ShareLink(item: dbQueue.url) {
