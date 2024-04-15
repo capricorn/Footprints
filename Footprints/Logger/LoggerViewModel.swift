@@ -37,7 +37,7 @@ class LoggerViewModel: ObservableObject {
     init(
         dbQueue: DatabaseQueue = try! .default,
         gpsProvider: GPSProvider = LocationDelegate(),
-        motionProvider: DeviceAccelerationProvider = DeviceAccelerationProvider()
+        motionProvider: AccelerationProvider = DeviceAccelerationProvider()
     ) {
         self.dbQueue = dbQueue
         self.gpsProvider = gpsProvider

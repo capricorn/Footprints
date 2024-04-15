@@ -19,6 +19,15 @@ final class LoggerViewModel_Tests: XCTestCase {
         func start() {}
         func stop() {}
     }
+    
+    private struct NoopMotionProvider: AccelerationProvider {
+        var accelerationPublisher: AccelerationPublisher {
+            PassthroughSubject().eraseToAnyPublisher()
+        }
+        
+        func start() {}
+        func stop() {}
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -226,5 +235,42 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(model.logStartDate == nil)
         XCTAssert(model.logNowDate == nil)
         XCTAssert(model.distance == 0)
+    }
+    
+    func testRecordMotion() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(
+            dbQueue: dbQueue,
+            gpsProvider: NoopGPSProvider(),
+            motionProvider: NoopMotionProvider())
+        
+        struct MockAcceleration: Acceleration {
+            var x: Double = 0
+            var y: Double = 1
+            var z: Double = 2
+            
+            var timestamp: Float = 100.0
+        }
+        
+        model.record()
+        try model.recordMotion(MockAcceleration())
+        
+        guard case .recordingInProgress(let stateSession) = model.state else {
+            XCTFail("Record state is wrong.")
+            return
+        }
+
+        model.record()
+        
+        let accelData = try dbQueue.read { db in
+            try DeviceAccelerationModel.fetchAll(db)
+        }
+        
+        XCTAssert(accelData.count == 1)
+        XCTAssert(accelData.first?.x == 0)
+        XCTAssert(accelData.first?.y == 1)
+        XCTAssert(accelData.first?.z == 2)
+        XCTAssert(accelData.first?.timestamp == 100)
     }
 }
