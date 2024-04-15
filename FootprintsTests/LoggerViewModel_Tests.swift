@@ -198,4 +198,33 @@ final class LoggerViewModel_Tests: XCTestCase {
         
         XCTAssert(currentSession.totalDistance == 10)
     }
+    
+    /// Verify that after finishing recording the runtime statistics are reset
+    func testResetLoggerStatistics() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        struct MockGPSLocation: GPSLocatable {
+            var latitude: CGFloat = 0
+            var longitude: CGFloat = 0
+            var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
+            var timestamp: Float = 0
+            var speed: Double = 0
+            
+            func distance(from loc: GPSLocatable) -> Measurement<UnitLength> {
+                return .init(value: 5, unit: .miles)
+            }
+        }
+        
+        model.record()
+        try model.recordLocation(MockGPSLocation())
+        model.record()
+        
+        XCTAssert(model.pointsCount == 0)
+        XCTAssert(model.speed == LoggerViewModel.SPEED_UNDETERMINED)
+        XCTAssert(model.logStartDate == nil)
+        XCTAssert(model.logNowDate == nil)
+        XCTAssert(model.distance == 0)
+    }
 }

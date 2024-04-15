@@ -70,8 +70,16 @@ class LoggerViewModel: ObservableObject {
         
         sessionCountSubscriber?.cancel()
         sessionCountSubscriber = nil
+        
+        resetStatistics()
+    }
+    
+    func resetStatistics() {
         pointsCount = 0
         distance = 0
+        speed = LoggerViewModel.SPEED_UNDETERMINED
+        logStartDate = nil
+        logNowDate = nil
     }
     
     func record() {
