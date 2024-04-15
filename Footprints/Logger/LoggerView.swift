@@ -58,6 +58,13 @@ struct LoggerView: View {
                     .animation(.easeInOut, value: model.recording)
             }
         }
+        .onReceive(model.motionPublisher) { accel in
+            do {
+                try model.recordMotion(accel)
+            } catch {
+                print("Failed to record device motion: \(error)")
+            }
+        }
         .onAppear {
             model.requestAuthorization()
             self.locSubscriber = model.locationPublisher.cachePrevious().sink { prevLoc, loc in

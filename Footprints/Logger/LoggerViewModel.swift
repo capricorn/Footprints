@@ -26,16 +26,25 @@ class LoggerViewModel: ObservableObject {
     @Published var distance: Double = 0
     
     let locationPublisher: GPSProvider.LocationProvider
+    let motionPublisher: DeviceAccelerationProvider.AccelerationPublisher
     
     private var timerTask: Task<Void, Never>?
     private let dbQueue: DatabaseQueue
     private let gpsProvider: GPSProvider
+    private let motionProvider: AccelerationProvider
     private var sessionCountSubscriber: DatabaseCancellable?
     
-    init(dbQueue: DatabaseQueue = try! .default, gpsProvider: GPSProvider = LocationDelegate()) {
+    init(
+        dbQueue: DatabaseQueue = try! .default,
+        gpsProvider: GPSProvider = LocationDelegate(),
+        motionProvider: DeviceAccelerationProvider = DeviceAccelerationProvider()
+    ) {
         self.dbQueue = dbQueue
         self.gpsProvider = gpsProvider
+        self.motionProvider = motionProvider
+        
         self.locationPublisher = gpsProvider.location
+        self.motionPublisher = motionProvider.accelerationPublisher
     }
     
     /// `true` if a session is currently being recorded.
