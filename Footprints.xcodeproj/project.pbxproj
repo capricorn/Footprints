@@ -20,6 +20,7 @@
 		F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149082BCDC54500CC3271 /* TimeExtensions.swift */; };
 		F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */; };
 		F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */; };
+		F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490E2BCF1EDA00CC3271 /* SessionListViewModel.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -73,6 +74,7 @@
 		F05149082BCDC54500CC3271 /* TimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtensions.swift; sourceTree = "<group>"; };
 		F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemViewModel.swift; sourceTree = "<group>"; };
 		F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsIcon.swift; sourceTree = "<group>"; };
+		F051490E2BCF1EDA00CC3271 /* SessionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewModel.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				F0082EFA2BC5E3990006A36C /* SessionListView.swift */,
 				F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */,
 				F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */,
+				F051490E2BCF1EDA00CC3271 /* SessionListViewModel.swift */,
 			);
 			path = SessionList;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */,
+				F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */,
 				F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
 				F0082EFB2BC5E3990006A36C /* SessionListView.swift in Sources */,
