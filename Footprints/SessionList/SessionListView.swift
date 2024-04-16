@@ -20,6 +20,11 @@ struct SessionListView: View {
         static let defaultsKey = "SortDirection"
         case ascending
         case descending
+        
+        // TODO: Bool instead?
+        func toggle() -> SortDirection {
+            (self == .ascending) ? .descending : .ascending
+        }
     }
     
     enum SortField: String {
@@ -42,6 +47,10 @@ struct SessionListView: View {
         }
     }
     
+    var sortDirectionSystemName: String {
+        (sortDirection == .ascending) ? "arrow.up" : "arrow.down"
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -56,9 +65,10 @@ struct SessionListView: View {
                             // TODO -- filter popup menu
                         }
                     // TODO: Based on ascending/descending toggle
-                    Image(systemName: "arrow.up")
+                    Image(systemName: sortDirectionSystemName)
                         .onTapGesture {
-                            // TODO: simple toggle
+                            // TODO: 90 degrees rotation animation?
+                            sortDirection = sortDirection.toggle()
                         }
                 }
                 .padding()
