@@ -19,6 +19,7 @@
 		F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */; };
 		F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149082BCDC54500CC3271 /* TimeExtensions.swift */; };
 		F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */; };
+		F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -71,6 +72,7 @@
 		F05149062BC9DB5900CC3271 /* DeviceAccelerationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAccelerationProvider.swift; sourceTree = "<group>"; };
 		F05149082BCDC54500CC3271 /* TimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtensions.swift; sourceTree = "<group>"; };
 		F051490A2BCDC5EA00CC3271 /* SessionListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemViewModel.swift; sourceTree = "<group>"; };
+		F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsIcon.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				F0FAEDED2BAE73360015CF67 /* Assets.xcassets */,
 				F0FAEDEF2BAE73360015CF67 /* Preview Content */,
 				F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */,
+				F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */,
 			);
 			path = Footprints;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
+				F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */,
 				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */,
