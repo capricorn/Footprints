@@ -32,7 +32,9 @@ class DeviceAccelerationProvider: AccelerationProvider {
             let accel = data.acceleration
             let deviceAccel = DeviceAcceleration(x: accel.x, y: accel.y, z: accel.z, timestamp: Float(data.timestamp))
             
-            self.accelSubject.send(deviceAccel)
+            DispatchQueue.main.async {
+                self.accelSubject.send(deviceAccel)
+            }
         })
     }
     
