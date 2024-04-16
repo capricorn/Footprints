@@ -11,15 +11,19 @@ import Combine
 
 struct SessionListView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
+    @AppStorage(SortDirection.defaultsKey) var sortDirection: SortDirection = .ascending
+    @AppStorage(SortField.defaultsKey) var sortField: SortField = .startDate
     @State var sessions: [SessionModel] = []
     @State private var sessionSubscriber: AnyDatabaseCancellable?
     
-    enum SortDirection {
+    enum SortDirection: String {
+        static let defaultsKey = "SortDirection"
         case ascending
         case descending
     }
     
-    enum SortField {
+    enum SortField: String {
+        static let defaultsKey = "SortField"
         /// Total time that the session was recorded
         case runtime
         /// Date of session start
