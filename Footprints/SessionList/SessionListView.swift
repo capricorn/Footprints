@@ -11,48 +11,14 @@ import Combine
 
 struct SessionListView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
-    @AppStorage(SortDirection.defaultsKey) var sortDirection: SortDirection = .ascending
-    @AppStorage(SortField.defaultsKey) var sortField: SortField = .startDate
+    @AppStorage(SessionListViewModel.SortDirection.defaultsKey) var sortDirection: SessionListViewModel.SortDirection = .ascending
+    @AppStorage(SessionListViewModel.SortField.defaultsKey) var sortField: SessionListViewModel.SortField = .startDate
     @StateObject var model: SessionListViewModel = SessionListViewModel()
     // TODO: Migrate to vm
     @State var sessions: [SessionModel] = []
     @State private var sessionSubscriber: AnyDatabaseCancellable?
     
-    enum SortDirection: String {
-        static let defaultsKey = "SortDirection"
-        case ascending
-        case descending
-        
-        // TODO: Bool instead?
-        func toggle() -> SortDirection {
-            (self == .ascending) ? .descending : .ascending
-        }
-    }
     
-    enum SortField: String, CaseIterable, Identifiable {
-        static let defaultsKey = "SortField"
-        /// Total time that the session was recorded
-        case runtime
-        /// Date of session start
-        case startDate
-        /// The total distance traveled
-        case distance
-        
-        var id: String {
-            self.rawValue
-        }
-        
-        var label: String {
-            switch self {
-            case .runtime:
-                "Runtime"
-            case .startDate:
-                "Start Date"
-            case .distance:
-                "Distance"
-            }
-        }
-    }
     
     var exportDataView: some View {
         HStack {
@@ -71,7 +37,7 @@ struct SessionListView: View {
     var sortFieldPicker: some View {
         // TODO: Display filter logo as well..?
         Picker("Sort Field", systemImage: "line.3.horizontal.decrease.circle", selection: $sortField) {
-            ForEach(SortField.allCases) { field in
+            ForEach(SessionListViewModel.SortField.allCases) { field in
                 Text(field.label)
                     .tag(field)
             }
