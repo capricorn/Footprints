@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GPSLocatable {
+protocol GPSLocatable: Timestamped {
     var latitude: CGFloat { get }
     var longitude: CGFloat { get }
     var altitude: Measurement<UnitLength> { get }
