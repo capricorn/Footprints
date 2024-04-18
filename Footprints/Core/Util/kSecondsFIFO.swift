@@ -21,4 +21,8 @@ final class kSecondsFIFO<T: Timestamped>: PredicateFIFO<T> {
             return Double(newestItem.timestamp - oldestItem.timestamp) > self.seconds
         }
     }
+    
+    convenience init(duration: Measurement<UnitDuration>) {
+        self.init(duration.converted(to: .seconds).value)
+    }
 }

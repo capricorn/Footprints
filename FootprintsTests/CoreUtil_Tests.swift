@@ -38,7 +38,7 @@ final class CoreUtil_Tests: XCTestCase {
         var loc4 = MockLocation()
         loc4.timestamp = 11
         
-        let fifo = kSecondsFIFO<MockLocation>(10)
+        let fifo = kSecondsFIFO<MockLocation>(duration: .init(value: 10, unit: .seconds))
         fifo.push(loc1)
         fifo.push(loc2)
         fifo.push(loc3)
