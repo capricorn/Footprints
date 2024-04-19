@@ -45,4 +45,32 @@ class SessionListViewModel: ObservableObject {
             }
         }
     }
+    
+    // TODO: Implement
+    func session(sort: SortField, direction: SortDirection, dbQueue: DatabaseQueue) throws -> [SessionModel] {
+        // TODO: Determine column name
+        // TODO: Convert to an extension of the types themselves..?
+        let colName = switch sort {
+        case .runtime:
+            // TODO: Not implemented.. (needs to be a field in sql -- assert)
+            "startTimestamp"
+        case .startDate:
+            "startTimestamp"
+        case .distance:
+            "totalDistance"
+        }
+        
+        let col = switch direction {
+        case .ascending:
+            Column(colName).asc
+        case .descending:
+            Column(colName).desc
+        }
+        
+        return try dbQueue.read { db in
+            try SessionModel
+                .order(col)
+                .fetchAll(db)
+        }
+    }
 }
