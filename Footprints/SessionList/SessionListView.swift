@@ -18,8 +18,6 @@ struct SessionListView: View {
     @State var sessions: [SessionModel] = []
     @State private var sessionSubscriber: AnyDatabaseCancellable?
     
-    
-    
     var exportDataView: some View {
         HStack {
             ShareLink(item: dbQueue.url) {
@@ -32,6 +30,10 @@ struct SessionListView: View {
     
     var sortDirectionSystemName: String {
         (sortDirection == .ascending) ? "arrow.up" : "arrow.down"
+    }
+    
+    var sortedSessions: [SessionModel] {
+        (try? model.session(sort: sortField, direction: sortDirection, dbQueue: dbQueue)) ?? []
     }
     
     var sortFieldPicker: some View {
@@ -65,7 +67,7 @@ struct SessionListView: View {
             }
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(sessions) { session in
+                    ForEach(sortedSessions) { session in
                         SessionListItemView(sessionItem: session)
                             .padding()
                     }
