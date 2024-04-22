@@ -7,6 +7,7 @@
 
 import Foundation
 import GRDB
+import CoreGPX
 
 struct GPSLocationModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
@@ -25,6 +26,14 @@ struct GPSLocationModel: Identifiable, Codable, FetchableRecord, PersistableReco
             longitude: loc.longitude,
             altitude: loc.altitude,
             timestamp: loc.timestamp)
+    }
+    
+    var trackpoint: GPXTrackPoint {
+        let point = GPXTrackPoint(latitude: latitude, longitude: longitude)
+        // TODO: Use timezone associated with time?
+        point.time = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        
+        return point
     }
 }
 
