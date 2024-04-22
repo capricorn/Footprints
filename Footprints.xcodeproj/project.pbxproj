@@ -26,6 +26,7 @@
 		F05149172BD1BFB700CC3271 /* Timestamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149162BD1BFB700CC3271 /* Timestamped.swift */; };
 		F05149192BD1C38D00CC3271 /* CoreUtil_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149182BD1C38D00CC3271 /* CoreUtil_Tests.swift */; };
 		F051491B2BD1C7BA00CC3271 /* SessionListViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F051491A2BD1C7BA00CC3271 /* SessionListViewModel_Tests.swift */; };
+		F051491E2BD6FE2200CC3271 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = F051491D2BD6FE2200CC3271 /* CoreGPX */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -116,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FAEE192BAE7AF30015CF67 /* GRDB in Frameworks */,
+				F051491E2BD6FE2200CC3271 /* CoreGPX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +332,7 @@
 			name = Footprints;
 			packageProductDependencies = (
 				F0FAEE182BAE7AF30015CF67 /* GRDB */,
+				F051491D2BD6FE2200CC3271 /* CoreGPX */,
 			);
 			productName = Footprints;
 			productReference = F0FAEDE42BAE73350015CF67 /* Footprints.app */;
@@ -405,6 +408,7 @@
 			mainGroup = F0FAEDDB2BAE73350015CF67;
 			packageReferences = (
 				F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */,
+				F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */,
 			);
 			productRefGroup = F0FAEDE52BAE73350015CF67 /* Products */;
 			projectDirPath = "";
@@ -820,6 +824,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vincentneo/CoreGPX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 		F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift";
@@ -831,6 +843,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F051491D2BD6FE2200CC3271 /* CoreGPX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */;
+			productName = CoreGPX;
+		};
 		F0FAEE182BAE7AF30015CF67 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */;
