@@ -8,6 +8,7 @@
 import Foundation
 import GRDB
 import CoreGPX
+import CoreTransferable
 
 struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
@@ -55,7 +56,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         saveAt: URL,
         filename: String?=nil,
         metadata: GPXMetadata=GPXMetadata()
-    ) throws -> URL? {
+    ) throws -> URL {
         let filename = filename ?? "\(self.id.uuidString).gpx"
         let gpxURL = saveAt.appending(component: filename)
         
@@ -66,3 +67,15 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     }
 }
 
+
+/*
+extension SessionModel: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        FileRepresentation(exportedContentType: .data, exporting: { gpx in
+            // TODO: Handling `Database`?
+            let gpxURL = try gpx.exportGPXToURL(db: <#T##Database#>, saveAt: <#T##URL#>)
+            return SentTransferredFile(gpxURL)
+        })
+    }
+}
+*/

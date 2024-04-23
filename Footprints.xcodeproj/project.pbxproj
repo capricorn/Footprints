@@ -12,6 +12,7 @@
 		F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */; };
 		F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */; };
 		F037C0742BD71395004E08A6 /* export_gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F037C0732BD71395004E08A6 /* export_gpx.gpx */; };
+		F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -75,6 +76,7 @@
 		F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePreviousPublisher.swift; sourceTree = "<group>"; };
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
 		F037C0732BD71395004E08A6 /* export_gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 2; path = export_gpx.gpx; sourceTree = "<group>"; usesTabs = 0; };
+		F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModelTransferable.swift; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				F05149152BD1BFAC00CC3271 /* Time */,
 				F05149112BD1BD3B00CC3271 /* PredicateFIFO.swift */,
 				F05149132BD1BE6D00CC3271 /* kSecondsFIFO.swift */,
+				F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F05149142BD1BE6D00CC3271 /* kSecondsFIFO.swift in Sources */,
 				F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */,
 				F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */,
+				F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,
 				F0082EFB2BC5E3990006A36C /* SessionListView.swift in Sources */,
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,

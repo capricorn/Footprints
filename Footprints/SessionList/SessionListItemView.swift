@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import GRDB
 
 struct SessionListItemView: View {
+    @Environment(\.databaseQueue) var dbQueue
     var sessionItem: SessionModel
     
     var dateLabel: String {
@@ -30,6 +32,13 @@ struct SessionListItemView: View {
         (sessionItem.totalLogTime ?? .zero).duration.formatted(.time(pattern: .hourMinuteSecond))
     }
     
+    var sessionTransferable: SessionModelTransferable {
+        // TODO: Swap out with dbQueue reference instead
+        try! dbQueue.read { db in
+            SessionModelTransferable(db: db, session: sessionItem)
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
@@ -47,10 +56,7 @@ struct SessionListItemView: View {
                 }
                 .font(.caption)
                 Spacer()
-                Button(action: {
-                    // TODO
-                    // TODO -- should actually be a share action?
-                }) {
+                ShareLink(item: sessionTransferable, preview: SharePreview("TODO")) {
                     Text("GPX")
                         .font(.caption.smallCaps())
                 }
