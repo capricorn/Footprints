@@ -41,11 +41,22 @@ struct SessionListItemView: View {
                 .font(.caption)
                 .monospaced()
             HStack {
-                Text("\(sessionItem.count) \(countLabel)")
-                Text(distanceLabel)
+                Group {
+                    Text("\(sessionItem.count) \(countLabel)")
+                    Text(distanceLabel)
+                }
+                .font(.caption)
+                Spacer()
+                Button(action: {
+                    // TODO
+                    // TODO -- should actually be a share action?
+                }) {
+                    Text("GPX")
+                        .font(.caption.smallCaps())
+                }
             }
-            .font(.caption)
         }
+        .padding()
     }
 }
 
