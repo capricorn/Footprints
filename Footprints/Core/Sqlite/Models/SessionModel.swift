@@ -24,7 +24,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return TimeInterval(endTimestamp - startTimestamp)
     }
     
-    func exportGPX(db: Database, metadata: GPXMetadata=GPXMetadata()) throws -> String? {
+    private func buildGPX(db: Database, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {
         // TODO: Cursor approach if large
         let root = GPXRoot(creator: Bundle.main.bundleIdentifier!)
         let trackpoints = try GPSLocationModel
@@ -41,8 +41,28 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         track.add(trackSegment: trackSegment)
         root.add(track: track)
         root.metadata = metadata
-
+        
+        return root
+    }
+    
+    func exportGPX(db: Database, metadata: GPXMetadata=GPXMetadata()) throws -> String? {
+        let root = try buildGPX(db: db, metadata: metadata)
         return root.gpx()
+    }
+    
+    func exportGPXToURL(
+        db: Database,
+        saveAt: URL,
+        filename: String?=nil,
+        metadata: GPXMetadata=GPXMetadata()
+    ) throws -> URL? {
+        let filename = filename ?? "\(self.id.uuidString).gpx"
+        let gpxURL = saveAt.appending(component: filename)
+        
+        let root = try buildGPX(db: db, metadata: metadata)
+        try root.outputToFile(saveAt: saveAt, fileName: filename)
+        
+        return gpxURL
     }
 }
 
