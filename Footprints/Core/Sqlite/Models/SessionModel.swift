@@ -59,8 +59,8 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         filename: String?=nil,
         metadata: GPXMetadata=GPXMetadata()
     ) throws -> URL {
-        let filename = filename ?? "\(self.id.uuidString).gpx"
-        let gpxURL = saveAt.appending(component: filename)
+        let filename = filename ?? "\(self.id.uuidString)"
+        let gpxURL = saveAt.appending(component: filename + ".gpx")
         
         let root = try buildGPX(dbQueue: dbQueue, metadata: metadata)
         try root.outputToFile(saveAt: saveAt, fileName: filename)
