@@ -53,7 +53,7 @@ struct SessionListItemView: View {
                 }
                 .font(.caption)
                 Spacer()
-                ShareLink(item: sessionTransferable, preview: SharePreview("TODO")) {
+                ShareLink(item: sessionTransferable, preview: SharePreview("\(sessionItem.id.uuidString).gpx")) {
                     Text("GPX\(Image(systemName: "location"))")
                         .font(.caption.smallCaps())
                 }
