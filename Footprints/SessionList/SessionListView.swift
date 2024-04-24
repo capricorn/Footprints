@@ -69,7 +69,6 @@ struct SessionListView: View {
                 VStack(alignment: .leading) {
                     ForEach(sortedSessions) { session in
                         SessionListItemView(sessionItem: session)
-                            .padding()
                     }
                 }
             }
