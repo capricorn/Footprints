@@ -15,7 +15,7 @@ struct SessionModelTransferable: Transferable {
     let baseURL: URL = FileManager.default.temporaryDirectory
     
     static var transferRepresentation: some TransferRepresentation {
-        FileRepresentation(exportedContentType: .xml, exporting: { transferable in
+        FileRepresentation(exportedContentType: .data, exporting: { transferable in
             let dbQueue = transferable.dbQueue
             let session = transferable.session
             
