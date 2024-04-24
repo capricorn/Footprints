@@ -10,16 +10,17 @@ import GRDB
 import CoreTransferable
 
 struct SessionModelTransferable: Transferable {
-    let db: Database
+    let dbQueue: DatabaseQueue
     let session: SessionModel
     let baseURL: URL = FileManager.default.temporaryDirectory
     
     static var transferRepresentation: some TransferRepresentation {
-        FileRepresentation(exportedContentType: .data, exporting: { transferable in
-            let db = transferable.db
+        FileRepresentation(exportedContentType: .xml, exporting: { transferable in
+            let dbQueue = transferable.dbQueue
             let session = transferable.session
             
-            let gpxURL = try session.exportGPXToURL(db: db, saveAt: transferable.baseURL)
+            // TODO: Test to verify gpx file exists?
+            let gpxURL = try session.exportGPXToURL(dbQueue: dbQueue, saveAt: transferable.baseURL)
             return SentTransferredFile(gpxURL)
         })
     }

@@ -39,9 +39,7 @@ final class GPX_Tests: XCTestCase {
         let metadata = GPXMetadata()
         // Needs to match that of golden file
         metadata.time = Date(timeIntervalSince1970: 1713819511)
-        let gpxString = try dbQueue.read { db in
-            try session.exportGPX(db: db, metadata: metadata)
-        }
+        let gpxString = try session.exportGPX(dbQueue: dbQueue, metadata: metadata)
         
         XCTAssert(gpxString != nil && gpxString?.isEmpty == false)
         

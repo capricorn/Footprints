@@ -25,13 +25,15 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return TimeInterval(endTimestamp - startTimestamp)
     }
     
-    private func buildGPX(db: Database, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {
+    private func buildGPX(dbQueue: DatabaseQueue, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {
         // TODO: Cursor approach if large
         let root = GPXRoot(creator: Bundle.main.bundleIdentifier!)
-        let trackpoints = try GPSLocationModel
-            .filter(Column("sessionId") == self.id)
-            .fetchAll(db)
-            .map { $0.trackpoint }
+        let trackpoints = try dbQueue.read { db in
+            try GPSLocationModel
+                .filter(Column("sessionId") == self.id)
+                .fetchAll(db)
+                .map { $0.trackpoint }
+        }
         
         // TODO: Setup metadata
         //var metadata = GPXMetadata()
@@ -46,13 +48,13 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return root
     }
     
-    func exportGPX(db: Database, metadata: GPXMetadata=GPXMetadata()) throws -> String? {
-        let root = try buildGPX(db: db, metadata: metadata)
+    func exportGPX(dbQueue: DatabaseQueue, metadata: GPXMetadata=GPXMetadata()) throws -> String? {
+        let root = try buildGPX(dbQueue: dbQueue, metadata: metadata)
         return root.gpx()
     }
     
     func exportGPXToURL(
-        db: Database,
+        dbQueue: DatabaseQueue,
         saveAt: URL,
         filename: String?=nil,
         metadata: GPXMetadata=GPXMetadata()
@@ -60,22 +62,9 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         let filename = filename ?? "\(self.id.uuidString).gpx"
         let gpxURL = saveAt.appending(component: filename)
         
-        let root = try buildGPX(db: db, metadata: metadata)
+        let root = try buildGPX(dbQueue: dbQueue, metadata: metadata)
         try root.outputToFile(saveAt: saveAt, fileName: filename)
         
         return gpxURL
     }
 }
-
-
-/*
-extension SessionModel: Transferable {
-    static var transferRepresentation: some TransferRepresentation {
-        FileRepresentation(exportedContentType: .data, exporting: { gpx in
-            // TODO: Handling `Database`?
-            let gpxURL = try gpx.exportGPXToURL(db: <#T##Database#>, saveAt: <#T##URL#>)
-            return SentTransferredFile(gpxURL)
-        })
-    }
-}
-*/

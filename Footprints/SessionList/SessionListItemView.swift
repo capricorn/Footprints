@@ -33,10 +33,7 @@ struct SessionListItemView: View {
     }
     
     var sessionTransferable: SessionModelTransferable {
-        // TODO: Swap out with dbQueue reference instead
-        try! dbQueue.read { db in
-            SessionModelTransferable(db: db, session: sessionItem)
-        }
+        SessionModelTransferable(dbQueue: dbQueue, session: sessionItem)
     }
     
     var body: some View {
