@@ -44,6 +44,7 @@ struct LoggerView: View {
                         }
                 } else {
                     Text(model.runtimeLabel)
+                        .contentTransition(.numericText())
                 }
                 HStack {
                     Text(speedLabel)
