@@ -38,18 +38,12 @@ final class LoggerViewModel_Tests: XCTestCase {
     }
     
     /// Verify the logger 'record' state machine follows the correct state transitions.
-    func testLoggerState() throws {
+    func testLoggerStateRecordInProgress() throws {
         let model = LoggerViewModel(dbQueue: try .createTemporaryDBQueue(), gpsProvider: NoopGPSProvider())
-        XCTAssert(model.state == nil)
+        XCTAssert(model.state == .readyToRecord)
         
         model.record()
         if case .recordingInProgress(_) = model.state {
-        } else {
-            XCTFail("Bad state: \(model.state)")
-        }
-        
-        model.record()
-        if case .recordingComplete = model.state {
         } else {
             XCTFail("Bad state: \(model.state)")
         }
@@ -67,7 +61,7 @@ final class LoggerViewModel_Tests: XCTestCase {
         if case .recordingInProgress(let currentSession) = model.state {
             session = currentSession
         } else {
-            XCTFail("Unexpected record state: \(model.state.debugDescription)")
+            XCTFail("Unexpected record state: \(model.state)")
         }
         
         try model.recordLocation(GPSLocation(
@@ -140,12 +134,12 @@ final class LoggerViewModel_Tests: XCTestCase {
             latitude: 0,
             longitude: 0,
             altitude: .init(value: 0, unit: .meters),
-            timestamp: Float(Date.now.timeIntervalSince1970)))
+            timestamp: Date.now.timeIntervalSince1970))
         try model.recordLocation(GPSLocation(
             latitude: 0,
             longitude: 0,
             altitude: .init(value: 0, unit: .meters),
-            timestamp: Float(Date.now.timeIntervalSince1970)))
+            timestamp: Date.now.timeIntervalSince1970))
         
         model.record()
         
@@ -156,18 +150,16 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(updatedSession.count == 2)
     }
     
-    func testResetRecordingState() throws {
+    func testLoggerStateRecordingComplete() throws {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
         
+        // TODO: Verify which statistics persist (provide mock data)
         model.record()
-        model.resetRecordingState()
+        model.record()
         
-        XCTAssert(model.recording == false)
-        XCTAssert(model.pointsCount == 0)
-        XCTAssert(model.logStartDate == nil)
-        XCTAssert(model.distance == 0)
+        XCTAssert(model.state == .recordingComplete)
     }
     
     func testRecordLocationDistanceUpdate() throws {
@@ -179,7 +171,7 @@ final class LoggerViewModel_Tests: XCTestCase {
             var latitude: CGFloat = 0
             var longitude: CGFloat = 0
             var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
-            var timestamp: Float = 0
+            var timestamp: Double = 0
             var speed: Double = 0
             
             func distance(from loc: GPSLocatable) -> Measurement<UnitLength> {
@@ -209,7 +201,7 @@ final class LoggerViewModel_Tests: XCTestCase {
     }
     
     /// Verify that after finishing recording the runtime statistics are reset
-    func testResetLoggerStatistics() throws {
+    func testLoggerStateNewRecording() throws {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
@@ -218,7 +210,7 @@ final class LoggerViewModel_Tests: XCTestCase {
             var latitude: CGFloat = 0
             var longitude: CGFloat = 0
             var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
-            var timestamp: Float = 0
+            var timestamp: Double = 0
             var speed: Double = 0
             
             func distance(from loc: GPSLocatable) -> Measurement<UnitLength> {
@@ -229,11 +221,10 @@ final class LoggerViewModel_Tests: XCTestCase {
         model.record()
         try model.recordLocation(MockGPSLocation())
         model.record()
+        model.record()
         
         XCTAssert(model.pointsCount == 0)
         XCTAssert(model.speed == LoggerViewModel.SPEED_UNDETERMINED)
-        XCTAssert(model.logStartDate == nil)
-        XCTAssert(model.logNowDate == nil)
         XCTAssert(model.distance == 0)
     }
     

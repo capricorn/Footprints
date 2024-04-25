@@ -18,7 +18,7 @@ final class CoreUtil_Tests: XCTestCase {
             var latitude: CGFloat = 0
             var longitude: CGFloat = 0
             var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
-            var timestamp: Float = 0
+            var timestamp: Double = 0
             var speed: Double = 0
             
             func distance(from loc: Footprints.GPSLocatable) -> Measurement<UnitLength> {

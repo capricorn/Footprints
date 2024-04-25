@@ -10,7 +10,20 @@ import SwiftUI
 import GRDB
 
 class LoggerViewModel: ObservableObject {
-    enum State {
+    enum State: Equatable {
+        static func == (lhs: LoggerViewModel.State, rhs: LoggerViewModel.State) -> Bool {
+            switch (lhs, rhs) {
+            case (.readyToRecord, .readyToRecord):
+                return true
+            case (.recordingInProgress(let lhsSession), .recordingInProgress(let rhsSession)):
+                return lhsSession.id == rhsSession.id
+            case (.recordingComplete, .recordingComplete):
+                return true
+            default:
+                return false
+            }
+        }
+        
         /// State when no recording has occurred -- default state on fresh app start.
         case readyToRecord
         case recordingInProgress(session: SessionModel)
