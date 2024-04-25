@@ -13,6 +13,14 @@
 		F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */; };
 		F037C0742BD71395004E08A6 /* export_gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F037C0732BD71395004E08A6 /* export_gpx.gpx */; };
 		F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */; };
+		F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F037C0B32BDB03BB004E08A6 /* WidgetKit.framework */; };
+		F037C0B62BDB03BB004E08A6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F037C0B52BDB03BB004E08A6 /* SwiftUI.framework */; };
+		F037C0B92BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0B82BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift */; };
+		F037C0BB2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BA2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift */; };
+		F037C0BD2BDB03BB004E08A6 /* FootprintsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BC2BDB03BB004E08A6 /* FootprintsLiveActivity.swift */; };
+		F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */; };
+		F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F037C0C02BDB03BD004E08A6 /* Assets.xcassets */; };
+		F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -54,6 +62,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F037C0C32BDB03BD004E08A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0FAEDDC2BAE73350015CF67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F037C0B02BDB03BB004E08A6;
+			remoteInfo = FootprintsLiveActivityExtension;
+		};
 		F0FAEDF72BAE73370015CF67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0FAEDDC2BAE73350015CF67 /* Project object */;
@@ -70,6 +85,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F037C0C92BDB03BD004E08A6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F0082EFA2BC5E3990006A36C /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemView.swift; sourceTree = "<group>"; };
@@ -77,6 +106,15 @@
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
 		F037C0732BD71395004E08A6 /* export_gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 2; path = export_gpx.gpx; sourceTree = "<group>"; usesTabs = 0; };
 		F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModelTransferable.swift; sourceTree = "<group>"; };
+		F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FootprintsLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F037C0B32BDB03BB004E08A6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F037C0B52BDB03BB004E08A6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F037C0B82BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsLiveActivityBundle.swift; sourceTree = "<group>"; };
+		F037C0BA2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsLiveActivityLiveActivity.swift; sourceTree = "<group>"; };
+		F037C0BC2BDB03BB004E08A6 /* FootprintsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsLiveActivity.swift; sourceTree = "<group>"; };
+		F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		F037C0C02BDB03BD004E08A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F037C0C22BDB03BD004E08A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -120,6 +158,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F037C0AE2BDB03BB004E08A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F037C0B62BDB03BB004E08A6 /* SwiftUI.framework in Frameworks */,
+				F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0FAEDE12BAE73350015CF67 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +210,28 @@
 				F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		F037C0B22BDB03BB004E08A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F037C0B32BDB03BB004E08A6 /* WidgetKit.framework */,
+				F037C0B52BDB03BB004E08A6 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F037C0B72BDB03BB004E08A6 /* FootprintsLiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				F037C0B82BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift */,
+				F037C0BA2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift */,
+				F037C0BC2BDB03BB004E08A6 /* FootprintsLiveActivity.swift */,
+				F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */,
+				F037C0C02BDB03BD004E08A6 /* Assets.xcassets */,
+				F037C0C22BDB03BD004E08A6 /* Info.plist */,
+			);
+			path = FootprintsLiveActivity;
 			sourceTree = "<group>";
 		};
 		F05148FB2BC9D54800CC3271 /* Accelerometer */ = {
@@ -236,6 +305,8 @@
 				F0FAEDE62BAE73350015CF67 /* Footprints */,
 				F0FAEDF92BAE73370015CF67 /* FootprintsTests */,
 				F0FAEE032BAE73370015CF67 /* FootprintsUITests */,
+				F037C0B72BDB03BB004E08A6 /* FootprintsLiveActivity */,
+				F037C0B22BDB03BB004E08A6 /* Frameworks */,
 				F0FAEDE52BAE73350015CF67 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -246,6 +317,7 @@
 				F0FAEDE42BAE73350015CF67 /* Footprints.app */,
 				F0FAEDF62BAE73370015CF67 /* FootprintsTests.xctest */,
 				F0FAEE002BAE73370015CF67 /* FootprintsUITests.xctest */,
+				F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +417,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F037C0B02BDB03BB004E08A6 /* FootprintsLiveActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F037C0C62BDB03BD004E08A6 /* Build configuration list for PBXNativeTarget "FootprintsLiveActivityExtension" */;
+			buildPhases = (
+				F037C0AD2BDB03BB004E08A6 /* Sources */,
+				F037C0AE2BDB03BB004E08A6 /* Frameworks */,
+				F037C0AF2BDB03BB004E08A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FootprintsLiveActivityExtension;
+			productName = FootprintsLiveActivityExtension;
+			productReference = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F0FAEDE32BAE73350015CF67 /* Footprints */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0FAEE0A2BAE73370015CF67 /* Build configuration list for PBXNativeTarget "Footprints" */;
@@ -352,10 +441,12 @@
 				F0FAEDE02BAE73350015CF67 /* Sources */,
 				F0FAEDE12BAE73350015CF67 /* Frameworks */,
 				F0FAEDE22BAE73350015CF67 /* Resources */,
+				F037C0C92BDB03BD004E08A6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F037C0C42BDB03BD004E08A6 /* PBXTargetDependency */,
 			);
 			name = Footprints;
 			packageProductDependencies = (
@@ -412,6 +503,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					F037C0B02BDB03BB004E08A6 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					F0FAEDE32BAE73350015CF67 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -445,11 +539,20 @@
 				F0FAEDE32BAE73350015CF67 /* Footprints */,
 				F0FAEDF52BAE73370015CF67 /* FootprintsTests */,
 				F0FAEDFF2BAE73370015CF67 /* FootprintsUITests */,
+				F037C0B02BDB03BB004E08A6 /* FootprintsLiveActivityExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F037C0AF2BDB03BB004E08A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0FAEDE22BAE73350015CF67 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -478,6 +581,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F037C0AD2BDB03BB004E08A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F037C0BD2BDB03BB004E08A6 /* FootprintsLiveActivity.swift in Sources */,
+				F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */,
+				F037C0B92BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift in Sources */,
+				F037C0BB2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0FAEDE02BAE73350015CF67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +654,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F037C0C42BDB03BD004E08A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F037C0B02BDB03BB004E08A6 /* FootprintsLiveActivityExtension */;
+			targetProxy = F037C0C32BDB03BD004E08A6 /* PBXContainerItemProxy */;
+		};
 		F0FAEDF82BAE73370015CF67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0FAEDE32BAE73350015CF67 /* Footprints */;
@@ -553,6 +672,60 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F037C0C72BDB03BD004E08A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q49KLF9VPG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FootprintsLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FootprintsLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goatfish.Footprints.FootprintsLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F037C0C82BDB03BD004E08A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q49KLF9VPG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FootprintsLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FootprintsLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goatfish.Footprints.FootprintsLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F0FAEE082BAE73370015CF67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -675,6 +848,7 @@
 		F0FAEE0B2BAE73370015CF67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -708,6 +882,7 @@
 		F0FAEE0C2BAE73370015CF67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -817,6 +992,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F037C0C62BDB03BD004E08A6 /* Build configuration list for PBXNativeTarget "FootprintsLiveActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F037C0C72BDB03BD004E08A6 /* Debug */,
+				F037C0C82BDB03BD004E08A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F0FAEDDF2BAE73350015CF67 /* Build configuration list for PBXProject "Footprints" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
