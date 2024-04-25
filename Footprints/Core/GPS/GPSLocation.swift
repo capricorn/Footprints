@@ -13,7 +13,7 @@ struct GPSLocation: GPSLocatable {
     let longitude: CGFloat
     /// Altitude in meters.
     let altitude: Measurement<UnitLength>
-    let timestamp: Float
+    let timestamp: Double
     var speed: Double = 0
     
     /// Compute the distance in meters between the two points.

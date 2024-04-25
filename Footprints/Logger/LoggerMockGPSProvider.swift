@@ -25,7 +25,7 @@ class LoggerMockGPSProvider: GPSProvider, ObservableObject {
                     latitude: 0,
                     longitude: 0,
                     altitude: .init(value: 0, unit: .meters),
-                    timestamp: Float(Date.now.timeIntervalSince1970)))
+                    timestamp: Double(Date.now.timeIntervalSince1970)))
                 
                 try? await Task.sleep(nanoseconds: UInt64(1e9))
             }

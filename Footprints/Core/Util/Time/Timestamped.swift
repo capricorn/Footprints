@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Timestamped {
-    var timestamp: Float { get }
+    var timestamp: Double { get }
 }

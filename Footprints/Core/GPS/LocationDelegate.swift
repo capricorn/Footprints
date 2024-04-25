@@ -39,7 +39,7 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
                 latitude: loc.coordinate.latitude,
                 longitude: loc.coordinate.longitude,
                 altitude: .init(value: loc.altitude, unit: .meters),
-                timestamp: Float(loc.timestamp.timeIntervalSince1970),
+                timestamp: Double(loc.timestamp.timeIntervalSince1970),
                 speed: loc.speed)
             print("Sending gps location")
             locationSubject.send(gpsLoc)
