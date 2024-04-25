@@ -157,7 +157,8 @@ class LoggerViewModel: ObservableObject {
         case .recordingInProgress(let session):
             stopRecording(stateSession: session)
         case .recordingComplete:
-            //resetRecordingState()
+            // TODO: Present avg speed during the session..?
+            speed = 0
             resetStatistics()
             startRecording()
         }
