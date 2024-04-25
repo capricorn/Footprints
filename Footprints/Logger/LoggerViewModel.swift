@@ -11,6 +11,8 @@ import GRDB
 
 class LoggerViewModel: ObservableObject {
     enum State {
+        /// State when no recording has occurred -- default state on fresh app start.
+        case readyToRecord
         case recordingInProgress(session: SessionModel)
         case recordingComplete
     }
@@ -19,7 +21,7 @@ class LoggerViewModel: ObservableObject {
     
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?
-    @Published var state: State? = nil
+    @Published var state: State = .readyToRecord
     @Published var pointsCount: Int = 0
     @Published var speed: Double = SPEED_UNDETERMINED
     /// Total distance traveled in miles.
@@ -49,7 +51,12 @@ class LoggerViewModel: ObservableObject {
     
     /// `true` if a session is currently being recorded.
     var recording: Bool {
-        logStartDate != nil
+        switch state {
+        case .recordingInProgress(_):
+            return true
+        default:
+            return false
+        }
     }
     
     var recordButtonForegroundColor: Color {
@@ -76,12 +83,12 @@ class LoggerViewModel: ObservableObject {
         motionProvider.stop()
         timerTask?.cancel()
         timerTask = nil
-        logStartDate = nil
+        //logStartDate = nil
         
         sessionCountSubscriber?.cancel()
         sessionCountSubscriber = nil
         
-        resetStatistics()
+        //resetStatistics()
     }
     
     func resetStatistics() {
@@ -92,56 +99,64 @@ class LoggerViewModel: ObservableObject {
         logNowDate = nil
     }
     
+    private func startRecording() {
+        let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
+        // TODO: Just throw / handle..?
+        try! dbQueue.write { db in
+            try! session.insert(db)
+        }
+        
+        let sessionObserver = ValueObservation.tracking { db in
+            try! SessionModel.find(db, id: session.id)
+        }
+        
+        sessionCountSubscriber = sessionObserver.start(in: dbQueue, onError: { _ in }) { updatedSession in
+            self.pointsCount = updatedSession.count
+            self.distance = updatedSession.totalDistance
+        }
+        
+        state = .recordingInProgress(session: session)
+        gpsProvider.start()
+        motionProvider.start()
+        timerTask = Task.detached { @MainActor in
+            while Task.isCancelled == false {
+                self.logNowDate = Date.now
+                try? await Task.sleep(nanoseconds: UInt64(1e9/60))
+            }
+        }
+        logStartDate = Date.now
+    }
+    
+    private func stopRecording(stateSession: SessionModel) {
+        var session = try! dbQueue.read { db in
+            try! SessionModel.find(db, id: stateSession.id)
+        }
+        
+        try! dbQueue.write { db in
+            session.endTimestamp = Float(Date.now.timeIntervalSince1970)
+            try! session.save(db)
+        }
+        
+        state = .recordingComplete
+        resetRecordingState()
+    }
+    
     func record() {
-        if recording {
-            if case .recordingInProgress(let stateSession) = state {
-                var session = try! dbQueue.read { db in
-                    try! SessionModel.find(db, id: stateSession.id)
-                }
-                
-                try! dbQueue.write { db in
-                    session.endTimestamp = Float(Date.now.timeIntervalSince1970)
-                    try! session.save(db)
-                }
-            } else {
-                assertionFailure("Expected state == .recordingInProgress")
-            }
-            
-            state = .recordingComplete
-            resetRecordingState()
-        } else {
-            let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
-            // TODO: Just throw / handle..?
-            try! dbQueue.write { db in
-                try! session.insert(db)
-            }
-            
-            let sessionObserver = ValueObservation.tracking { db in
-                try! SessionModel.find(db, id: session.id)
-            }
-            
-            sessionCountSubscriber = sessionObserver.start(in: dbQueue, onError: { _ in }) { updatedSession in
-                self.pointsCount = updatedSession.count
-                self.distance = updatedSession.totalDistance
-            }
-            
-            state = .recordingInProgress(session: session)
-            gpsProvider.start()
-            motionProvider.start()
-            timerTask = Task.detached { @MainActor in
-                while Task.isCancelled == false {
-                    self.logNowDate = Date.now
-                    try? await Task.sleep(nanoseconds: UInt64(1e9/60))
-                }
-            }
-            logStartDate = Date.now
+        switch state {
+        case .readyToRecord:
+            startRecording()
+        case .recordingInProgress(let session):
+            stopRecording(stateSession: session)
+        case .recordingComplete:
+            //resetRecordingState()
+            resetStatistics()
+            startRecording()
         }
     }
     
     /// Record the location data to the database.
     func recordLocation(_ loc: GPSLocatable, prevLoc: GPSLocatable? = nil) throws {
         guard case .recordingInProgress(let session) = state else {
-            assertionFailure("Incorrect recording state: \(String(describing: state))")
             return
         }
         
