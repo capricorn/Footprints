@@ -37,7 +37,14 @@ struct LoggerView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text(model.runtimeLabel)
+                if model.recordingComplete {
+                    Text(model.runtimeLabel)
+                        .phaseAnimator([0,1]) { view, phase in
+                            view.opacity(phase)
+                        }
+                } else {
+                    Text(model.runtimeLabel)
+                }
                 HStack {
                     Text(speedLabel)
                     Text(totalDistanceLabel)

@@ -49,6 +49,15 @@ class LoggerViewModel: ObservableObject {
         self.motionPublisher = motionProvider.accelerationPublisher
     }
     
+    var recordingComplete: Bool {
+        switch state {
+        case .recordingComplete:
+            return true
+        default:
+            return false
+        }
+    }
+    
     /// `true` if a session is currently being recorded.
     var recording: Bool {
         switch state {
