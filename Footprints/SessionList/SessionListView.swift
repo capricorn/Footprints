@@ -103,8 +103,8 @@ private struct PreviewView: View {
             .onAppear {
                 try! dbQueue.write { db in
                     for _ in 0..<5 {
-                        let startTime = Float(Date.now.timeIntervalSince1970)
-                        let endTime = Float(Date.now.addingTimeInterval(342).timeIntervalSince1970)
+                        let startTime = Date.now.timeIntervalSince1970
+                        let endTime = Date.now.addingTimeInterval(342).timeIntervalSince1970
                         
                         try! SessionModel(
                             id: UUID(),

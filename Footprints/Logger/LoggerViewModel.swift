@@ -122,7 +122,7 @@ class LoggerViewModel: ObservableObject {
     }
     
     private func startRecording() {
-        let session = SessionModel(id: UUID(), startTimestamp: Float(Date.now.timeIntervalSince1970), endTimestamp: 0, count: 0)
+        let session = SessionModel(id: UUID(), startTimestamp: Date.now.timeIntervalSince1970, endTimestamp: 0, count: 0)
         // TODO: Just throw / handle..?
         try! dbQueue.write { db in
             try! session.insert(db)
@@ -157,7 +157,7 @@ class LoggerViewModel: ObservableObject {
         }
         
         try! dbQueue.write { db in
-            session.endTimestamp = Float(Date.now.timeIntervalSince1970)
+            session.endTimestamp = Date.now.timeIntervalSince1970
             try! session.save(db)
         }
         

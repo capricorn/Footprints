@@ -12,8 +12,8 @@ import CoreTransferable
 
 struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let id: UUID
-    var startTimestamp: Float
-    var endTimestamp: Float
+    var startTimestamp: Double
+    var endTimestamp: Double
     var count: Int
     var totalDistance: Double = 0.0
     
