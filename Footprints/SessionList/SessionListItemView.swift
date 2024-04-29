@@ -32,6 +32,15 @@ struct SessionListItemView: View {
         (sessionItem.totalLogTime ?? .zero).duration.formatted(.time(pattern: .hourMinuteSecond))
     }
     
+    var paceLabel: String? {
+        guard let pace = sessionItem.pace else {
+            return "-- min/mi"
+        }
+        
+        // TODO: Represent as minutes/seconds -- `TimeInterval` formatter?
+        return "\(String(format: "%.02f", pace)) min/mi"
+    }
+    
     var sessionTransferable: SessionModelTransferable {
         SessionModelTransferable(dbQueue: dbQueue, session: sessionItem)
     }
@@ -50,6 +59,9 @@ struct SessionListItemView: View {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
                     Text(distanceLabel)
+                    if let paceLabel {
+                        Text(paceLabel)
+                    }
                 }
                 .font(.caption)
                 Spacer()
