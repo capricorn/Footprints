@@ -31,7 +31,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
             return nil
         }
         
-        return totalLogTime/totalDistance
+        return (totalLogTime/60)/totalDistance
     }
     
     private func buildGPX(dbQueue: DatabaseQueue, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {
