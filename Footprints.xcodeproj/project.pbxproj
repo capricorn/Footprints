@@ -21,6 +21,7 @@
 		F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */; };
 		F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F037C0C02BDB03BD004E08A6 /* Assets.xcassets */; };
 		F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B242BED56EF00B43979 /* StringFormatter.swift */; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -115,6 +116,7 @@
 		F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		F037C0C02BDB03BD004E08A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F037C0C22BDB03BD004E08A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0417B242BED56EF00B43979 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				F05149112BD1BD3B00CC3271 /* PredicateFIFO.swift */,
 				F05149132BD1BE6D00CC3271 /* kSecondsFIFO.swift */,
 				F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */,
+				F0417B242BED56EF00B43979 /* StringFormatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */,
 				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
+				F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
 				F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */,
 				F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */,

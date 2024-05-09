@@ -25,13 +25,13 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return TimeInterval(endTimestamp - startTimestamp)
     }
     
-    /// min/mi
-    var pace: Double? {
+    /// sec/mi
+    var pace: TimeInterval? {
         guard let totalLogTime, totalDistance > 0 else {
             return nil
         }
         
-        return (totalLogTime/60)/totalDistance
+        return (totalLogTime)/totalDistance
     }
     
     private func buildGPX(dbQueue: DatabaseQueue, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {

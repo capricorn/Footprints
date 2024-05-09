@@ -34,11 +34,10 @@ struct SessionListItemView: View {
     
     var paceLabel: String? {
         guard let pace = sessionItem.pace else {
-            return "-- min/mi"
+            return "-- mile"
         }
         
-        // TODO: Represent as minutes/seconds -- `TimeInterval` formatter?
-        return "\(String(format: "%.02f", pace)) min/mi"
+        return "\(pace.formatted(.minuteSecondShort)) mile"
     }
     
     var sessionTransferable: SessionModelTransferable {
