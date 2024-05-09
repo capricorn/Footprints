@@ -54,6 +54,9 @@ struct SessionListItemView: View {
             HStack {
                 Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
                     .padding(.trailing, 4)
+                // TODO: Figure out how to rotate
+                Text("\(Image(systemName: "ruler")) \(distanceLabel)")
+                    .padding(.trailing, 4)
                 if let paceLabel {
                     Text("\(Image(systemName: "figure.run")) \(paceLabel)")
                 }
@@ -64,7 +67,6 @@ struct SessionListItemView: View {
             HStack {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
-                    Text(distanceLabel)
                 }
                 .font(.caption)
                 Spacer()
