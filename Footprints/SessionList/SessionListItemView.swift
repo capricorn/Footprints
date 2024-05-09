@@ -51,7 +51,7 @@ struct SessionListItemView: View {
             Text(sessionItem.id.uuidString)
                 .font(.caption)
                 .monospaced()
-            Text(runtimeLabel)
+            Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
                 .font(.caption)
                 .monospaced()
             HStack {
