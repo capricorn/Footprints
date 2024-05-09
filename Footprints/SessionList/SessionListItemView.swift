@@ -34,10 +34,10 @@ struct SessionListItemView: View {
     
     var paceLabel: String? {
         guard let pace = sessionItem.pace else {
-            return "-- mile"
+            return "--/mi"
         }
         
-        return "\(pace.formatted(.minuteSecondShort)) mile"
+        return "\(pace.formatted(.minuteSecondShort))/mi"
     }
     
     var sessionTransferable: SessionModelTransferable {
@@ -51,16 +51,20 @@ struct SessionListItemView: View {
             Text(sessionItem.id.uuidString)
                 .font(.caption)
                 .monospaced()
-            Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
-                .font(.caption)
-                .monospaced()
+            HStack {
+                Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
+                    .padding(.trailing, 4)
+                if let paceLabel {
+                    Text("\(Image(systemName: "figure.run")) \(paceLabel)")
+                }
+                Spacer()
+            }
+            .monospaced()
+            .font(.caption)
             HStack {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
                     Text(distanceLabel)
-                    if let paceLabel {
-                        Text(paceLabel)
-                    }
                 }
                 .font(.caption)
                 Spacer()
