@@ -22,6 +22,7 @@
 		F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F037C0C02BDB03BD004E08A6 /* Assets.xcassets */; };
 		F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B242BED56EF00B43979 /* StringFormatter.swift */; };
+		F0417B282BED750F00B43979 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B272BED750F00B43979 /* CalendarView.swift */; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -117,6 +118,7 @@
 		F037C0C02BDB03BD004E08A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F037C0C22BDB03BD004E08A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0417B242BED56EF00B43979 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
+		F0417B272BED750F00B43979 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -236,6 +238,14 @@
 			path = FootprintsLiveActivity;
 			sourceTree = "<group>";
 		};
+		F0417B262BED750600B43979 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				F0417B272BED750F00B43979 /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		F05148FB2BC9D54800CC3271 /* Accelerometer */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +338,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0417B262BED750600B43979 /* Calendar */,
 				F0082EF92BC5E38C0006A36C /* SessionList */,
 				F0FAEE282BB2332B0015CF67 /* Info.plist */,
 				F0FAEE212BB116B70015CF67 /* Extensions */,
@@ -601,6 +612,7 @@
 			files = (
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F05149172BD1BFB700CC3271 /* Timestamped.swift in Sources */,
+				F0417B282BED750F00B43979 /* CalendarView.swift in Sources */,
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */,
