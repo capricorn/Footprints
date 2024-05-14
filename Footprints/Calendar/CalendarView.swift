@@ -113,13 +113,6 @@ struct CalendarView: View {
     }
 }
 
-extension Date {
-    // Alternative: offset(.days(3))
-    static func now(offsetByDays days: Int) -> Date {
-        return Date.now.addingTimeInterval(60*60*24*Double(days))
-    }
-}
-
 #Preview {
     CalendarView([1, 3, 5, 7, 18])
 }
