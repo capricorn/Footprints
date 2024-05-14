@@ -12,22 +12,24 @@ struct CalendarView: View {
     let today: Date
     let daysInMonth: Int
     let daysInLastWeek: Int
-    let selectedDates: [Date]
+    let selectedDates: [Int]
     private let dateMap: Set<Int>// = Set()
     
     // Assumption: all dates passed are within this month (maybe assert?)
-    init(_ selectedDates: [Date]=[]) {
+    init(_ selectedDates: [Int]=[]) {
         self.today = Date.now
         self.daysInMonth = Calendar.current.range(of: .day, in: .month, for: self.today)!.upperBound
         self.daysInLastWeek = max(self.daysInMonth - 28, 0)
         self.selectedDates = selectedDates
         //self.dateMap.insert(1)
         
+        /*
         let setDays = self.selectedDates.map {
             return Calendar.current.dateComponents([.day], from: $0).day!
         }
+         */
         
-        self.dateMap = Set(setDays)
+        self.dateMap = Set(selectedDates)
         print("Date map: \(self.dateMap)")
     }
     
@@ -95,10 +97,5 @@ extension Date {
 }
 
 #Preview {
-    CalendarView([
-        .now,
-        .now(offsetByDays: 4),
-        .now(offsetByDays: 6),
-        .now(offsetByDays: -8)
-    ])
+    CalendarView([1, 3, 5, 7, 18])
 }
