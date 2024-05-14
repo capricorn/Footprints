@@ -23,4 +23,11 @@ extension Date {
         let rawWeekday = Calendar.current.dateComponents([.weekday], from: self).weekday!
         return Weekday(rawValue: rawWeekday)!
     }
+    
+    var monthName: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM"
+        
+        return formatter.string(from: self)
+    }
 }

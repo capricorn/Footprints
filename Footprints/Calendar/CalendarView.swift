@@ -68,7 +68,9 @@ struct CalendarView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text(self.today.monthName.uppercased())
+                .font(.title.smallCaps())
             ForEach(0..<5, id: \.self) { (week: Int) in
                 HStack {
                     if week == 4 {
