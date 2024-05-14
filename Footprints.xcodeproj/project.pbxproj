@@ -24,6 +24,7 @@
 		F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B242BED56EF00B43979 /* StringFormatter.swift */; };
 		F0417B282BED750F00B43979 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B272BED750F00B43979 /* CalendarView.swift */; };
 		F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B312BF3011200B43979 /* NumericExtensions.swift */; };
+		F0417B342BF3F80000B43979 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B332BF3F80000B43979 /* DateExtensions.swift */; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -121,6 +122,7 @@
 		F0417B242BED56EF00B43979 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		F0417B272BED750F00B43979 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F0417B312BF3011200B43979 /* NumericExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericExtensions.swift; sourceTree = "<group>"; };
+		F0417B332BF3F80000B43979 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */,
 				F05149082BCDC54500CC3271 /* TimeExtensions.swift */,
 				F0417B312BF3011200B43979 /* NumericExtensions.swift */,
+				F0417B332BF3F80000B43979 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */,
+				F0417B342BF3F80000B43979 /* DateExtensions.swift in Sources */,
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F05149172BD1BFB700CC3271 /* Timestamped.swift in Sources */,
 				F0417B282BED750F00B43979 /* CalendarView.swift in Sources */,

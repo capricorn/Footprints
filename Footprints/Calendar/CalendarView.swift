@@ -15,6 +15,7 @@ struct CalendarView: View {
     let selectedDates: [Int]
     private let dateMap: Set<Int>// = Set()
     
+    
     // Assumption: all dates passed are within this month (maybe assert?)
     init(_ selectedDates: [Int]=[]) {
         self.today = Date.now
@@ -31,6 +32,16 @@ struct CalendarView: View {
         
         self.dateMap = Set(selectedDates)
         print("Date map: \(self.dateMap)")
+    }
+    
+    var firstWeekdayOfMonth: Date.Weekday {
+        // Compute the first day of the month
+        //let day = Calendar.current.component(.day, from: self.today)
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: today)
+        let firstOfMonthDate = Calendar.current.date(from: DateComponents(year: todayComponents.year, month: todayComponents.month, day: 1))
+        
+        // TODO: Some sort of exception if expected calendar is not used..?
+        return firstOfMonthDate!.weekday
     }
     
     // TODO: Separate view where you can set color
@@ -73,6 +84,17 @@ struct CalendarView: View {
                         ForEach(0..<(7-self.daysInLastWeek), id: \.self) { _ in
                             // TODO: Should use background depending on dark mode or not
                             placeholderCalendarSquare
+                        }
+                    } else if week == 0 {
+                        ForEach(0..<(self.firstWeekdayOfMonth.rawValue-1), id: \.self) { _ in
+                            placeholderCalendarSquare
+                        }
+                        ForEach((self.firstWeekdayOfMonth.rawValue-1)..<7, id: \.self) { day in
+                            if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
+                                calendarSquare
+                            } else {
+                                emptyCalendarSquare
+                            }
                         }
                     } else {
                         ForEach(0..<7, id: \.self) { day in
