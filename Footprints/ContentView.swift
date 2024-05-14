@@ -21,13 +21,17 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
+            SessionListView()
+                .tabItem {
+                    Label("Sessions", systemImage: "list.bullet.rectangle")
+                }
             LoggerView()
                 .tabItem {
                     Label("Logger", systemImage: "record.circle")
                 }
-            SessionListView()
+            CalendarContainerView()
                 .tabItem {
-                    Label("Sessions", systemImage: "list.bullet.rectangle")
+                    Label("Calendar", systemImage: "calendar")
                 }
         }
     }
