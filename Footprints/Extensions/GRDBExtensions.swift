@@ -56,6 +56,7 @@ extension DatabaseQueue {
                 table.column("endTimestamp", .double)
                 table.column("count", .integer)
                 table.column("totalDistance", .double)
+                table.column("fiveKTime", .double)
             }
             
             try db.create(table: "deviceAccelerationModel", options: .ifNotExists) { table in

@@ -16,6 +16,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var endTimestamp: Double
     var count: Int
     var totalDistance: Double = 0.0
+    var fiveKTime: Double? = nil
     
     var totalLogTime: TimeInterval? {
         guard endTimestamp > 0 else {
