@@ -26,6 +26,10 @@
 		F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B312BF3011200B43979 /* NumericExtensions.swift */; };
 		F0417B342BF3F80000B43979 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B332BF3F80000B43979 /* DateExtensions.swift */; };
 		F0417B362BF3FC2900B43979 /* CalendarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B352BF3FC2900B43979 /* CalendarContainerView.swift */; };
+		F0417B392BF40B2800B43979 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = F0417B382BF40B2800B43979 /* CodableCSV */; };
+		F0417B3B2BF40D6D00B43979 /* SessionCSVTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B3A2BF40D6D00B43979 /* SessionCSVTransferable.swift */; };
+		F0417B3D2BF4147F00B43979 /* CSV_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B3C2BF4147F00B43979 /* CSV_Tests.swift */; };
+		F0417B402BF41E4100B43979 /* SessionCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B3F2BF41E4100B43979 /* SessionCSV.swift */; };
 		F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
 		F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FE2BC9D65400CC3271 /* Acceleration.swift */; };
 		F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */; };
@@ -125,6 +129,9 @@
 		F0417B312BF3011200B43979 /* NumericExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericExtensions.swift; sourceTree = "<group>"; };
 		F0417B332BF3F80000B43979 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F0417B352BF3FC2900B43979 /* CalendarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarContainerView.swift; sourceTree = "<group>"; };
+		F0417B3A2BF40D6D00B43979 /* SessionCSVTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCSVTransferable.swift; sourceTree = "<group>"; };
+		F0417B3C2BF4147F00B43979 /* CSV_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSV_Tests.swift; sourceTree = "<group>"; };
+		F0417B3F2BF41E4100B43979 /* SessionCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCSV.swift; sourceTree = "<group>"; };
 		F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocatable.swift; sourceTree = "<group>"; };
 		F05148FE2BC9D65400CC3271 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
 		F05149002BC9D73100CC3271 /* DeviceAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAcceleration.swift; sourceTree = "<group>"; };
@@ -182,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FAEE192BAE7AF30015CF67 /* GRDB in Frameworks */,
+				F0417B392BF40B2800B43979 /* CodableCSV in Frameworks */,
 				F051491E2BD6FE2200CC3271 /* CoreGPX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +261,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		F0417B3E2BF41E3800B43979 /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				F0417B3F2BF41E4100B43979 /* SessionCSV.swift */,
+			);
+			path = CSV;
+			sourceTree = "<group>";
+		};
 		F05148FB2BC9D54800CC3271 /* Accelerometer */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +288,7 @@
 				F05149132BD1BE6D00CC3271 /* kSecondsFIFO.swift */,
 				F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */,
 				F0417B242BED56EF00B43979 /* StringFormatter.swift */,
+				F0417B3A2BF40D6D00B43979 /* SessionCSVTransferable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -380,6 +397,7 @@
 				F05149182BD1C38D00CC3271 /* CoreUtil_Tests.swift */,
 				F051491A2BD1C7BA00CC3271 /* SessionListViewModel_Tests.swift */,
 				F05149222BD702B600CC3271 /* GPX_Tests.swift */,
+				F0417B3C2BF4147F00B43979 /* CSV_Tests.swift */,
 			);
 			path = FootprintsTests;
 			sourceTree = "<group>";
@@ -396,6 +414,7 @@
 		F0FAEE132BAE742E0015CF67 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F0417B3E2BF41E3800B43979 /* CSV */,
 				F05149102BD1BD2C00CC3271 /* Util */,
 				F05148FB2BC9D54800CC3271 /* Accelerometer */,
 				F0082EFE2BC8842D0006A36C /* Combine */,
@@ -475,6 +494,7 @@
 			packageProductDependencies = (
 				F0FAEE182BAE7AF30015CF67 /* GRDB */,
 				F051491D2BD6FE2200CC3271 /* CoreGPX */,
+				F0417B382BF40B2800B43979 /* CodableCSV */,
 			);
 			productName = Footprints;
 			productReference = F0FAEDE42BAE73350015CF67 /* Footprints.app */;
@@ -554,6 +574,7 @@
 			packageReferences = (
 				F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */,
 				F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */,
+				F0417B372BF40B2800B43979 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = F0FAEDE52BAE73350015CF67 /* Products */;
 			projectDirPath = "";
@@ -627,6 +648,7 @@
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
 				F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */,
+				F0417B3B2BF40D6D00B43979 /* SessionCSVTransferable.swift in Sources */,
 				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
 				F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */,
 				F0FAEDEC2BAE73350015CF67 /* Item.swift in Sources */,
@@ -640,6 +662,7 @@
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */,
+				F0417B402BF41E4100B43979 /* SessionCSV.swift in Sources */,
 				F05149142BD1BE6D00CC3271 /* kSecondsFIFO.swift in Sources */,
 				F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */,
 				F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */,
@@ -666,6 +689,7 @@
 				F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */,
 				F05149232BD702B600CC3271 /* GPX_Tests.swift in Sources */,
 				F0FAEDFB2BAE73370015CF67 /* FootprintsTests.swift in Sources */,
+				F0417B3D2BF4147F00B43979 /* CSV_Tests.swift in Sources */,
 				F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1068,6 +1092,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F0417B372BF40B2800B43979 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
 		F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vincentneo/CoreGPX";
@@ -1087,6 +1119,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F0417B382BF40B2800B43979 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0417B372BF40B2800B43979 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
 		F051491D2BD6FE2200CC3271 /* CoreGPX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */;
