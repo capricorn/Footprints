@@ -264,4 +264,73 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(accelData.first?.z == 2)
         XCTAssert(accelData.first?.timestamp == 100)
     }
+    
+    /// Verify that a 5k time is hit
+    func testLogger5kHit() throws {
+     let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        struct MockGPSLocation: GPSLocatable {
+            var latitude: CGFloat = 0
+            var longitude: CGFloat = 0
+            var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
+            var timestamp: Double
+            var speed: Double = 0
+            
+            let distance: Double
+            
+            init(distance: Double, timestamp: Double = Date.now.timeIntervalSince1970) {
+                self.distance = distance
+                self.timestamp = timestamp
+            }
+            
+            func distance(from loc: GPSLocatable) -> Measurement<UnitLength> {
+                return .init(value: distance, unit: .miles)
+            }
+        }
+        
+        var currentSession: SessionModel!
+        // nb. distance is in km
+        let loc1 = MockGPSLocation(distance: 2, timestamp: 1)
+        let loc2 = MockGPSLocation(distance: 2, timestamp: 2)
+        let loc3 = MockGPSLocation(distance: 2, timestamp: 3)
+        let loc4 = MockGPSLocation(distance: 2, timestamp: 4)
+        
+        model.record()
+        
+        guard case .recordingInProgress(let session) = model.state else {
+            XCTFail("Record state is wrong.")
+            return
+        }
+        
+        try model.recordLocation(loc1)
+        currentSession = try dbQueue.read({ db in
+            return try SessionModel.find(db, id: session.id)
+        })
+        XCTAssertNil(currentSession.fiveKTime)
+        
+        try model.recordLocation(loc2, prevLoc: loc1)
+        currentSession = try dbQueue.read({ db in
+            return try SessionModel.find(db, id: session.id)
+        })
+        XCTAssertNil(currentSession.fiveKTime)
+        
+        model.logStartDate = Date(timeIntervalSince1970: 1)
+        try model.recordLocation(loc3, prevLoc: loc2)
+        currentSession = try dbQueue.read({ db in
+            return try SessionModel.find(db, id: session.id)
+        })       
+        // TODO: Inject time + verify
+        // last timestamp = 3, start timestamp = 1 so 3-1 = 2 total.
+        XCTAssert(currentSession.fiveKTime == 2)
+        
+        // Verify that the 5k time stays constant
+        model.logStartDate = Date(timeIntervalSince1970: 1)
+        try model.recordLocation(loc4, prevLoc: loc3)
+        currentSession = try dbQueue.read({ db in
+            return try SessionModel.find(db, id: session.id)
+        })
+        XCTAssert(currentSession.fiveKTime == 2)
+    }
 }

@@ -201,6 +201,15 @@ class LoggerViewModel: ObservableObject {
             
             mutableSession.count += 1
             mutableSession.totalDistance += dist
+            
+            if mutableSession.fiveKTime == nil,
+                mutableSession.totalDistance >= .fiveKMiles,
+                let startTimestamp = logStartDate?.timeIntervalSince1970 {
+                
+                // TODO: Use the first recorded entry?
+                mutableSession.fiveKTime = loc.timestamp-startTimestamp
+            }
+            
             try mutableSession.save(db)
         }
     }
