@@ -64,9 +64,19 @@ struct SessionListItemView: View {
             }
             .monospaced()
             .font(.caption)
-            HStack {
+            HStack(spacing: 4) {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
+                        .padding(.trailing, 4)
+                    
+                    if let fiveKTime = sessionItem.fiveKTime {
+                        HStack(spacing: 4) {
+                            Text("5K")
+                                .font(.caption.bold())
+                            Text("\(fiveKTime.formatted(.minuteSecondShort))")
+                                .font(.caption.monospaced())
+                        }
+                    }
                 }
                 .font(.caption)
                 Spacer()
@@ -80,7 +90,16 @@ struct SessionListItemView: View {
     }
 }
 
-#Preview {
+#Preview("With 5k") {
+    SessionListItemView(sessionItem: SessionModel(
+        id: UUID(),
+        startTimestamp: Date.now.timeIntervalSince1970,
+        endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970, 
+        count: 5,
+        fiveKTime: 25*60))
+}
+
+#Preview("Without 5k") {
     SessionListItemView(sessionItem: SessionModel(
         id: UUID(),
         startTimestamp: Date.now.timeIntervalSince1970,
