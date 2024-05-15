@@ -41,6 +41,10 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return DateInterval(start: startDate, duration: max(0,endTimestamp-startTimestamp))
     }
     
+    var startDate: Date {
+        return Date(timeIntervalSince1970: TimeInterval(startTimestamp))
+    }
+    
     private func buildGPX(dbQueue: DatabaseQueue, metadata: GPXMetadata=GPXMetadata()) throws -> GPXRoot {
         // TODO: Cursor approach if large
         let root = GPXRoot(creator: Bundle.main.bundleIdentifier!)

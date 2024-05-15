@@ -36,6 +36,14 @@ struct SessionListView: View {
         (try? model.session(sort: sortField, direction: sortDirection, dbQueue: dbQueue)) ?? []
     }
     
+    var groupedSessions: [Date: [SessionModel]] {
+        sortedSessions.groupBy({ $0.startDate.firstOfMonth })
+    }
+    
+    var groupedSessionDates: [Date] {
+        groupedSessions.keys.sorted()
+    }
+    
     var sortFieldPicker: some View {
         // TODO: Display filter logo as well..?
         Picker("Sort Field", systemImage: "line.3.horizontal.decrease.circle", selection: $sortField) {
@@ -50,29 +58,42 @@ struct SessionListView: View {
         SessionCSVTransferable(dbQueue: dbQueue)
     }
     
+    var listHeader: some View {
+        HStack {
+            Text("Sessions")
+                .font(.title)
+                .padding()
+            Spacer()
+            // TODO: Scale with font size?
+            HStack {
+                sortFieldPicker
+                // TODO: Based on ascending/descending toggle
+                Image(systemName: sortDirectionSystemName)
+                    .onTapGesture {
+                        // TODO: 90 degrees rotation animation?
+                        sortDirection = sortDirection.toggle()
+                    }
+            }
+            .padding()
+        }
+    }
+    
     var body: some View {
         VStack {
-            HStack {
-                Text("Sessions")
-                    .font(.title)
-                    .padding()
-                Spacer()
-                // TODO: Scale with font size?
-                HStack {
-                    sortFieldPicker
-                    // TODO: Based on ascending/descending toggle
-                    Image(systemName: sortDirectionSystemName)
-                        .onTapGesture {
-                            // TODO: 90 degrees rotation animation?
-                            sortDirection = sortDirection.toggle()
-                        }
-                }
-                .padding()
-            }
+            listHeader
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(sortedSessions) { session in
-                        SessionListItemView(sessionItem: session)
+                    // TODO: Necessary to sort keys..?
+                    ForEach(groupedSessionDates, id: \.self) { (date: Date) in
+                        VStack {
+                            Section {
+                                // TODO: Custom Formatter
+                                Text("\(date.formatted(.dateTime))")
+                            }
+                            ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
+                                SessionListItemView(sessionItem: session)
+                            }
+                        }
                     }
                 }
             }
