@@ -20,8 +20,8 @@ struct SessionListView: View {
     
     var exportDataView: some View {
         HStack {
-            ShareLink(item: dbQueue.url) {
-                Text("Export Data")
+            Button("Export", systemImage: "square.and.arrow.up") {
+                model.presentExportOptions = true
             }
             .padding()
             Spacer()
@@ -44,6 +44,10 @@ struct SessionListView: View {
                     .tag(field)
             }
         }
+    }
+    
+    var sessionTransferable: SessionCSVTransferable {
+        SessionCSVTransferable(dbQueue: dbQueue)
     }
     
     var body: some View {
@@ -90,6 +94,15 @@ struct SessionListView: View {
             // TODO: Eventually migrate to lazy vstack for these
             sessions = try! dbQueue.read { db in
                 try! SessionModel.fetchAll(db)
+            }
+        }
+        .confirmationDialog("Export", isPresented: $model.presentExportOptions) {
+            ShareLink(item: dbQueue.url) {
+                Text("Export SQLite")
+            }
+            // TODO: Some sort of accurate preview..?
+            ShareLink(item: sessionTransferable, preview: SharePreview("sessions.csv")) {
+                Text("Export CSV")
             }
         }
     }

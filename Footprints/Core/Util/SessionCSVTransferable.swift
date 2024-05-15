@@ -31,7 +31,8 @@ struct SessionCSVTransferable: Transferable {
         // TODO: Case of no sessions?
         
         let data = try encodeSessionsCSV(dbQueue: transferable.dbQueue)
-        let filename = "\(Date.now.ISO8601Format())_.csv"
+        // NB. Have to omit the colon time separater as ':' is an illegal character in filenames
+        let filename = "footprints_sessions_\(Date.now.formatted(.iso8601.timeSeparator(.omitted))).csv"
         let dataURL = transferable.baseURL.appending(path: filename)
         try data.write(to: dataURL)
         

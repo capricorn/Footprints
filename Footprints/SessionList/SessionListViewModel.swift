@@ -10,6 +10,8 @@ import SwiftUI
 import GRDB
 
 class SessionListViewModel: ObservableObject {
+    @Published var presentExportOptions = false
+    
     enum SortDirection: String {
         static let defaultsKey = "SortDirection"
         case ascending
