@@ -87,8 +87,10 @@ struct SessionListView: View {
                     ForEach(groupedSessionDates, id: \.self) { (date: Date) in
                         VStack {
                             Section {
-                                // TODO: Custom Formatter
-                                Text("\(date.formatted(.dateTime))")
+                                // TODO: left / right rectangle divider (single pixel height); date in center
+                                Text("\(date.formatted(.monthYearShort))")
+                                    .font(.subheadline.weight(.light))
+                                    .opacity(0.5)   // TODO: Font color?
                             }
                             ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
                                 SessionListItemView(sessionItem: session)

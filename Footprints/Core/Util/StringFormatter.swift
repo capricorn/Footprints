@@ -22,6 +22,25 @@ extension Duration {
     }
 }
 
+// TODO: Is this the right place..?
+extension Date.FormatStyle {
+    struct ShortMonthYearFormatStyle: FormatStyle {
+        typealias FormatInput = Date
+        typealias FormatOutput = String
+        
+        func format(_ value: FormatInput) -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM ''yy"
+
+            return formatter.string(from: value)
+        }
+    }
+}
+
 extension FormatStyle where Self == Duration.MinuteSecondShortFormatStyle {
     static var minuteSecondShort: Duration.MinuteSecondShortFormatStyle { Duration.MinuteSecondShortFormatStyle() }
+}
+
+extension FormatStyle where Self == Date.FormatStyle {
+    static var monthYearShort: Date.FormatStyle.ShortMonthYearFormatStyle { Date.FormatStyle.ShortMonthYearFormatStyle() }
 }
