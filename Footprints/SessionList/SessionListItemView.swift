@@ -47,9 +47,6 @@ struct SessionListItemView: View {
         VStack(alignment: .leading) {
             Text(dateLabel)
                 .lineLimit(1)
-            Text(sessionItem.id.uuidString)
-                .font(.caption)
-                .monospaced()
             HStack {
                 Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
                     .padding(.trailing, 4)
