@@ -47,6 +47,7 @@ struct SessionListItemView: View {
         VStack(alignment: .leading) {
             Text(dateLabel)
                 .lineLimit(1)
+                .padding(.bottom, 2)
             HStack {
                 Text("\(Image(systemName: "stopwatch")) \(runtimeLabel)")
                     .padding(.trailing, 4)
@@ -60,6 +61,7 @@ struct SessionListItemView: View {
             }
             .monospaced()
             .font(.caption)
+            .padding(.bottom, 2)
             HStack(spacing: 4) {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
@@ -82,7 +84,8 @@ struct SessionListItemView: View {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
     }
 }
 
