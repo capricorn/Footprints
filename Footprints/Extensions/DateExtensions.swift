@@ -38,14 +38,22 @@ extension Date {
     static func now(offsetByDays days: Int) -> Date {
         return Date.now.addingTimeInterval(60*60*24*Double(days))
     }
+    
+    var firstOfMonth: Date {
+        Calendar.current.firstOfMonth(self)
+    }
 }
 
 extension Calendar {
-    var firstOfMonth: Date {
-        let todayComponents = self.dateComponents([.year, .month, .day], from: Date.now)
+    func firstOfMonth(_ date: Date) -> Date {
+        let todayComponents = self.dateComponents([.year, .month, .day], from: date)
         // TODO: Verify day=1 is in fact the first day of the month
         let firstOfMonthComponents = DateComponents(calendar: self, year: todayComponents.year, month: todayComponents.month, day: 1, hour: 0, minute: 0, second: 0)
         
         return self.date(from: firstOfMonthComponents)!
+    }
+    
+    var firstOfMonth: Date {
+        self.firstOfMonth(Date.now)
     }
 }
