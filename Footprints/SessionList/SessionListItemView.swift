@@ -12,11 +12,10 @@ struct SessionListItemView: View {
     @Environment(\.databaseQueue) var dbQueue
     var sessionItem: SessionModel
     
+    let dateIntervalFormatter = DateIntervalFormatter()
+    
     var dateLabel: String {
-        let startDate = Date(timeIntervalSince1970: TimeInterval(sessionItem.startTimestamp))
-        let endDate = Date(timeIntervalSince1970: TimeInterval(sessionItem.endTimestamp))
-        
-        return "\(startDate.formatted(.dateTime)) - \(endDate.formatted(.dateTime))"
+        return dateIntervalFormatter.string(from: sessionItem.dateInterval)!
     }
     
     var countLabel: String {
