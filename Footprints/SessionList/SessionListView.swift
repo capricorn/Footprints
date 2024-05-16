@@ -41,7 +41,7 @@ struct SessionListView: View {
     }
     
     var groupedSessionDates: [Date] {
-        groupedSessions.keys.sorted()
+        groupedSessions.keys.sorted().reversed()
     }
     
     var sortFieldPicker: some View {
