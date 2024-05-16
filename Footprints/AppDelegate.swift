@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         dbQueue = try! .default
         try! dbQueue.setupFootprintsSchema()
+        try! dbQueue.applyFootprintsMigrations()
         
         return true
     }

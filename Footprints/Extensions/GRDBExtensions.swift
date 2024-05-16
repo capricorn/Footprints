@@ -39,6 +39,17 @@ extension DatabaseQueue {
         return dbQueue
     }
     
+    func applyFootprintsMigrations() throws {
+        var migrator = DatabaseMigrator()
+        migrator.registerMigration("Add fiveKTime column to sessionModel table.") { db in
+            try db.alter(table: "sessionModel") { table in
+                table.add(column: "fiveKTime", .double)
+            }
+        }
+        
+        try migrator.migrate(self)
+    }
+    
     func setupFootprintsSchema() throws {
         try self.write { db in
             try db.create(table: "gpsLocationModel", options: .ifNotExists) { table in
