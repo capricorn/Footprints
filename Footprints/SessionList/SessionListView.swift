@@ -16,7 +16,6 @@ struct SessionListView: View {
     @StateObject var model: SessionListViewModel = SessionListViewModel()
     // TODO: Migrate to vm
     @State var sessions: [SessionModel] = []
-    @State private var sessionSubscriber: AnyDatabaseCancellable?
     
     var exportDataView: some View {
         HStack {
@@ -32,12 +31,8 @@ struct SessionListView: View {
         (sortDirection == .ascending) ? "arrow.up" : "arrow.down"
     }
     
-    var sortedSessions: [SessionModel] {
-        (try? model.session(sort: sortField, direction: sortDirection, dbQueue: dbQueue)) ?? []
-    }
-    
     var groupedSessions: [Date: [SessionModel]] {
-        sortedSessions.groupBy({ $0.startDate.firstOfMonth })
+        sessions.groupBy({ $0.startDate.firstOfMonth })
     }
     
     var groupedSessionDates: [Date] {
@@ -103,21 +98,7 @@ struct SessionListView: View {
             exportDataView
         }
         .onAppear {
-            // TODO: Move to vm
-            let sessionObserver = ValueObservation.tracking { db in
-                try! SessionModel.fetchAll(db)
-            }
-            
-            sessionSubscriber = sessionObserver.start(in: dbQueue, onError: { error in
-                print("DB error: \(error)")
-            }, onChange: { sessions in
-                self.sessions = sessions
-            })
-            
-            // TODO: Eventually migrate to lazy vstack for these
-            sessions = try! dbQueue.read { db in
-                try! SessionModel.fetchAll(db)
-            }
+            sessions = (try? model.session(sort: sortField, direction: sortDirection, dbQueue: dbQueue)) ?? []
         }
         .confirmationDialog("Export", isPresented: $model.presentExportOptions) {
             ShareLink(item: dbQueue.url) {
