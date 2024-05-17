@@ -34,9 +34,13 @@ struct LoggerView: View {
         "\(String(format: "%.02f", model.distance)) mi"
     }
     
-    var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
+    var bgGradient: LinearGradient {
+        LinearGradient(colors: [.accent, .darkAccent], startPoint: .top, endPoint: .bottom)
+    }
+    
+    var runtimeView: some View {
+        VStack {
+            Group {
                 if model.recordingComplete {
                     Text(model.runtimeLabel)
                         .phaseAnimator([0,1]) { view, phase in
@@ -46,26 +50,108 @@ struct LoggerView: View {
                     Text(model.runtimeLabel)
                         .contentTransition(.numericText())
                 }
-                HStack {
-                    Text(speedLabel)
-                    Text(totalDistanceLabel)
-                }
-                Text(pointsCountLabel)
-                    .font(.caption)
             }
-            .font(.system(size: 32))
+            .padding()
+        }
+        //.padding()
+        .font(.custom("Impact", size: 200).monospaced())
+        .scaledToFit()
+        .minimumScaleFactor(0.1)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // TODO: Work on palette
+        //.foregroundStyle(.white.opacity(0.95))
+        .foregroundStyle(Color.accent)
+        .background { Color.foreground }
+        //.background { Color.accent }
+        //.clipShape(RoundedRectangle(cornerRadius: 10))
+        // TODO: Gradient instead..?
+    }
+    
+    var statisticsView: some View {
+        HStack {
             VStack {
-                // TODO: At 1/3 boundary
-                Spacer()
-                Image(systemName: "record.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 64, height: 64)
-                    .foregroundColor(model.recordButtonForegroundColor)
-                    .onTapGesture(perform: model.record)
-                    .animation(.easeInOut, value: model.recording)
+                Text("PACE")
+                    .font(.body.smallCaps())
+                Text("--")  // TODO: Live estimated pace
+            }
+            .frame(maxWidth: .infinity)
+            VStack {
+                Text("DISTANCE")
+                    .font(.body.smallCaps())
+                Text(totalDistanceLabel)
+            }
+            .frame(maxWidth: .infinity)
+            VStack {
+                Text("SPEED")
+                    .font(.body.smallCaps())
+                Text(speedLabel)
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+    
+    var body: some View {
+        ZStack {
+            GeometryReader { reader in
+                VStack {
+                    runtimeView
+                        .frame(maxWidth: .infinity, maxHeight: reader.size.height/8)
+                        //.background { bgGradient }
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .padding()
+                        //.padding(.bottom)
+                        //.ignoresSafeArea([.container])
+                        //.border(.red)
+                    statisticsView
+                        .frame(maxWidth: .infinity)
+                    /*
+                    if model.recordingComplete {
+                        Text(model.runtimeLabel)
+                            .phaseAnimator([0,1]) { view, phase in
+                                view.opacity(phase)
+                            }
+                    } else {
+                        Text(model.runtimeLabel)
+                            .contentTransition(.numericText())
+                    }
+                     */
+                    /*
+                    HStack {
+                        Text(speedLabel)
+                        Text(totalDistanceLabel)
+                    }
+                    Text(pointsCountLabel)
+                        .font(.caption)
+                     */
+                    
+                    Spacer()
+                    Image(systemName: "record.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: reader.size.width/5, height: reader.size.width/5)
+                        .foregroundColor(model.recordButtonForegroundColor)
+                        .onTapGesture(perform: model.record)
+                        .animation(.easeInOut, value: model.recording)
+                        .padding(.bottom, 8)
+                }
+                //.font(.system(size: 32))
+                /*
+                VStack {
+                    // TODO: At 1/3 boundary
+                    Spacer()
+                    Image(systemName: "record.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 64, height: 64)
+                        .foregroundColor(model.recordButtonForegroundColor)
+                        .onTapGesture(perform: model.record)
+                        .animation(.easeInOut, value: model.recording)
+                }
+                 */
             }
         }
+        // TODO: Consider
+        //.ignoresSafeArea()
         .onReceive(model.motionPublisher) { accel in
             do {
                 try model.recordMotion(accel)
@@ -101,10 +187,7 @@ private struct PreviewView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("DB: \(dbName)")
-            LoggerView(model: model)
-        }
+        LoggerView(model: model)
     }
 }
 
