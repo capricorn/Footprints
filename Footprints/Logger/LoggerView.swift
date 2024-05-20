@@ -69,7 +69,7 @@ struct LoggerView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         // TODO: Work on palette
         //.foregroundStyle(.white.opacity(0.95))
-        .foregroundStyle(Color.accent)
+        .foregroundStyle(Color.chillSalmon)
         .background { Color.foreground }
         //.background { Color.accent }
         //.clipShape(RoundedRectangle(cornerRadius: 10))
