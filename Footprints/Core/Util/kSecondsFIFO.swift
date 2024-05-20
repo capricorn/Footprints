@@ -42,6 +42,10 @@ extension kSecondsFIFO where T: GPSLocatable {
             .map { $1.distance(from: $0).converted(to: .miles).value }
             .reduce(0, +)
         
+        guard totalDistance > 0 else {
+            return nil
+        }
+        
         let elapsedSeconds = arr.last!.timestamp - arr.first!.timestamp
         
         return (elapsedSeconds)/totalDistance
