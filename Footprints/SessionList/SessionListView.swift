@@ -44,7 +44,9 @@ struct SessionListView: View {
     
     /// A list of months in which sessions occurred, sorted.
     var groupedSessionDates: [Date] {
-        Array(groupedSessions.keys)
+        groupedSessions
+            .keys
+            .sorted(using: KeyPathComparator(\.self, order: sortDirection.order))
     }
     
     var sortFieldPicker: some View {
