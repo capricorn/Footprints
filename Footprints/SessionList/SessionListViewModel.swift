@@ -21,6 +21,15 @@ class SessionListViewModel: ObservableObject {
         func toggle() -> SortDirection {
             (self == .ascending) ? .descending : .ascending
         }
+        
+        var order: SortOrder {
+            switch self {
+            case .ascending:
+                return .forward
+            case .descending:
+                return .reverse
+            }
+        }
     }
     
     enum SortField: String, CaseIterable, Identifiable {
@@ -46,7 +55,19 @@ class SessionListViewModel: ObservableObject {
                 "Distance"
             }
         }
+        
+        func comparator(sortDirection: SortDirection) -> KeyPathComparator<SessionModel> {
+            switch self {
+            case .runtime:
+                return KeyPathComparator(\.totalLogTime, order: sortDirection.order)
+            case .startDate:
+                return KeyPathComparator(\.startDate, order: sortDirection.order)
+            case .distance:
+                return KeyPathComparator(\.totalDistance, order: sortDirection.order)
+            }
+        }
     }
+    
     
     // TODO: Implement
     func session(sort: SortField, direction: SortDirection, dbQueue: DatabaseQueue) throws -> [SessionModel] {

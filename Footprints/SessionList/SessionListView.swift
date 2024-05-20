@@ -27,16 +27,24 @@ struct SessionListView: View {
         }
     }
     
+    var sortedUngroupedSessions: [SessionModel] {
+        sessions.sorted(using: sortField.comparator(sortDirection: sortDirection))
+    }
+    
     var sortDirectionSystemName: String {
         (sortDirection == .ascending) ? "arrow.up" : "arrow.down"
     }
     
+    /// Sessions sorted and grouped by month.
     var groupedSessions: [Date: [SessionModel]] {
-        sessions.groupBy({ $0.startDate.firstOfMonth })
+        sessions
+            .sorted(using: sortField.comparator(sortDirection: sortDirection))
+            .groupBy({ $0.startDate.firstOfMonth })
     }
     
+    /// A list of months in which sessions occurred, sorted.
     var groupedSessionDates: [Date] {
-        groupedSessions.keys.sorted().reversed()
+        Array(groupedSessions.keys)
     }
     
     var sortFieldPicker: some View {
@@ -73,24 +81,37 @@ struct SessionListView: View {
         }
     }
     
+    var dateSortView: some View {
+        ForEach(groupedSessionDates, id: \.self) { (date: Date) in
+            VStack {
+                Section {
+                    // TODO: left / right rectangle divider (single pixel height); date in center
+                    Text("\(date.formatted(.monthYearShort))")
+                        .font(.subheadline.weight(.light))
+                        .opacity(0.5)   // TODO: Font color?
+                }
+                ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
+                    SessionListItemView(sessionItem: session)
+                }
+            }
+        }
+    }
+    
+    var ungroupedSortView: some View {
+        ForEach(sortedUngroupedSessions, id: \.self.id) { session in
+            SessionListItemView(sessionItem: session)
+        }
+    }
+    
     var body: some View {
         VStack {
             listHeader
             ScrollView {
                 VStack(alignment: .leading) {
-                    // TODO: Necessary to sort keys..?
-                    ForEach(groupedSessionDates, id: \.self) { (date: Date) in
-                        VStack {
-                            Section {
-                                // TODO: left / right rectangle divider (single pixel height); date in center
-                                Text("\(date.formatted(.monthYearShort))")
-                                    .font(.subheadline.weight(.light))
-                                    .opacity(0.5)   // TODO: Font color?
-                            }
-                            ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
-                                SessionListItemView(sessionItem: session)
-                            }
-                        }
+                    if sortField == .startDate {
+                        dateSortView
+                    } else {
+                        ungroupedSortView
                     }
                 }
             }
