@@ -71,19 +71,19 @@ struct LoggerView: View {
         HStack {
             VStack {
                 Text("PACE")
-                    .font(.body.smallCaps())
+                    .font(.body.bold().smallCaps())
                 Text("--")  // TODO: Live estimated pace
             }
             .frame(maxWidth: .infinity)
             VStack {
                 Text("DISTANCE")
-                    .font(.body.smallCaps())
+                    .font(.body.bold().smallCaps())
                 Text(totalDistanceLabel)
             }
             .frame(maxWidth: .infinity)
             VStack {
                 Text("SPEED")
-                    .font(.body.smallCaps())
+                    .font(.body.bold().smallCaps())
                 Text(speedLabel)
             }
             .frame(maxWidth: .infinity)
@@ -150,6 +150,7 @@ struct LoggerView: View {
                  */
             }
         }
+        //.background { Color.offWhite }
         // TODO: Consider
         //.ignoresSafeArea()
         .onReceive(model.motionPublisher) { accel in
