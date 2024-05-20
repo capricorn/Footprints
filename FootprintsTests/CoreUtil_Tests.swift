@@ -48,4 +48,33 @@ final class CoreUtil_Tests: XCTestCase {
         XCTAssert(fifo.arr.first?.timestamp == 4)
         XCTAssert(fifo.arr.last?.timestamp == 11)
     }
+    
+    func testkSecondsFIFOPace() throws {
+        struct MockLocation: GPSLocatable {
+            var latitude: CGFloat = 0
+            var longitude: CGFloat = 0
+            var altitude: Measurement<UnitLength> = .init(value: 0, unit: .meters)
+            var timestamp: Double = 0
+            var speed: Double = 0
+            
+            func distance(from loc: Footprints.GPSLocatable) -> Measurement<UnitLength> {
+                return .init(value: 5, unit: .miles)
+            }
+        }
+        
+        var loc1 = MockLocation()
+        loc1.timestamp = 0
+        var loc2 = MockLocation()
+        loc2.timestamp = 1
+        var loc3 = MockLocation()
+        loc3.timestamp = 3
+        
+        let fifo = kSecondsFIFO<MockLocation>(5)
+        fifo.push(loc1)
+        fifo.push(loc2)
+        fifo.push(loc3)
+        
+        // 3 seconds total / 10 mi total
+        XCTAssert(fifo.pace == 0.3)
+    }
 }

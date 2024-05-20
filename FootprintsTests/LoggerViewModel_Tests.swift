@@ -267,7 +267,7 @@ final class LoggerViewModel_Tests: XCTestCase {
     
     /// Verify that a 5k time is hit
     func testLogger5kHit() throws {
-     let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
         

@@ -12,6 +12,7 @@ import Combine
 struct LoggerView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
     @StateObject var model: LoggerViewModel = LoggerViewModel()
+    @StateObject var paceFIFO: kSecondsFIFO<GPSLocation> = kSecondsFIFO(10)
     
     // TODO: Eventually replace with `onReceive` equivalent
     @State private var locSubscriber: AnyCancellable?
@@ -32,6 +33,14 @@ struct LoggerView: View {
     
     var totalDistanceLabel: String {
         "\(String(format: "%.02f", model.distance)) mi"
+    }
+    
+    var paceLabel: String {
+        guard let pace = paceFIFO.pace else {
+            return "--/mi"
+        }
+        
+        return "\(pace.formatted(.minuteSecondShort))/mi"
     }
     
     var bgGradient: LinearGradient {
@@ -72,7 +81,7 @@ struct LoggerView: View {
             VStack {
                 Text("PACE")
                     .font(.body.bold().smallCaps())
-                Text("--")  // TODO: Live estimated pace
+                Text(paceLabel)
             }
             .frame(maxWidth: .infinity)
             VStack {
@@ -164,6 +173,7 @@ struct LoggerView: View {
             model.requestAuthorization()
             self.locSubscriber = model.locationPublisher.cachePrevious().sink { prevLoc, loc in
                 do {
+                    paceFIFO.push(loc)
                     print("Received location update: \(loc)")
                     try model.recordLocation(loc, prevLoc: prevLoc)
                     

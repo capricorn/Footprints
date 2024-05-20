@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 import GRDB
+import Combine
 
+// TODO: Alternative approach to this type of inheritance
 class LoggerViewModel: ObservableObject {
     enum State: Equatable {
         static func == (lhs: LoggerViewModel.State, rhs: LoggerViewModel.State) -> Bool {
@@ -30,7 +32,7 @@ class LoggerViewModel: ObservableObject {
         case recordingComplete
     }
     
-    static let SPEED_UNDETERMINED: Double = -1
+    static var SPEED_UNDETERMINED: Double { -1 }
     
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?

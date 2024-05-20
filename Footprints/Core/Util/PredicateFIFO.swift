@@ -7,9 +7,9 @@
 
 import Foundation
 
-class PredicateFIFO<T> {
+class PredicateFIFO<T>: ObservableObject {
     // TODO: Protocols to expose via? (Sequence, ..?)
-    var arr: [T] = []
+    @Published var arr: [T] = []
     var pred: ([T]) -> Bool = { _ in false }
     
     func push(_ element: T) {

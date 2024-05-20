@@ -10,6 +10,10 @@ import Foundation
 final class kSecondsFIFO<T: Timestamped>: PredicateFIFO<T> {
     private let seconds: Double
     
+    /**
+     - Parameters:
+         - seconds: The time interval this FIFO contains; that is, `[Date.now-seconds,Date.now].`
+     */
     init(_ seconds: Double) {
         self.seconds = seconds
         super.init()
@@ -24,5 +28,22 @@ final class kSecondsFIFO<T: Timestamped>: PredicateFIFO<T> {
     
     convenience init(duration: Measurement<UnitDuration>) {
         self.init(duration.converted(to: .seconds).value)
+    }
+}
+
+extension kSecondsFIFO where T: GPSLocatable {
+    /// seconds/mi
+    var pace: Double? {
+        guard arr.count >= 2 else {
+            return nil
+        }
+        
+        let totalDistance = zip(arr, arr[1...])
+            .map { $1.distance(from: $0).converted(to: .miles).value }
+            .reduce(0, +)
+        
+        let elapsedSeconds = arr.last!.timestamp - arr.first!.timestamp
+        
+        return (elapsedSeconds)/totalDistance
     }
 }
