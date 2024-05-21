@@ -47,20 +47,24 @@ struct CalendarView: View {
     // TODO: Separate view where you can set color
     var calendarSquare: some View {
         RoundedRectangle(cornerRadius: 4)
-            .fill(.blue)
-            .frame(width: squareSide, height: squareSide)
+            .fill(.accent)
+            .heightEqualMaxWidth()
+            //.frame(width: squareSide, height: squareSide)
     }
     
     var emptyCalendarSquare: some View {
         RoundedRectangle(cornerRadius: 4)
-            .stroke(.gray)
-            .frame(width: squareSide, height: squareSide)
+            //.stroke(.gray.opacity(0.6), lineWidth: 2)
+            .fill(.gray.opacity(0.2))
+            .heightEqualMaxWidth()
+            //.frame(width: squareSide, height: squareSide)
     }
     
     var placeholderCalendarSquare: some View {
         Rectangle()
-            .fill(.white)
-            .frame(width: squareSide, height: squareSide)
+            .fill(.clear)
+            .heightEqualMaxWidth()
+            //.frame(width: squareSide, height: squareSide)
     }
     
     func dayOfMonth(week: Int, day: Int) -> Int {
@@ -69,50 +73,106 @@ struct CalendarView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.today.monthName.uppercased())
-                .font(.title.smallCaps())
-            ForEach(0..<5, id: \.self) { (week: Int) in
-                HStack {
-                    if week == 4 {
-                        ForEach(0..<self.daysInLastWeek, id: \.self) { day in
-                            // Check if a date with this day of the week exists
-                            //if inMonth(calendarDate(week: week, day: day)) {
-                            if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
-                                calendarSquare
-                            } else {
-                                emptyCalendarSquare
+            VStack {
+                Text(self.today.monthName.uppercased())
+                    .font(.title.smallCaps())
+                Text("Days Ran")
+                    .font(.caption2.weight(.light))
+                    .opacity(0.8)
+            }
+            VStack {
+                ForEach(0..<5, id: \.self) { (week: Int) in
+                    HStack {
+                        if week == 4 {
+                            ForEach(0..<self.daysInLastWeek, id: \.self) { day in
+                                // Check if a date with this day of the week exists
+                                //if inMonth(calendarDate(week: week, day: day)) {
+                                if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
+                                    calendarSquare
+                                } else {
+                                    emptyCalendarSquare
+                                }
                             }
-                        }
-                        ForEach(0..<(7-self.daysInLastWeek), id: \.self) { _ in
-                            // TODO: Should use background depending on dark mode or not
-                            placeholderCalendarSquare
-                        }
-                    } else if week == 0 {
-                        ForEach(0..<(self.firstWeekdayOfMonth.rawValue-1), id: \.self) { _ in
-                            placeholderCalendarSquare
-                        }
-                        ForEach((self.firstWeekdayOfMonth.rawValue-1)..<7, id: \.self) { day in
-                            if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
-                                calendarSquare
-                            } else {
-                                emptyCalendarSquare
+                            ForEach(0..<(7-self.daysInLastWeek), id: \.self) { _ in
+                                // TODO: Should use background depending on dark mode or not
+                                placeholderCalendarSquare
                             }
-                        }
-                    } else {
-                        ForEach(0..<7, id: \.self) { day in
-                            if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
-                                calendarSquare
-                            } else {
-                                emptyCalendarSquare
+                        } else if week == 0 {
+                            ForEach(0..<(self.firstWeekdayOfMonth.rawValue-1), id: \.self) { _ in
+                                placeholderCalendarSquare
+                            }
+                            ForEach((self.firstWeekdayOfMonth.rawValue-1)..<7, id: \.self) { day in
+                                if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
+                                    calendarSquare
+                                } else {
+                                    emptyCalendarSquare
+                                }
+                            }
+                        } else {
+                            ForEach(0..<7, id: \.self) { day in
+                                if self.dateMap.contains(dayOfMonth(week: week, day: day)) {
+                                    calendarSquare
+                                } else {
+                                    emptyCalendarSquare
+                                }
                             }
                         }
                     }
                 }
             }
+            .padding()
+            .background {
+                Color.gray.opacity(0.1)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+    }
+}
+
+// TODO: View extension
+private struct SizeReader: ViewModifier {
+    @Binding var size: CGSize?
+    
+    func body(content: Content) -> some View {
+        content
+            .background {
+                GeometryReader { reader in
+                    Color.clear
+                        .onAppear {
+                            self.size = reader.size
+                        }
+                }
+            }
+    }
+}
+
+private struct Equalizer: ViewModifier {
+    @State private var size: CGSize?
+    
+    func body(content: Content) -> some View {
+        if let size {
+            content
+                .measure($size)
+                .frame(height: size.width)
+        } else {
+            content
+                .measure($size)
+        }
+    }
+}
+
+extension View {
+    func heightEqualMaxWidth() -> some View {
+        self.frame(maxWidth: .infinity)
+            .modifier(Equalizer())
+    }
+    
+    func measure(_ size: Binding<CGSize?>) -> some View {
+        self.modifier(SizeReader(size: size))
     }
 }
 
 #Preview {
     CalendarView([1, 3, 5, 7, 18])
+        .padding([.horizontal], 32)
 }

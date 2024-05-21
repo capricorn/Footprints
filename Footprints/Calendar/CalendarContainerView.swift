@@ -30,21 +30,25 @@ struct CalendarContainerView: View {
     }
     
     var body: some View {
-        CalendarView(daysLogged)
-            .onAppear {
-                do {
-                    let sessionObserver = ValueObservation.tracking { db in
-                        try! SessionModel.fetchAll(db)
+        VStack {
+            CalendarView(daysLogged)
+                .padding([.horizontal], 32)
+                .onAppear {
+                    do {
+                        let sessionObserver = ValueObservation.tracking { db in
+                            try! SessionModel.fetchAll(db)
+                        }
+                        
+                        daysLogged = try collectDaysLogged()
+                        sessionSubscriber = sessionObserver.start(in: dbQueue, onError: { _ in }, onChange: { _ in
+                            daysLogged = try! self.collectDaysLogged()
+                        })
+                    } catch {
+                        print("Failed to load calendar: \(error)")
                     }
-                    
-                    daysLogged = try collectDaysLogged()
-                    sessionSubscriber = sessionObserver.start(in: dbQueue, onError: { _ in }, onChange: { _ in
-                        daysLogged = try! self.collectDaysLogged()
-                    })
-                } catch {
-                    print("Failed to load calendar: \(error)")
                 }
-            }
+            Spacer()
+        }
     }
 }
 
