@@ -96,4 +96,13 @@ class SessionListViewModel: ObservableObject {
                 .fetchAll(db)
         }
     }
+    
+    func deleteSessionsFromList(sessions: [SessionModel], indices: IndexSet, dbQueue: DatabaseQueue) throws {
+        // TODO: Prompt on deletion
+        let sessionIds = indices.map { sessions[$0].id }
+        print("Deleting sessions with ids: \(sessionIds)")
+        _ = try dbQueue.write { db in
+            try SessionModel.deleteAll(db, ids: sessionIds)
+        }
+    }
 }

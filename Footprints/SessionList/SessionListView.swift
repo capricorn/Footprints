@@ -92,7 +92,11 @@ struct SessionListView: View {
                         SessionListItemView(sessionItem: session)
                     }
                     .onDelete { indexSet in
-                        print("Attempting deletion: \(indexSet)")
+                        do {
+                            try model.deleteSessionsFromList(sessions: groupedSessions[date]!, indices: indexSet, dbQueue: dbQueue)
+                        } catch {
+                            print("Failed to delete session(s): \(error)")
+                        }
                     }
                  }
             }
@@ -103,6 +107,13 @@ struct SessionListView: View {
         List {
             ForEach(sortedUngroupedSessions, id: \.self.id) { session in
                 SessionListItemView(sessionItem: session)
+            }
+            .onDelete { indexSet in
+                do {
+                    try model.deleteSessionsFromList(sessions: sortedUngroupedSessions, indices: indexSet, dbQueue: dbQueue)
+                } catch {
+                    print("Failed to delete session(s): \(error)")
+                }
             }
         }
     }
