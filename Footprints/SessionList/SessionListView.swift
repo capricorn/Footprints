@@ -84,38 +84,36 @@ struct SessionListView: View {
     }
     
     var dateSortView: some View {
-        ForEach(groupedSessionDates, id: \.self) { (date: Date) in
-            VStack {
-                Section {
-                    // TODO: left / right rectangle divider (single pixel height); date in center
-                    Text("\(date.formatted(.monthYearShort))")
-                        .font(.subheadline.weight(.light))
-                        .opacity(0.5)   // TODO: Font color?
-                }
-                ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
-                    SessionListItemView(sessionItem: session)
-                }
+        List {
+            ForEach(groupedSessionDates, id: \.self) { (date: Date) in
+                // TODO: Move header elsewhere
+                Section(header: Text("\(date.formatted(.monthYearShort))").font(.subheadline.weight(.light))) {
+                    ForEach(groupedSessions[date]!, id: \.self.id) { (session: SessionModel) in
+                        SessionListItemView(sessionItem: session)
+                    }
+                    .onDelete { indexSet in
+                        print("Attempting deletion: \(indexSet)")
+                    }
+                 }
             }
         }
     }
     
     var ungroupedSortView: some View {
-        ForEach(sortedUngroupedSessions, id: \.self.id) { session in
-            SessionListItemView(sessionItem: session)
+        List {
+            ForEach(sortedUngroupedSessions, id: \.self.id) { session in
+                SessionListItemView(sessionItem: session)
+            }
         }
     }
     
     var body: some View {
         VStack {
             listHeader
-            ScrollView {
-                VStack(alignment: .leading) {
-                    if sortField == .startDate {
-                        dateSortView
-                    } else {
-                        ungroupedSortView
-                    }
-                }
+            if sortField == .startDate {
+                dateSortView
+            } else {
+                ungroupedSortView
             }
             Spacer()
             exportDataView
