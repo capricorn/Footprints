@@ -24,6 +24,10 @@ extension Date {
         return Weekday(rawValue: rawWeekday)!
     }
     
+    var year: Int {
+        Calendar.current.dateComponents([.year], from: Date.now).year!
+    }
+    
     var dayOfMonth: Int {
         Calendar.current.dateComponents([.day], from: self).day!
     }
