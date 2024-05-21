@@ -73,10 +73,10 @@ struct CalendarView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            VStack {
+            VStack(alignment: .leading) {
                 Text(self.today.monthName.uppercased())
                     .font(.title.smallCaps())
-                Text("Days Ran")
+                Text("\(self.dateMap.count)/\(self.daysInMonth-1) Days Ran")
                     .font(.caption2.weight(.light))
                     .opacity(0.8)
             }
