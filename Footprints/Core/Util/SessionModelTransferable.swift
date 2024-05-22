@@ -8,6 +8,7 @@
 import Foundation
 import GRDB
 import CoreTransferable
+import CodableCSV
 
 struct SessionModelTransferable: Transferable {
     let dbQueue: DatabaseQueue

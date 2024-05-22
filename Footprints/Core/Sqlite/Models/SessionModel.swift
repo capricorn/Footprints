@@ -88,3 +88,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
         return gpxURL
     }
 }
+
+extension SessionModel: CSVRepresentable {
+    static let headers = [ "id", "startTimestamp", "endTimestamp", "count", "totalDistance", "fiveKTime"]
+}

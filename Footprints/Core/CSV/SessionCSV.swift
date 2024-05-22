@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SessionCSV: Codable {
+struct SessionCSV: Codable, CSVRepresentable {
     let id: String
     let startTimestamp: Double
     let endTimestamp: Double

@@ -11,6 +11,10 @@
 		F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */; };
 		F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */; };
 		F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */; };
+		F02E1E402BFE8A8800D4111B /* SessionAccelerometerCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */; };
+		F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
+		F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */; };
+		F02E1E472BFE9A4000D4111B /* GRDBToCSVTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E462BFE9A4000D4111B /* GRDBToCSVTransferable.swift */; };
 		F037C0742BD71395004E08A6 /* export_gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F037C0732BD71395004E08A6 /* export_gpx.gpx */; };
 		F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */; };
 		F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F037C0B32BDB03BB004E08A6 /* WidgetKit.framework */; };
@@ -116,6 +120,10 @@
 		F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemView.swift; sourceTree = "<group>"; };
 		F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePreviousPublisher.swift; sourceTree = "<group>"; };
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
+		F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAccelerometerCSV.swift; sourceTree = "<group>"; };
+		F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVRepresentable.swift; sourceTree = "<group>"; };
+		F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferable.swift; sourceTree = "<group>"; };
+		F02E1E462BFE9A4000D4111B /* GRDBToCSVTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBToCSVTransferable.swift; sourceTree = "<group>"; };
 		F037C0732BD71395004E08A6 /* export_gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 2; path = export_gpx.gpx; sourceTree = "<group>"; usesTabs = 0; };
 		F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModelTransferable.swift; sourceTree = "<group>"; };
 		F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FootprintsLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +244,15 @@
 			path = Combine;
 			sourceTree = "<group>";
 		};
+		F02E1E432BFE9A1200D4111B /* Transferable */ = {
+			isa = PBXGroup;
+			children = (
+				F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */,
+				F02E1E462BFE9A4000D4111B /* GRDBToCSVTransferable.swift */,
+			);
+			path = Transferable;
+			sourceTree = "<group>";
+		};
 		F037C0B22BDB03BB004E08A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +288,8 @@
 			isa = PBXGroup;
 			children = (
 				F0417B3F2BF41E4100B43979 /* SessionCSV.swift */,
+				F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */,
+				F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */,
 			);
 			path = CSV;
 			sourceTree = "<group>";
@@ -421,6 +440,7 @@
 		F0FAEE132BAE742E0015CF67 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F02E1E432BFE9A1200D4111B /* Transferable */,
 				F0417B3E2BF41E3800B43979 /* CSV */,
 				F05149102BD1BD2C00CC3271 /* Util */,
 				F05148FB2BC9D54800CC3271 /* Accelerometer */,
@@ -649,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */,
 				F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */,
 				F0417B342BF3F80000B43979 /* DateExtensions.swift in Sources */,
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
@@ -665,17 +686,20 @@
 				F05148FD2BC9D58D00CC3271 /* GPSLocatable.swift in Sources */,
 				F0417B362BF3FC2900B43979 /* CalendarContainerView.swift in Sources */,
 				F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */,
+				F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */,
 				F0FAEE252BB11C0C0015CF67 /* LoggerMockGPSProvider.swift in Sources */,
 				F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
 				F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */,
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
+				F02E1E472BFE9A4000D4111B /* GRDBToCSVTransferable.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F0417B422BF55CC500B43979 /* ArrayExtensions.swift in Sources */,
 				F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */,
 				F0417B402BF41E4100B43979 /* SessionCSV.swift in Sources */,
 				F05149142BD1BE6D00CC3271 /* kSecondsFIFO.swift in Sources */,
 				F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */,
+				F02E1E402BFE8A8800D4111B /* SessionAccelerometerCSV.swift in Sources */,
 				F05149092BCDC54500CC3271 /* TimeExtensions.swift in Sources */,
 				F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */,
 				F0FAEE232BB116C40015CF67 /* GRDBExtensions.swift in Sources */,

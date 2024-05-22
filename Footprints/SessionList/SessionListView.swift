@@ -59,8 +59,11 @@ struct SessionListView: View {
         }
     }
     
-    var sessionTransferable: SessionCSVTransferable {
-        SessionCSVTransferable(dbQueue: dbQueue)
+    var sessionsCSVTransferable: GRDBToCSVTransferable<SessionModel, SessionCSV> {
+        GRDBToCSVTransferable(
+            dbQueue: dbQueue,
+            filename: { "footprints_sessions_\(Date.now.formatted(.iso8601.timeSeparator(.omitted)))" },
+            codableMap: { SessionCSV.from($0) })
     }
     
     var listHeader: some View {
@@ -137,7 +140,7 @@ struct SessionListView: View {
                 Text("Export SQLite")
             }
             // TODO: Some sort of accurate preview..?
-            ShareLink(item: sessionTransferable, preview: SharePreview("sessions.csv")) {
+            ShareLink(item: sessionsCSVTransferable, preview: SharePreview("sessions.csv")) {
                 Text("Export CSV")
             }
         }
