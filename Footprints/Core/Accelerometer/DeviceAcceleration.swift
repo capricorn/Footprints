@@ -11,5 +11,5 @@ struct DeviceAcceleration: Acceleration {
     var x: Double
     var y: Double
     var z: Double
-    var timestamp: Float
+    var timestamp: Double
 }
