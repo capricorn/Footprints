@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SessionAccelerometerCSV: Codable {
+struct SessionAccelerometerCSV: Codable, CSVRepresentable {
     let x: Double
     let y: Double
     let z: Double

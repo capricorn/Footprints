@@ -26,3 +26,7 @@ struct DeviceAccelerationModel: Identifiable, Codable, FetchableRecord, Persista
             z: accel.z)
     }
 }
+
+extension DeviceAccelerationModel: CSVRepresentable {
+    static let headers = [ "x", "y", "z", "timestamp" ]
+}

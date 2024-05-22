@@ -43,6 +43,18 @@ struct SessionListItemView: View {
         SessionModelTransferable(dbQueue: dbQueue, session: sessionItem)
     }
     
+    var accelerometerCSVTransferable: GRDBToCSVTransferable<DeviceAccelerationModel, SessionAccelerometerCSV> {
+        GRDBToCSVTransferable(
+            dbQueue: dbQueue,
+            filename: { "footprints_accel_\(sessionItem.id.uuidString)_\(Date.now.formatted(.iso8601.timeSeparator(.omitted)))" },
+            codableMap: { SessionAccelerometerCSV.from($0) }, 
+            recordFetcher: { db in
+                try DeviceAccelerationModel
+                    .filter(Column("sessionId") == sessionItem.id)
+                    .fetchAll(db)
+            })
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
@@ -80,6 +92,11 @@ struct SessionListItemView: View {
                 Spacer()
                 ShareLink(item: sessionTransferable, preview: SharePreview("\(sessionItem.id.uuidString).gpx")) {
                     Text("GPX\(Image(systemName: "location"))")
+                        .font(.caption.smallCaps())
+                }
+                // TODO: Use proper csv name?
+                ShareLink(item: accelerometerCSVTransferable, preview: SharePreview("\(sessionItem.id.uuidString).csv")) {
+                    Text("ACC\(Image(systemName: "location"))")
                         .font(.caption.smallCaps())
                 }
             }
