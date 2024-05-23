@@ -10,6 +10,7 @@ import GRDB
 
 struct SessionListItemView: View {
     @Environment(\.databaseQueue) var dbQueue
+    @State private var presentExportOptions = false
     var sessionItem: SessionModel
     
     let dateIntervalFormatter = DateIntervalFormatter()
@@ -90,35 +91,42 @@ struct SessionListItemView: View {
                 }
                 .font(.caption)
                 Spacer()
-                ShareLink(item: sessionTransferable, preview: SharePreview("\(sessionItem.id.uuidString).gpx")) {
-                    Text("GPX\(Image(systemName: "location"))")
-                        .font(.caption.smallCaps())
-                }
-                // TODO: Use proper csv name?
-                ShareLink(item: accelerometerCSVTransferable, preview: SharePreview("\(sessionItem.id.uuidString).csv")) {
-                    Text("ACC\(Image(systemName: "location"))")
-                        .font(.caption.smallCaps())
-                }
+                Text("\(Image(systemName: "square.and.arrow.up"))")
+                    .font(.caption.smallCaps())
+                    .onTapGesture {
+                        presentExportOptions = true
+                    }
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+        .confirmationDialog("Export", isPresented: $presentExportOptions) {
+                ShareLink(item: sessionTransferable, preview: SharePreview("\(sessionItem.id.uuidString).gpx")) {
+                    Text("Export GPX")
+                }
+                // TODO: Use proper csv name?
+                ShareLink(item: accelerometerCSVTransferable, preview: SharePreview("\(sessionItem.id.uuidString).csv")) {
+                    Text("Export Accelerometer CSV")
+                }
+        }
     }
 }
 
 #Preview("With 5k") {
-    SessionListItemView(sessionItem: SessionModel(
-        id: UUID(),
-        startTimestamp: Date.now.timeIntervalSince1970,
-        endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970, 
-        count: 5,
-        fiveKTime: 25*60))
+    SessionListItemView(
+        sessionItem: SessionModel(
+            id: UUID(),
+            startTimestamp: Date.now.timeIntervalSince1970,
+            endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
+            count: 5,
+            fiveKTime: 25*60))
 }
 
 #Preview("Without 5k") {
-    SessionListItemView(sessionItem: SessionModel(
-        id: UUID(),
-        startTimestamp: Date.now.timeIntervalSince1970,
-        endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970, 
-        count: 5))
+    SessionListItemView(
+        sessionItem: SessionModel(
+            id: UUID(),
+            startTimestamp: Date.now.timeIntervalSince1970,
+            endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
+            count: 5))
 }
