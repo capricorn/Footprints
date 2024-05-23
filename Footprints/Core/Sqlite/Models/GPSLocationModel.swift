@@ -41,3 +41,7 @@ struct GPSLocationModel: Identifiable, Codable, FetchableRecord, PersistableReco
 extension GPSLocationModel: TableRecord {
     static let databaseTableName: String = "gpsLocationModel"
 }
+
+extension GPSLocationModel: CSVRepresentable {
+    static let headers: [String] = GPSLocationCSV.headers
+}

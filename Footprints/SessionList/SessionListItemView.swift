@@ -56,6 +56,18 @@ struct SessionListItemView: View {
             })
     }
     
+    var locCSVTransferable: GRDBToCSVTransferable<GPSLocationModel, GPSLocationCSV> {
+        GRDBToCSVTransferable(
+            dbQueue: dbQueue,
+            filename: { "footprints_loc_\(sessionItem.id.uuidString)_\(Date.now.formatted(.iso8601.timeSeparator(.omitted)))" },
+            codableMap: { GPSLocationCSV.from($0) },
+            recordFetcher: { db in
+                try GPSLocationModel
+                    .filter(Column("sessionId") == sessionItem.id)
+                    .fetchAll(db)
+            })
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(dateLabel)
@@ -103,6 +115,9 @@ struct SessionListItemView: View {
         .confirmationDialog("Export", isPresented: $presentExportOptions) {
                 ShareLink(item: sessionTransferable, preview: SharePreview("\(sessionItem.id.uuidString).gpx")) {
                     Text("Export GPX")
+                }
+                ShareLink(item: locCSVTransferable, preview: SharePreview("\(sessionItem.id.uuidString).csv")) {
+                    Text("Export GPS CSV")
                 }
                 // TODO: Use proper csv name?
                 ShareLink(item: accelerometerCSVTransferable, preview: SharePreview("\(sessionItem.id.uuidString).csv")) {

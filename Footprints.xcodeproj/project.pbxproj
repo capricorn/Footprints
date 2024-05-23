@@ -15,6 +15,7 @@
 		F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
 		F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */; };
 		F02E1E472BFE9A4000D4111B /* GRDBToCSVTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E462BFE9A4000D4111B /* GRDBToCSVTransferable.swift */; };
+		F02E1E492BFFE96700D4111B /* GPSLocationCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E482BFFE96700D4111B /* GPSLocationCSV.swift */; };
 		F037C0742BD71395004E08A6 /* export_gpx.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F037C0732BD71395004E08A6 /* export_gpx.gpx */; };
 		F037C0AC2BD85C50004E08A6 /* SessionModelTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */; };
 		F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F037C0B32BDB03BB004E08A6 /* WidgetKit.framework */; };
@@ -124,6 +125,7 @@
 		F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVRepresentable.swift; sourceTree = "<group>"; };
 		F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferable.swift; sourceTree = "<group>"; };
 		F02E1E462BFE9A4000D4111B /* GRDBToCSVTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRDBToCSVTransferable.swift; sourceTree = "<group>"; };
+		F02E1E482BFFE96700D4111B /* GPSLocationCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationCSV.swift; sourceTree = "<group>"; };
 		F037C0732BD71395004E08A6 /* export_gpx.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 2; path = export_gpx.gpx; sourceTree = "<group>"; usesTabs = 0; };
 		F037C0AB2BD85C50004E08A6 /* SessionModelTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModelTransferable.swift; sourceTree = "<group>"; };
 		F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FootprintsLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 				F0417B3F2BF41E4100B43979 /* SessionCSV.swift */,
 				F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */,
 				F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */,
+				F02E1E482BFFE96700D4111B /* GPSLocationCSV.swift */,
 			);
 			path = CSV;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				F0FAEE1C2BAE7B080015CF67 /* LoggerView.swift in Sources */,
 				F0FAEE272BB22CA90015CF67 /* LocationDelegate.swift in Sources */,
 				F05149012BC9D73100CC3271 /* DeviceAcceleration.swift in Sources */,
+				F02E1E492BFFE96700D4111B /* GPSLocationCSV.swift in Sources */,
 				F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */,
 				F05149122BD1BD3B00CC3271 /* PredicateFIFO.swift in Sources */,
 				F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */,
