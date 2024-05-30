@@ -241,7 +241,7 @@ final class LoggerViewModel_Tests: XCTestCase {
             var y: Double = 1
             var z: Double = 2
             
-            var timestamp: Float = 100.0
+            var timestamp: Double = 100.0
         }
         
         model.record()

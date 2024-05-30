@@ -38,4 +38,22 @@ final class CombineExtensionTests: XCTestCase {
         testSubject.send(3)
         wait(for: [expectation], timeout: 3)
     }
+    
+    func testTimeBuffer() throws {
+        let expectation = XCTestExpectation()
+        
+        let bufferPublisher = Timer
+            .publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .map { _ in Int.random(in: 0...10) }
+            .buffer(seconds: 3)
+            .autoconnect()
+            .sink(receiveValue: { values in
+                print("Values: \(values)")
+                expectation.fulfill()
+            })
+        
+        
+        wait(for: [expectation], timeout: 5)
+    }
 }
