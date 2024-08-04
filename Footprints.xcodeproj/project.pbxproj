@@ -57,6 +57,8 @@
 		F051491E2BD6FE2200CC3271 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = F051491D2BD6FE2200CC3271 /* CoreGPX */; };
 		F05149212BD7029400CC3271 /* test_db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F05149202BD7029400CC3271 /* test_db.sqlite */; };
 		F05149232BD702B600CC3271 /* GPX_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149222BD702B600CC3271 /* GPX_Tests.swift */; };
+		F0CDC0A42C603C3E007483B2 /* NWSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CDC0A32C603C3E007483B2 /* NWSAPI.swift */; };
+		F0CDC0AC2C604074007483B2 /* FootprintsSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CDC0AB2C604074007483B2 /* FootprintsSmokeTests.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
 		F0F045CC2BB35F3C00E8DF04 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
 		F0F045CE2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */; };
@@ -86,6 +88,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F037C0B02BDB03BB004E08A6;
 			remoteInfo = FootprintsLiveActivityExtension;
+		};
+		F0CDC0AD2C604074007483B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0FAEDDC2BAE73350015CF67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0FAEDE32BAE73350015CF67;
+			remoteInfo = Footprints;
 		};
 		F0FAEDF72BAE73370015CF67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -167,6 +176,9 @@
 		F051491A2BD1C7BA00CC3271 /* SessionListViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewModel_Tests.swift; sourceTree = "<group>"; };
 		F05149202BD7029400CC3271 /* test_db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_db.sqlite; sourceTree = "<group>"; };
 		F05149222BD702B600CC3271 /* GPX_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPX_Tests.swift; sourceTree = "<group>"; };
+		F0CDC0A32C603C3E007483B2 /* NWSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWSAPI.swift; sourceTree = "<group>"; };
+		F0CDC0A92C604074007483B2 /* FootprintsSmokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootprintsSmokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0CDC0AB2C604074007483B2 /* FootprintsSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsSmokeTests.swift; sourceTree = "<group>"; };
 		F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -199,6 +211,13 @@
 			files = (
 				F037C0B62BDB03BB004E08A6 /* SwiftUI.framework in Frameworks */,
 				F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0CDC0A62C604074007483B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +266,13 @@
 				F02E1E4A2C09204A00D4111B /* BucketPublisher.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		F0255EE12C60458400E08815 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F02E1E432BFE9A1200D4111B /* Transferable */ = {
@@ -350,6 +376,23 @@
 			path = Golden;
 			sourceTree = "<group>";
 		};
+		F0CDC0A22C603C36007483B2 /* NWSAPI */ = {
+			isa = PBXGroup;
+			children = (
+				F0255EE12C60458400E08815 /* Models */,
+				F0CDC0A32C603C3E007483B2 /* NWSAPI.swift */,
+			);
+			path = NWSAPI;
+			sourceTree = "<group>";
+		};
+		F0CDC0AA2C604074007483B2 /* FootprintsSmokeTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0CDC0AB2C604074007483B2 /* FootprintsSmokeTests.swift */,
+			);
+			path = FootprintsSmokeTests;
+			sourceTree = "<group>";
+		};
 		F0F045C72BB26D7600E8DF04 /* Sqlite */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +418,7 @@
 				F0FAEDF92BAE73370015CF67 /* FootprintsTests */,
 				F0FAEE032BAE73370015CF67 /* FootprintsUITests */,
 				F037C0B72BDB03BB004E08A6 /* FootprintsLiveActivity */,
+				F0CDC0AA2C604074007483B2 /* FootprintsSmokeTests */,
 				F037C0B22BDB03BB004E08A6 /* Frameworks */,
 				F0FAEDE52BAE73350015CF67 /* Products */,
 			);
@@ -387,6 +431,7 @@
 				F0FAEDF62BAE73370015CF67 /* FootprintsTests.xctest */,
 				F0FAEE002BAE73370015CF67 /* FootprintsUITests.xctest */,
 				F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */,
+				F0CDC0A92C604074007483B2 /* FootprintsSmokeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,6 +439,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0CDC0A22C603C36007483B2 /* NWSAPI */,
 				F0417B262BED750600B43979 /* Calendar */,
 				F0082EF92BC5E38C0006A36C /* SessionList */,
 				F0FAEE282BB2332B0015CF67 /* Info.plist */,
@@ -511,6 +557,24 @@
 			productReference = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F0CDC0A82C604074007483B2 /* FootprintsSmokeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0CDC0AF2C604074007483B2 /* Build configuration list for PBXNativeTarget "FootprintsSmokeTests" */;
+			buildPhases = (
+				F0CDC0A52C604074007483B2 /* Sources */,
+				F0CDC0A62C604074007483B2 /* Frameworks */,
+				F0CDC0A72C604074007483B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0CDC0AE2C604074007483B2 /* PBXTargetDependency */,
+			);
+			name = FootprintsSmokeTests;
+			productName = FootprintsSmokeTests;
+			productReference = F0CDC0A92C604074007483B2 /* FootprintsSmokeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F0FAEDE32BAE73350015CF67 /* Footprints */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0FAEE0A2BAE73370015CF67 /* Build configuration list for PBXNativeTarget "Footprints" */;
@@ -578,11 +642,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					F037C0B02BDB03BB004E08A6 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					F0CDC0A82C604074007483B2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = F0FAEDE32BAE73350015CF67;
 					};
 					F0FAEDE32BAE73350015CF67 = {
 						CreatedOnToolsVersion = 15.0;
@@ -619,6 +687,7 @@
 				F0FAEDF52BAE73370015CF67 /* FootprintsTests */,
 				F0FAEDFF2BAE73370015CF67 /* FootprintsUITests */,
 				F037C0B02BDB03BB004E08A6 /* FootprintsLiveActivityExtension */,
+				F0CDC0A82C604074007483B2 /* FootprintsSmokeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,6 +698,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0CDC0A72C604074007483B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +747,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0CDC0A52C604074007483B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0CDC0AC2C604074007483B2 /* FootprintsSmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0FAEDE02BAE73350015CF67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -684,6 +768,7 @@
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0417B442BF55E9000B43979 /* DateBuilder.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,
+				F0CDC0A42C603C3E007483B2 /* NWSAPI.swift in Sources */,
 				F051490D2BCEEE4200CC3271 /* FootprintsIcon.swift in Sources */,
 				F0417B3B2BF40D6D00B43979 /* SessionCSVTransferable.swift in Sources */,
 				F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */,
@@ -755,6 +840,11 @@
 			target = F037C0B02BDB03BB004E08A6 /* FootprintsLiveActivityExtension */;
 			targetProxy = F037C0C32BDB03BD004E08A6 /* PBXContainerItemProxy */;
 		};
+		F0CDC0AE2C604074007483B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0FAEDE32BAE73350015CF67 /* Footprints */;
+			targetProxy = F0CDC0AD2C604074007483B2 /* PBXContainerItemProxy */;
+		};
 		F0FAEDF82BAE73370015CF67 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0FAEDE32BAE73350015CF67 /* Footprints */;
@@ -819,6 +909,44 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F0CDC0B02C604074007483B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q49KLF9VPG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goatfish.AltitudeLockWidget.FootprintsSmokeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Footprints.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Footprints";
+			};
+			name = Debug;
+		};
+		F0CDC0B12C604074007483B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q49KLF9VPG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goatfish.AltitudeLockWidget.FootprintsSmokeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Footprints.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Footprints";
 			};
 			name = Release;
 		};
@@ -1097,6 +1225,15 @@
 			buildConfigurations = (
 				F037C0C72BDB03BD004E08A6 /* Debug */,
 				F037C0C82BDB03BD004E08A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0CDC0AF2C604074007483B2 /* Build configuration list for PBXNativeTarget "FootprintsSmokeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0CDC0B02C604074007483B2 /* Debug */,
+				F0CDC0B12C604074007483B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

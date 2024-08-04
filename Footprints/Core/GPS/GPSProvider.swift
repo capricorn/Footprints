@@ -20,6 +20,8 @@ protocol GPSProvider {
     func stop()
     
     func requestAuthorization()
+    // TODO: Should throw with timeout
+    func fetchCurrentLocation() async -> GPSLocation?
 }
 
 extension GPSProvider {
@@ -27,4 +29,11 @@ extension GPSProvider {
     var authorizationStatus: CLAuthorizationStatus {
         .authorizedAlways
     }
+    
+    func fetchCurrentLocation() async -> GPSLocation? {
+        return nil
+    }
+    
+    func start() {}
+    func stop() {}
 }

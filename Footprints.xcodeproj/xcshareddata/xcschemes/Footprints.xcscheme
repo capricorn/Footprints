@@ -51,6 +51,17 @@
                ReferencedContainer = "container:Footprints.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F0CDC0A82C604074007483B2"
+               BuildableName = "FootprintsSmokeTests.xctest"
+               BlueprintName = "FootprintsSmokeTests"
+               ReferencedContainer = "container:Footprints.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
