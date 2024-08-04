@@ -26,6 +26,18 @@ final class FootprintsSmokeTests: XCTestCase {
             XCTFail("Failed to decode result to string")
             return
         }
-        XCTAssert(result == URL(string:"https://api.weather.gov/gridpoints/BOU/57,77/forecast")!, "\(result)")
+        XCTAssert(result == URL(string:"https://api.weather.gov/gridpoints/BOU/57,77/forecast/hourly")!, "\(result)")
+    }
+    
+    func testNWSTemperatureFetch() async throws {
+        let loc = GPSLocation(latitude: 40.071511, longitude: -105.198932, altitude: .init(value: 0, unit: .meters), timestamp: Date.now.timeIntervalSince1970)
+        let api = NWSAPI()
+        
+        guard let temp = try await api.fetchHourlyForecast(loc: loc) else {
+            XCTFail("Unable to decode temperature")
+            return
+        }
+        
+        print("\(temp)")
     }
 }
