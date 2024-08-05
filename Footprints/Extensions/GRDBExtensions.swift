@@ -35,17 +35,21 @@ extension DatabaseQueue {
         let dbQueue = try DatabaseQueue(path: tmpDBURL.path)
         
         try dbQueue.setupFootprintsSchema()
+        try dbQueue.applyFootprintsMigrations()
         
         return dbQueue
     }
     
     func applyFootprintsMigrations() throws {
         var migrator = DatabaseMigrator()
+        // This was already added in the initial schema... so it will cause a crash attempting to add an existing column.
+        /*
         migrator.registerMigration("Add fiveKTime column to sessionModel table.") { db in
             try db.alter(table: "sessionModel") { table in
                 table.add(column: "fiveKTime", .double)
             }
         }
+         */
         
         migrator.registerMigration("Add tempFahrenheit column to sessionModel table.") { db in
             try db.alter(table: "sessionModel") { table in
@@ -73,7 +77,6 @@ extension DatabaseQueue {
                 table.column("endTimestamp", .double)
                 table.column("count", .integer)
                 table.column("totalDistance", .double)
-                table.column("fiveKTime", .double)
             }
             
             try db.create(table: "deviceAccelerationModel", options: .ifNotExists) { table in

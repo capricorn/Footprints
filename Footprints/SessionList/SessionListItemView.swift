@@ -135,6 +135,7 @@ struct SessionListItemView: View {
             endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
             count: 5,
             fiveKTime: 25*60))
+    .environment(\.databaseQueue, try! .createTemporaryDBQueue())
 }
 
 #Preview("Without 5k") {
@@ -144,4 +145,5 @@ struct SessionListItemView: View {
             startTimestamp: Date.now.timeIntervalSince1970,
             endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
             count: 5))
+    .environment(\.databaseQueue, try! .createTemporaryDBQueue())
 }

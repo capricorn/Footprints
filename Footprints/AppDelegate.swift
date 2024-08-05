@@ -16,6 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         dbQueue = try! .default
         try! dbQueue.setupFootprintsSchema()
+        // How to determine if a migration is needed..?
         try! dbQueue.applyFootprintsMigrations()
         
         return true
