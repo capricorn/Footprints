@@ -40,6 +40,14 @@ struct SessionListItemView: View {
         return "\(pace.formatted(.minuteSecondShort))/mi"
     }
     
+    var sessionTemp: Measurement<UnitTemperature>? {
+        if let tempFahrenheit = sessionItem.tempFahrenheit {
+            return Measurement<UnitTemperature>(value: Double(tempFahrenheit), unit: .fahrenheit)
+        }
+        
+        return nil
+    }
+    
     var sessionTransferable: SessionModelTransferable {
         SessionModelTransferable(dbQueue: dbQueue, session: sessionItem)
     }
@@ -87,10 +95,14 @@ struct SessionListItemView: View {
             .monospaced()
             .font(.caption)
             .padding(.bottom, 2)
-            HStack(spacing: 4) {
+            HStack {
                 Group {
                     Text("\(sessionItem.count) \(countLabel)")
                         .padding(.trailing, 4)
+                    
+                    if let sessionTemp {
+                        Text("\(Image(systemName: "thermometer.medium")) \(Int(sessionTemp.value)) °F")
+                    }
                     
                     if let fiveKTime = sessionItem.fiveKTime {
                         HStack(spacing: 4) {
@@ -145,5 +157,28 @@ struct SessionListItemView: View {
             startTimestamp: Date.now.timeIntervalSince1970,
             endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
             count: 5))
+    .environment(\.databaseQueue, try! .createTemporaryDBQueue())
+}
+
+#Preview("With Session Temperature") {
+    SessionListItemView(
+        sessionItem: SessionModel(
+            id: UUID(),
+            startTimestamp: Date.now.timeIntervalSince1970,
+            endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
+            count: 5,
+            tempFahrenheit: 89))
+    .environment(\.databaseQueue, try! .createTemporaryDBQueue())
+}
+
+#Preview("With Temperature and 5k") {
+    SessionListItemView(
+        sessionItem: SessionModel(
+            id: UUID(),
+            startTimestamp: Date.now.timeIntervalSince1970,
+            endTimestamp: Date.now.addingTimeInterval(600).timeIntervalSince1970,
+            count: 5,
+            fiveKTime: 25*60,
+            tempFahrenheit: 89))
     .environment(\.databaseQueue, try! .createTemporaryDBQueue())
 }
