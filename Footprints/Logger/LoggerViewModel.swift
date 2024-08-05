@@ -49,12 +49,14 @@ class LoggerViewModel: ObservableObject {
     private let dbQueue: DatabaseQueue
     private let gpsProvider: GPSProvider
     private let motionProvider: AccelerationProvider
+    private let weatherAPI: NWSAPIRepresentable
     private var sessionCountSubscriber: DatabaseCancellable?
     
     init(
         dbQueue: DatabaseQueue = try! .default,
         gpsProvider: GPSProvider = LocationDelegate(),
-        motionProvider: AccelerationProvider = DeviceAccelerationProvider()
+        motionProvider: AccelerationProvider = DeviceAccelerationProvider(),
+        weatherAPI: NWSAPIRepresentable? = nil
     ) {
         self.dbQueue = dbQueue
         self.gpsProvider = gpsProvider
@@ -62,6 +64,12 @@ class LoggerViewModel: ObservableObject {
         
         self.locationPublisher = gpsProvider.location
         self.motionPublisher = motionProvider.accelerationPublisher
+        
+        if let weatherAPI {
+            self.weatherAPI = weatherAPI
+        } else {
+            self.weatherAPI = NWSAPI(gpsProvider)
+        }
     }
     
     var recordingComplete: Bool {
@@ -154,7 +162,7 @@ class LoggerViewModel: ObservableObject {
         
         Task {
             // TODO: Inject NWS API for mocking
-            let nwsAPI = NWSAPI(gpsProvider)
+            let nwsAPI = weatherAPI//NWSAPI(gpsProvider)
             guard let loc = await gpsProvider.fetchCurrentLocation() else {
                 print("Failed to fetch current location")
                 return

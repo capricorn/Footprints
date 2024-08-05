@@ -112,6 +112,42 @@ final class LoggerViewModel_Tests: XCTestCase {
         XCTAssert(session.endTimestamp != 0)
     }
     
+    func testRecordFetchesWeatherData() throws {
+        struct MockNWSAPI: NWSAPIRepresentable {
+            func fetchHourlyForecast(loc: GPSLocation) async throws -> Measurement<UnitTemperature>? {
+                return .init(value: 63, unit: .fahrenheit)
+            }
+        }
+        
+        struct MockGPSProvider: GPSProvider {
+            let loc = GPSLocation(latitude: 0, longitude: 0, altitude: .init(value: 0, unit: .meters), timestamp: 0)
+            var location: LocationProvider {
+                Just(loc).eraseToAnyPublisher()
+            }
+            
+            func fetchCurrentLocation() async -> GPSLocation? {
+                return loc
+            }
+        }
+        
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: MockGPSProvider(), weatherAPI: MockNWSAPI())
+        
+        let expectation = XCTestExpectation(description: "Found session model with weather data.")
+        let observation = ValueObservation.tracking { db in
+            try SessionModel.fetchAll(db)
+        }
+        
+        let cancellable = observation.start(in: dbQueue, onError: { err in XCTFail("\(err)") }, onChange: { model in
+            if model.contains(where: {$0.tempFahrenheit == 63 }) {
+                expectation.fulfill()
+            }
+        })
+        
+        model.record()
+        wait(for: [expectation], timeout: 3)
+    }
+    
     func testRecordIncrementsSessionCount() throws {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
         try dbQueue.setupFootprintsSchema()

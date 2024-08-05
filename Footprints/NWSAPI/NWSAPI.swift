@@ -9,8 +9,24 @@ import Foundation
 import CoreLocation
 import Combine
 
+
+protocol NWSAPIRepresentable {
+    func fetchForecastEndpoint(loc: GPSLocation) async throws -> URL?
+    func fetchHourlyForecast(loc: GPSLocation) async throws -> Measurement<UnitTemperature>?
+}
+
+extension NWSAPIRepresentable {
+    func fetchForecastEndpoint(loc: GPSLocation) async throws -> URL? {
+        return nil
+    }
+    
+    func fetchHourlyForecast(loc: GPSLocation) async throws -> Measurement<UnitTemperature>? {
+        return nil
+    }
+}
+
 /// Docs: https://www.weather.gov/documentation/services-web-api
-class NWSAPI {
+class NWSAPI: NWSAPIRepresentable {
     private struct Property: Codable {
         let forecastHourly: String
     }
