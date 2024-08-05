@@ -88,7 +88,6 @@ final class LoggerViewModel_Tests: XCTestCase {
     
     func testRecordCreatesSession() throws {
         let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
-        try dbQueue.setupFootprintsSchema()
         let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
         
         model.record()
