@@ -151,6 +151,30 @@ class LoggerViewModel: ObservableObject {
             }
         }
         logStartDate = Date.now
+        
+        Task {
+            // TODO: Inject NWS API for mocking
+            let nwsAPI = NWSAPI(gpsProvider)
+            guard let loc = await gpsProvider.fetchCurrentLocation() else {
+                print("Failed to fetch current location")
+                return
+            }
+            
+            do {
+                guard let temp = try await nwsAPI.fetchHourlyForecast(loc: loc) else {
+                    print("Failed to obtain NWS temperature forecast.")
+                    return
+                }
+                
+                try await dbQueue.write { db in
+                    var session = try SessionModel.find(db, id: session.id)
+                    session.tempFahrenheit = Int(temp.value)
+                    try session.save(db)
+                }
+            } catch {
+                print("Failed to fetch forecast: \(error)")
+            }
+        }
     }
     
     private func stopRecording(stateSession: SessionModel) {

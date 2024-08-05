@@ -58,6 +58,16 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
         locManager.stopUpdatingLocation()
     }
     
+    func fetchCurrentLocation() async -> GPSLocation? {
+        var locCancellable: AnyCancellable!
+        return await withUnsafeContinuation { continuation in
+            locCancellable = location.sink {
+                continuation.resume(returning: $0)
+            }
+            locManager.requestLocation()
+        }
+    }
+    
     func requestAuthorization() {
         locManager.requestAlwaysAuthorization()
     }
