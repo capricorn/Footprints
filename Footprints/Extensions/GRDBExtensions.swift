@@ -47,6 +47,12 @@ extension DatabaseQueue {
             }
         }
         
+        migrator.registerMigration("Add tempFahrenheit column to sessionModel table.") { db in
+            try db.alter(table: "sessionModel") { table in
+                table.add(column: "tempFahrenheit", .integer)
+            }
+        }
+        
         try migrator.migrate(self)
     }
     

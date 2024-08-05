@@ -17,6 +17,7 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var count: Int
     var totalDistance: Double = 0.0
     var fiveKTime: Double? = nil
+    var tempFahrenheit: Int? = nil
     
     var totalLogTime: TimeInterval? {
         guard endTimestamp > 0 else {
