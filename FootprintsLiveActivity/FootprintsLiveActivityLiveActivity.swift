@@ -12,7 +12,8 @@ import SwiftUI
 struct FootprintsLiveActivityAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        //var emoji: String
+        var session: SessionModel?
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -24,8 +25,15 @@ struct FootprintsLiveActivityLiveActivity: Widget {
         ActivityConfiguration(for: FootprintsLiveActivityAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
+                if let session = context.state.session {
+                    Text("\(session.totalDistanceMeasurement.formatted())")
+                    Text(session.startDate, style: .relative)
+                        .font(.caption)
+                } else {
+                    Text("No session available.")
+                }
             }
+            .padding()
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
 
@@ -40,15 +48,16 @@ struct FootprintsLiveActivityLiveActivity: Widget {
                     Text("Trailing")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
+                    //Text("Bottom \(context.state.emoji)")
+                    Text("Bottom")
                     // more content
                 }
             } compactLeading: {
                 Text("L")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text("T")
             } minimal: {
-                Text(context.state.emoji)
+                Text("Minimal")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -62,6 +71,7 @@ extension FootprintsLiveActivityAttributes {
     }
 }
 
+/*
 extension FootprintsLiveActivityAttributes.ContentState {
     fileprivate static var smiley: FootprintsLiveActivityAttributes.ContentState {
         FootprintsLiveActivityAttributes.ContentState(emoji: "😀")
@@ -71,10 +81,13 @@ extension FootprintsLiveActivityAttributes.ContentState {
          FootprintsLiveActivityAttributes.ContentState(emoji: "🤩")
      }
 }
+ */
 
 #Preview("Notification", as: .content, using: FootprintsLiveActivityAttributes.preview) {
    FootprintsLiveActivityLiveActivity()
 } contentStates: {
-    FootprintsLiveActivityAttributes.ContentState.smiley
-    FootprintsLiveActivityAttributes.ContentState.starEyes
+    //FootprintsLiveActivityAttributes.ContentState.smiley
+    //FootprintsLiveActivityAttributes.ContentState.starEyes
+    FootprintsLiveActivityAttributes.ContentState(session: nil)
+    FootprintsLiveActivityAttributes.ContentState(session: SessionModel(id: UUID(), startTimestamp: Date.now.timeIntervalSince1970, endTimestamp: 0, count: 512, totalDistance: 1.5))
 }

@@ -58,12 +58,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             Task {
                 // TODO: Should run on an actor
                 // TODO: Obtain most recent location state from GRDB
+                
                 // NB. Requires that a session is active...
+                /*
                 guard let currentValue = Int("\(activity.content.state.emoji)") else {
                     print("Failed to decode initial value state.")
                     return
                 }
                 await activity.update(using: .init(emoji: "\(currentValue+1)"))
+                 */
             }
         } catch {
             print("Received notification was not a live activity update.")

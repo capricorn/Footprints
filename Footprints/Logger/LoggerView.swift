@@ -113,7 +113,7 @@ struct LoggerView: View {
                     Button("Start Live Activity") {
                         do {
                             let attribs = FootprintsLiveActivityAttributes(name: "Hello")
-                            let state = FootprintsLiveActivityAttributes.ContentState(emoji: "0")
+                            let state = FootprintsLiveActivityAttributes.ContentState(session: nil)
                             let activity = try Activity.request(attributes: attribs, content: .init(state: state, staleDate: nil))
                         } catch {
                             print("Failed to launch live activity: \(error)")

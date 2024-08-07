@@ -10,7 +10,7 @@ import GRDB
 import CoreGPX
 import CoreTransferable
 
-struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
+struct SessionModel: Identifiable, Codable, Hashable, FetchableRecord, PersistableRecord {
     let id: UUID
     var startTimestamp: Double
     var endTimestamp: Double
@@ -18,6 +18,11 @@ struct SessionModel: Identifiable, Codable, FetchableRecord, PersistableRecord {
     var totalDistance: Double = 0.0
     var fiveKTime: Double? = nil
     var tempFahrenheit: Int? = nil
+    
+    /// In miles
+    var totalDistanceMeasurement: Measurement<UnitLength> {
+        .init(value: totalDistance, unit: .miles)
+    }
     
     var totalLogTime: TimeInterval? {
         guard endTimestamp > 0 else {

@@ -14,6 +14,15 @@
 		F0255EE22C617BFE00E08815 /* FootprintsLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BA2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift */; };
 		F0255EE62C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */; };
 		F0255EE72C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */; };
+		F0255EE82C641CD600E08815 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
+		F0255EEA2C641DBC00E08815 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F0255EE92C641DBC00E08815 /* GRDB */; };
+		F0255EEB2C641E5100E08815 /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
+		F0255EEC2C641E5C00E08815 /* GPSLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */; };
+		F0255EED2C641E9900E08815 /* GPSLocatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05148FC2BC9D58D00CC3271 /* GPSLocatable.swift */; };
+		F0255EEE2C641EA800E08815 /* Timestamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149162BD1BFB700CC3271 /* Timestamped.swift */; };
+		F0255EEF2C641EB100E08815 /* GPSLocationCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E482BFFE96700D4111B /* GPSLocationCSV.swift */; };
+		F0255EF12C641F0B00E08815 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = F0255EF02C641F0B00E08815 /* CoreGPX */; };
+		F0255EF32C641F0E00E08815 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = F0255EF22C641F0E00E08815 /* CodableCSV */; };
 		F02E1E402BFE8A8800D4111B /* SessionAccelerometerCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */; };
 		F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
 		F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */; };
@@ -214,8 +223,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0255EEA2C641DBC00E08815 /* GRDB in Frameworks */,
 				F037C0B62BDB03BB004E08A6 /* SwiftUI.framework in Frameworks */,
 				F037C0B42BDB03BB004E08A6 /* WidgetKit.framework in Frameworks */,
+				F0255EF12C641F0B00E08815 /* CoreGPX in Frameworks */,
+				F0255EF32C641F0E00E08815 /* CodableCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +580,11 @@
 			dependencies = (
 			);
 			name = FootprintsLiveActivityExtension;
+			packageProductDependencies = (
+				F0255EE92C641DBC00E08815 /* GRDB */,
+				F0255EF02C641F0B00E08815 /* CoreGPX */,
+				F0255EF22C641F0E00E08815 /* CodableCSV */,
+			);
 			productName = FootprintsLiveActivityExtension;
 			productReference = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -756,9 +773,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F037C0BD2BDB03BB004E08A6 /* FootprintsLiveActivity.swift in Sources */,
+				F0255EEE2C641EA800E08815 /* Timestamped.swift in Sources */,
 				F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */,
+				F0255EED2C641E9900E08815 /* GPSLocatable.swift in Sources */,
+				F0255EE82C641CD600E08815 /* SessionModel.swift in Sources */,
+				F0255EEF2C641EB100E08815 /* GPSLocationCSV.swift in Sources */,
 				F037C0B92BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift in Sources */,
 				F037C0BB2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift in Sources */,
+				F0255EEC2C641E5C00E08815 /* GPSLocationModel.swift in Sources */,
+				F0255EEB2C641E5100E08815 /* CSVRepresentable.swift in Sources */,
 				F0255EE72C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1324,6 +1347,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F0255EE92C641DBC00E08815 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0FAEE172BAE7AF30015CF67 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+		F0255EF02C641F0B00E08815 /* CoreGPX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F051491C2BD6FE2200CC3271 /* XCRemoteSwiftPackageReference "CoreGPX" */;
+			productName = CoreGPX;
+		};
+		F0255EF22C641F0E00E08815 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0417B372BF40B2800B43979 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
+		};
 		F0417B382BF40B2800B43979 /* CodableCSV */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F0417B372BF40B2800B43979 /* XCRemoteSwiftPackageReference "CodableCSV" */;
