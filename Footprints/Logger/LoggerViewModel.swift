@@ -138,6 +138,8 @@ class LoggerViewModel: ObservableObject {
             try! session.insert(db)
         }
         
+        print("Recording session: \(session.id)")
+        
         let sessionObserver = ValueObservation.tracking { db in
             try! SessionModel.find(db, id: session.id)
         }
