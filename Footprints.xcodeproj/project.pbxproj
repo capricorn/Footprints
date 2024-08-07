@@ -11,6 +11,9 @@
 		F0082EFD2BC5E4640006A36C /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */; };
 		F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */; };
 		F0082F022BC88CF70006A36C /* CombineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */; };
+		F0255EE22C617BFE00E08815 /* FootprintsLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BA2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift */; };
+		F0255EE62C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */; };
+		F0255EE72C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */; };
 		F02E1E402BFE8A8800D4111B /* SessionAccelerometerCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */; };
 		F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
 		F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */; };
@@ -131,6 +134,8 @@
 		F0082EFC2BC5E4640006A36C /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListItemView.swift; sourceTree = "<group>"; };
 		F0082EFF2BC884430006A36C /* CachePreviousPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePreviousPublisher.swift; sourceTree = "<group>"; };
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
+		F0255EE32C62BD9900E08815 /* Footprints.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Footprints.entitlements; sourceTree = "<group>"; };
+		F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNLiveActivityNotification.swift; sourceTree = "<group>"; };
 		F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAccelerometerCSV.swift; sourceTree = "<group>"; };
 		F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVRepresentable.swift; sourceTree = "<group>"; };
 		F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferable.swift; sourceTree = "<group>"; };
@@ -273,6 +278,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F0255EE42C6411B300E08815 /* LiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */,
+			);
+			path = LiveActivity;
 			sourceTree = "<group>";
 		};
 		F02E1E432BFE9A1200D4111B /* Transferable */ = {
@@ -439,6 +452,8 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F0255EE42C6411B300E08815 /* LiveActivity */,
+				F0255EE32C62BD9900E08815 /* Footprints.entitlements */,
 				F0CDC0A22C603C36007483B2 /* NWSAPI */,
 				F0417B262BED750600B43979 /* Calendar */,
 				F0082EF92BC5E38C0006A36C /* SessionList */,
@@ -744,6 +759,7 @@
 				F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */,
 				F037C0B92BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift in Sources */,
 				F037C0BB2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift in Sources */,
+				F0255EE72C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +819,8 @@
 				F051490B2BCDC5EA00CC3271 /* SessionListItemViewModel.swift in Sources */,
 				F05149122BD1BD3B00CC3271 /* PredicateFIFO.swift in Sources */,
 				F05149032BC9D79C00CC3271 /* DeviceAccelerationModel.swift in Sources */,
+				F0255EE22C617BFE00E08815 /* FootprintsLiveActivityLiveActivity.swift in Sources */,
+				F0255EE62C6411D800E08815 /* APNLiveActivityNotification.swift in Sources */,
 				F05149072BC9DB5900CC3271 /* DeviceAccelerationProvider.swift in Sources */,
 				F05149052BC9D9F000CC3271 /* AccelerationProvider.swift in Sources */,
 			);
@@ -1075,6 +1093,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Footprints/Footprints.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Footprints/Preview Content\"";
@@ -1111,6 +1130,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Footprints/Footprints.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Footprints/Preview Content\"";

@@ -8,6 +8,7 @@
 import SwiftUI
 import GRDB
 import Combine
+import ActivityKit
 
 struct LoggerView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
@@ -105,33 +106,19 @@ struct LoggerView: View {
                 VStack {
                     runtimeView
                         .frame(maxWidth: .infinity, maxHeight: reader.size.height/8)
-                        //.background { bgGradient }
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding()
-                        //.padding(.bottom)
-                        //.ignoresSafeArea([.container])
-                        //.border(.red)
                     statisticsView
                         .frame(maxWidth: .infinity)
-                    /*
-                    if model.recordingComplete {
-                        Text(model.runtimeLabel)
-                            .phaseAnimator([0,1]) { view, phase in
-                                view.opacity(phase)
-                            }
-                    } else {
-                        Text(model.runtimeLabel)
-                            .contentTransition(.numericText())
+                    Button("Start Live Activity") {
+                        do {
+                            let attribs = FootprintsLiveActivityAttributes(name: "Hello")
+                            let state = FootprintsLiveActivityAttributes.ContentState(emoji: "0")
+                            let activity = try Activity.request(attributes: attribs, content: .init(state: state, staleDate: nil))
+                        } catch {
+                            print("Failed to launch live activity: \(error)")
+                        }
                     }
-                     */
-                    /*
-                    HStack {
-                        Text(speedLabel)
-                        Text(totalDistanceLabel)
-                    }
-                    Text(pointsCountLabel)
-                        .font(.caption)
-                     */
                     
                     Spacer()
                     Image(systemName: "record.circle")
@@ -143,25 +130,8 @@ struct LoggerView: View {
                         .animation(.easeInOut, value: model.recording)
                         .padding(.bottom, 8)
                 }
-                //.font(.system(size: 32))
-                /*
-                VStack {
-                    // TODO: At 1/3 boundary
-                    Spacer()
-                    Image(systemName: "record.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 64, height: 64)
-                        .foregroundColor(model.recordButtonForegroundColor)
-                        .onTapGesture(perform: model.record)
-                        .animation(.easeInOut, value: model.recording)
-                }
-                 */
             }
         }
-        //.background { Color.offWhite }
-        // TODO: Consider
-        //.ignoresSafeArea()
         .onReceive(model.motionPublisher) { accel in
             do {
                 try model.recordMotion(accel)

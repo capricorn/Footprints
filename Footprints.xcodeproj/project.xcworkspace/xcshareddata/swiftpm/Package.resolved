@@ -1,4 +1,5 @@
 {
+  "originHash" : "b0d113a372b5d5257ca77378285d1a9da61f722fe88ff9d7a2fa5b82bd87c864",
   "pins" : [
     {
       "identity" : "codablecsv",
@@ -28,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
