@@ -368,4 +368,42 @@ final class LoggerViewModel_Tests: XCTestCase {
         })
         XCTAssert(currentSession.fiveKTime == 2)
     }
+    
+    func testStaleGPSValuesIgnored() throws {
+        let delegate = LocationDelegate()
+        let expectation = XCTestExpectation(description: "Received a stale location")
+        expectation.isInverted = true
+        
+        let now = Date.now
+        let loc = GPSLocation(
+            latitude: 0,
+            longitude: 0,
+            altitude: .init(value: 0, unit: .meters),
+            timestamp: now.addingTimeInterval(-(LocationDelegate.STALE_GPS_INTERVAL+1)).timeIntervalSince1970)
+        let cancellable = delegate.location.sink { _ in
+            expectation.fulfill()
+        }
+        
+        delegate.handleLocation(loc, now: now)
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func testFreshGPSValuePublished() throws {
+        let delegate = LocationDelegate()
+        let expectation = XCTestExpectation()
+        let now = Date.now
+        let loc = GPSLocation(
+            latitude: 0,
+            longitude: 0,
+            altitude: .init(value: 0, unit: .meters),
+            timestamp: now.addingTimeInterval(-(LocationDelegate.STALE_GPS_INTERVAL-1)).timeIntervalSince1970)
+        
+        let cancellable = delegate.location.sink { _ in
+            expectation.fulfill()
+        }
+        
+        delegate.handleLocation(loc, now: now)
+        wait(for: [expectation], timeout: 5)
+
+    }
 }

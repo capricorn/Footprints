@@ -10,6 +10,8 @@ import CoreLocation
 import Combine
 
 class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
+    /// A GPS location is considered stale if `Date.now - loc.timestamp >= STALE_GPS_INTERVAL`.
+    static let STALE_GPS_INTERVAL = 15.0
     
     private let locManager: CLLocationManager = CLLocationManager()
     private let locationSubject: PassthroughSubject<GPSLocation, Never> = PassthroughSubject()
@@ -33,6 +35,15 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
         self.locManager.showsBackgroundLocationIndicator = true
     }
     
+    func handleLocation(_ loc: GPSLocation, now: Date = .now) {
+        guard now.timeIntervalSince1970 - loc.timestamp <= LocationDelegate.STALE_GPS_INTERVAL else {
+            return
+        }
+        
+        print("Sending gps location")
+        locationSubject.send(loc)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for loc in locations {
             let gpsLoc = GPSLocation(
@@ -41,8 +52,7 @@ class LocationDelegate: NSObject, CLLocationManagerDelegate, GPSProvider {
                 altitude: .init(value: loc.altitude, unit: .meters),
                 timestamp: Double(loc.timestamp.timeIntervalSince1970),
                 speed: loc.speed)
-            print("Sending gps location")
-            locationSubject.send(gpsLoc)
+            self.handleLocation(gpsLoc)
         }
     }
     
