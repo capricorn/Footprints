@@ -57,6 +57,7 @@
 		F051491E2BD6FE2200CC3271 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = F051491D2BD6FE2200CC3271 /* CoreGPX */; };
 		F05149212BD7029400CC3271 /* test_db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F05149202BD7029400CC3271 /* test_db.sqlite */; };
 		F05149232BD702B600CC3271 /* GPX_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05149222BD702B600CC3271 /* GPX_Tests.swift */; };
+		F07EE2D12C6AAC430092567F /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07EE2D02C6AAC430092567F /* BundleExtensions.swift */; };
 		F0CDC0A42C603C3E007483B2 /* NWSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CDC0A32C603C3E007483B2 /* NWSAPI.swift */; };
 		F0CDC0AC2C604074007483B2 /* FootprintsSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CDC0AB2C604074007483B2 /* FootprintsSmokeTests.swift */; };
 		F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F045C92BB26D9B00E8DF04 /* SessionModel.swift */; };
@@ -176,6 +177,7 @@
 		F051491A2BD1C7BA00CC3271 /* SessionListViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListViewModel_Tests.swift; sourceTree = "<group>"; };
 		F05149202BD7029400CC3271 /* test_db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_db.sqlite; sourceTree = "<group>"; };
 		F05149222BD702B600CC3271 /* GPX_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPX_Tests.swift; sourceTree = "<group>"; };
+		F07EE2D02C6AAC430092567F /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		F0CDC0A32C603C3E007483B2 /* NWSAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWSAPI.swift; sourceTree = "<group>"; };
 		F0CDC0A92C604074007483B2 /* FootprintsSmokeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootprintsSmokeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CDC0AB2C604074007483B2 /* FootprintsSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsSmokeTests.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				F0417B332BF3F80000B43979 /* DateExtensions.swift */,
 				F0417B412BF55CC400B43979 /* ArrayExtensions.swift */,
 				F0417B472BF5607000B43979 /* ArrayExtensions_Tests.swift */,
+				F07EE2D02C6AAC430092567F /* BundleExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				F0082F002BC884430006A36C /* CachePreviousPublisher.swift in Sources */,
 				F0FAEDE82BAE73350015CF67 /* FootprintsApp.swift in Sources */,
 				F0FAEE202BB1110E0015CF67 /* AppDelegate.swift in Sources */,
+				F07EE2D12C6AAC430092567F /* BundleExtensions.swift in Sources */,
 				F0FAEE1E2BAE7B110015CF67 /* LoggerViewModel.swift in Sources */,
 				F02E1E472BFE9A4000D4111B /* GRDBToCSVTransferable.swift in Sources */,
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,

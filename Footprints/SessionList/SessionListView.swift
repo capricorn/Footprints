@@ -67,10 +67,20 @@ struct SessionListView: View {
     }
     
     var listHeader: some View {
-        HStack {
-            Text("Sessions")
-                .font(.title)
-                .padding()
+        HStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                Text("Sessions")
+                    .font(.title)
+                    .padding(.leading)
+                if let version = Bundle.main.version {
+                    HStack {
+                        Text("v\(version)")
+                            .font(.footnote.weight(.light))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                }
+            }
             Spacer()
             // TODO: Scale with font size?
             HStack {
