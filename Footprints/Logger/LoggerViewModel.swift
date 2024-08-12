@@ -42,6 +42,9 @@ class LoggerViewModel: ObservableObject {
     /// Total distance traveled in miles.
     @Published var distance: Double = 0
     
+    // TODO: Consider better approach
+    @Published var notificationToken: String? = nil
+    
     let locationPublisher: GPSProvider.LocationProvider
     let motionPublisher: DeviceAccelerationProvider.AccelerationPublisher
     
@@ -183,6 +186,31 @@ class LoggerViewModel: ObservableObject {
                 }
             } catch {
                 print("Failed to fetch forecast: \(error)")
+            }
+        }
+        
+        Task {
+            guard let notificationToken else {
+                print("Device not registered for notifications; token not found.")
+                return
+            }
+            
+            // TODO: Figure out a way to substitute with local dev domain
+            var req = URLRequest(url: URL(string: "http://192.168.1.115:8000/start")!)
+            req.httpMethod = "POST"
+            let body: [String: Any] = [
+                "device_token": notificationToken,
+                "session_id": session.id.uuidString
+            ]
+            
+            do {
+                let postData = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+                req.httpBody = postData
+                
+                _ = try await URLSession.shared.data(for: req)
+                print("Registered device for notifications.")
+            } catch {
+                print("Failed to serialize /start post body: \(error)")
             }
         }
     }

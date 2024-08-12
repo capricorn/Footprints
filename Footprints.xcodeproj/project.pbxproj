@@ -23,6 +23,9 @@
 		F0255EEF2C641EB100E08815 /* GPSLocationCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E482BFFE96700D4111B /* GPSLocationCSV.swift */; };
 		F0255EF12C641F0B00E08815 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = F0255EF02C641F0B00E08815 /* CoreGPX */; };
 		F0255EF32C641F0E00E08815 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = F0255EF22C641F0E00E08815 /* CodableCSV */; };
+		F0255EF52C656FAF00E08815 /* EnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EF42C656FAF00E08815 /* EnvironmentExtensions.swift */; };
+		F0255EF62C656FAF00E08815 /* EnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0255EF42C656FAF00E08815 /* EnvironmentExtensions.swift */; };
+		F0255EF72C65722E00E08815 /* GRDBExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FAEE222BB116C40015CF67 /* GRDBExtensions.swift */; };
 		F02E1E402BFE8A8800D4111B /* SessionAccelerometerCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */; };
 		F02E1E422BFE99F200D4111B /* CSVRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */; };
 		F02E1E452BFE9A1A00D4111B /* FileTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */; };
@@ -145,6 +148,7 @@
 		F0082F012BC88CF70006A36C /* CombineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineExtensionTests.swift; sourceTree = "<group>"; };
 		F0255EE32C62BD9900E08815 /* Footprints.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Footprints.entitlements; sourceTree = "<group>"; };
 		F0255EE52C6411D800E08815 /* APNLiveActivityNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNLiveActivityNotification.swift; sourceTree = "<group>"; };
+		F0255EF42C656FAF00E08815 /* EnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentExtensions.swift; sourceTree = "<group>"; };
 		F02E1E3F2BFE8A8800D4111B /* SessionAccelerometerCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAccelerometerCSV.swift; sourceTree = "<group>"; };
 		F02E1E412BFE99F200D4111B /* CSVRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVRepresentable.swift; sourceTree = "<group>"; };
 		F02E1E442BFE9A1A00D4111B /* FileTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTransferable.swift; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 				F0417B332BF3F80000B43979 /* DateExtensions.swift */,
 				F0417B412BF55CC400B43979 /* ArrayExtensions.swift */,
 				F0417B472BF5607000B43979 /* ArrayExtensions_Tests.swift */,
+				F0255EF42C656FAF00E08815 /* EnvironmentExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -779,6 +784,8 @@
 				F0255EE82C641CD600E08815 /* SessionModel.swift in Sources */,
 				F0255EEF2C641EB100E08815 /* GPSLocationCSV.swift in Sources */,
 				F037C0B92BDB03BB004E08A6 /* FootprintsLiveActivityBundle.swift in Sources */,
+				F0255EF72C65722E00E08815 /* GRDBExtensions.swift in Sources */,
+				F0255EF62C656FAF00E08815 /* EnvironmentExtensions.swift in Sources */,
 				F037C0BB2BDB03BB004E08A6 /* FootprintsLiveActivityLiveActivity.swift in Sources */,
 				F0255EEC2C641E5C00E08815 /* GPSLocationModel.swift in Sources */,
 				F0255EEB2C641E5100E08815 /* CSVRepresentable.swift in Sources */,
@@ -826,6 +833,7 @@
 				F0F045CA2BB26D9B00E8DF04 /* SessionModel.swift in Sources */,
 				F0417B422BF55CC500B43979 /* ArrayExtensions.swift in Sources */,
 				F05148FF2BC9D65400CC3271 /* Acceleration.swift in Sources */,
+				F0255EF52C656FAF00E08815 /* EnvironmentExtensions.swift in Sources */,
 				F0417B402BF41E4100B43979 /* SessionCSV.swift in Sources */,
 				F05149142BD1BE6D00CC3271 /* kSecondsFIFO.swift in Sources */,
 				F051490F2BCF1EDA00CC3271 /* SessionListViewModel.swift in Sources */,

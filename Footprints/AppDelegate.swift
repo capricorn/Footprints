@@ -10,6 +10,7 @@ import UIKit
 import GRDB
 import BackgroundTasks
 import ActivityKit
+import SwiftUI
 
 private extension Data {
     var hexDescription: String {
@@ -17,8 +18,9 @@ private extension Data {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+class AppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
     var dbQueue: DatabaseQueue!
+    @Published var notificationToken: String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -36,6 +38,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // TODO: Pass this to your server (what is it..?)
         // Should be passed as data in a post request presumably?
         print("Device token: \(deviceToken.hexDescription)")
+        self.notificationToken = deviceToken.hexDescription
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: any Error) {

@@ -9,17 +9,6 @@ import SwiftUI
 import SwiftData
 import GRDB
 
-private struct SqliteEnvironmentKey: EnvironmentKey {
-    static let defaultValue: DatabaseQueue = try! .default
-}
-
-extension EnvironmentValues {
-    var databaseQueue: DatabaseQueue {
-        get { self[SqliteEnvironmentKey.self] }
-        set { self[SqliteEnvironmentKey.self] = newValue }
-    }
-}
-
 @main
 struct FootprintsApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
@@ -42,6 +31,7 @@ struct FootprintsApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environmentObject(appDelegate)
         .environment(\.databaseQueue, appDelegate.dbQueue)
     }
 }

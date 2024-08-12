@@ -12,6 +12,7 @@ import ActivityKit
 
 struct LoggerView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
+    @EnvironmentObject var appDelegate: AppDelegate
     @StateObject var model: LoggerViewModel = LoggerViewModel()
     @StateObject var paceFIFO: kSecondsFIFO<GPSLocation> = kSecondsFIFO(10)
     
@@ -132,6 +133,9 @@ struct LoggerView: View {
                 }
             }
         }
+        .onChange(of: appDelegate.notificationToken, { prev, new in
+            model.notificationToken = new
+        })
         .onReceive(model.motionPublisher) { accel in
             do {
                 try model.recordMotion(accel)
@@ -140,6 +144,7 @@ struct LoggerView: View {
             }
         }
         .onAppear {
+            model.notificationToken = appDelegate.notificationToken
             model.requestAuthorization()
             self.locSubscriber = model.locationPublisher.cachePrevious().sink { prevLoc, loc in
                 do {
