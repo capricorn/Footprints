@@ -41,6 +41,7 @@ class LoggerViewModel: ObservableObject {
     @Published var speed: Double = SPEED_UNDETERMINED
     /// Total distance traveled in miles.
     @Published var distance: Double = 0
+    @Published var pace: TimeInterval? = nil
     
     let locationPublisher: GPSProvider.LocationProvider
     let motionPublisher: DeviceAccelerationProvider.AccelerationPublisher
@@ -79,6 +80,14 @@ class LoggerViewModel: ObservableObject {
         default:
             return false
         }
+    }
+    
+    func computePace() -> TimeInterval? {
+        guard let logStartDate, let logNowDate, distance > 0 else {
+            return nil
+        }
+        
+        return (logNowDate.timeIntervalSince(logStartDate))/distance
     }
     
     /// `true` if a session is currently being recorded.
@@ -155,7 +164,8 @@ class LoggerViewModel: ObservableObject {
                 withAnimation {
                     self.logNowDate = Date.now
                 }
-                try? await Task.sleep(nanoseconds: UInt64(1e9/60))
+                self.pace = self.computePace()
+                try? await Task.sleep(nanoseconds: UInt64(1e9))
             }
         }
         logStartDate = Date.now

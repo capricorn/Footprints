@@ -406,4 +406,18 @@ final class LoggerViewModel_Tests: XCTestCase {
         wait(for: [expectation], timeout: 5)
 
     }
+    
+    func testPaceCalculation() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())
+        
+        // TODO: Verify publisher..?
+        XCTAssert(model.computePace() == nil)
+        model.logStartDate = .now
+        model.logNowDate = model.logStartDate?.addingTimeInterval(10)
+        model.distance = 10
+        
+        XCTAssert(model.computePace() == 1)
+    }
 }

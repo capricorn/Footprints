@@ -36,7 +36,7 @@ struct LoggerView: View {
     }
     
     var paceLabel: String {
-        guard let pace = paceFIFO.pace else {
+        guard let pace = model.pace else {
             return "--/mi"
         }
         
