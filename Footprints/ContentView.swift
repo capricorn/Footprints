@@ -28,6 +28,7 @@ struct ContentView: View {
         case calendar
     }
     
+    @StateObject var loggerViewModel: LoggerViewModel = LoggerViewModel()
     @State private var tabSelection: TabViewSelection = .sessions
     
     var body: some View {
@@ -37,7 +38,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Sessions", systemImage: "list.bullet.rectangle")
                 }
-            LoggerView()
+            LoggerView(model: loggerViewModel)
                 .tag(TabViewSelection.logger)
                 .tabItem {
                     Label("Logger", systemImage: "record.circle")
@@ -52,6 +53,14 @@ struct ContentView: View {
             switch action {
             case .record:
                 tabSelection = .logger
+                // TODO: Move to logger vm as quickActionRecord(); can handle already recording, etc then.
+                // TODO: Test
+                if case .recordingInProgress(_) = loggerViewModel.state {
+                    print("Logger currently recording; ignoring action.")
+                    return
+                } else {
+                    loggerViewModel.record()
+                }
             }
         }
     }

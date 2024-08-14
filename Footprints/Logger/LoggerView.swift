@@ -11,7 +11,7 @@ import Combine
 
 struct LoggerView: View {
     @Environment(\.databaseQueue) var dbQueue: DatabaseQueue
-    @StateObject var model: LoggerViewModel = LoggerViewModel()
+    @ObservedObject var model: LoggerViewModel = LoggerViewModel()
     @StateObject var paceFIFO: kSecondsFIFO<GPSLocation> = kSecondsFIFO(10)
     
     // TODO: Eventually replace with `onReceive` equivalent
