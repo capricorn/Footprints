@@ -4,6 +4,15 @@
 <dict>
 	<key></key>
 	<string></string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Record</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>FootprintsRecord</string>
+		</dict>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
