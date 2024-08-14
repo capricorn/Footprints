@@ -11,13 +11,14 @@ import Combine
 
 typealias QuickActionPublisher = AnyPublisher<QuickAction, Never>
 
+// TODO: Generate from plist?
 enum QuickAction: String {
-    case record = "Record"
+    case record = "FootprintsRecord"
 }
 
 struct QuickActionPublisherEnvironmentKey: EnvironmentKey {
     static let quickActionSubject = PassthroughSubject<QuickAction, Never>()
-    static let defaultValue: QuickActionPublisher = quickActionSubject.eraseToAnyPublisher()//quickActionPublisher
+    static let defaultValue: QuickActionPublisher = quickActionSubject.eraseToAnyPublisher()
 }
 
 extension EnvironmentValues {

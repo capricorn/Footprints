@@ -11,8 +11,11 @@ import UIKit
 class WindowSceneDelegate: NSObject, UIWindowSceneDelegate {
     @MainActor
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem) async -> Bool {
-        print("Quick action: \(shortcutItem.localizedTitle)")
-        // TODO:
-        return false
+        if shortcutItem.type == QuickAction.record.rawValue {
+            QuickActionPublisherEnvironmentKey.quickActionSubject.send(.record)
+            return true
+        } else {
+            return false
+        }
     }
 }

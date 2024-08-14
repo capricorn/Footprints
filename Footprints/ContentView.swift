@@ -21,23 +21,38 @@ struct ContentView: View {
         }
     }
     
+    // TODO: Handle this with tab view
+    enum TabViewSelection: Hashable {
+        case logger
+        case sessions
+        case calendar
+    }
+    
+    @State private var tabSelection: TabViewSelection = .sessions
+    
     var body: some View {
-        TabView {
+        TabView(selection: $tabSelection) {
             SessionListView()
+                .tag(TabViewSelection.sessions)
                 .tabItem {
                     Label("Sessions", systemImage: "list.bullet.rectangle")
                 }
             LoggerView()
+                .tag(TabViewSelection.logger)
                 .tabItem {
                     Label("Logger", systemImage: "record.circle")
                 }
             CalendarContainerView()
+                .tag(TabViewSelection.calendar)
                 .tabItem {
                     Label("Stats", systemImage: "chart.bar")
                 }
         }
         .onReceive(quickActionPublisher) { action in
-            print("Received action: \(action)")
+            switch action {
+            case .record:
+                tabSelection = .logger
+            }
         }
     }
 }
