@@ -28,6 +28,7 @@
 		F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F037C0C02BDB03BD004E08A6 /* Assets.xcassets */; };
 		F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F03D79292C6D4F1D003554EF /* WindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03D79282C6D4F1D003554EF /* WindowSceneDelegate.swift */; };
+		F03D79372C6D51EA003554EF /* QuickActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03D79362C6D51EA003554EF /* QuickActions.swift */; };
 		F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B242BED56EF00B43979 /* StringFormatter.swift */; };
 		F0417B282BED750F00B43979 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B272BED750F00B43979 /* CalendarView.swift */; };
 		F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B312BF3011200B43979 /* NumericExtensions.swift */; };
@@ -151,6 +152,7 @@
 		F037C0C02BDB03BD004E08A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F037C0C22BDB03BD004E08A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F03D79282C6D4F1D003554EF /* WindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneDelegate.swift; sourceTree = "<group>"; };
+		F03D79362C6D51EA003554EF /* QuickActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActions.swift; sourceTree = "<group>"; };
 		F0417B242BED56EF00B43979 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		F0417B272BED750F00B43979 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F0417B312BF3011200B43979 /* NumericExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericExtensions.swift; sourceTree = "<group>"; };
@@ -310,6 +312,14 @@
 			path = FootprintsLiveActivity;
 			sourceTree = "<group>";
 		};
+		F03D79352C6D51E2003554EF /* QuickActions */ = {
+			isa = PBXGroup;
+			children = (
+				F03D79362C6D51EA003554EF /* QuickActions.swift */,
+			);
+			path = QuickActions;
+			sourceTree = "<group>";
+		};
 		F0417B262BED750600B43979 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +453,7 @@
 		F0FAEDE62BAE73350015CF67 /* Footprints */ = {
 			isa = PBXGroup;
 			children = (
+				F03D79352C6D51E2003554EF /* QuickActions */,
 				F0CDC0A22C603C36007483B2 /* NWSAPI */,
 				F0417B262BED750600B43979 /* Calendar */,
 				F0082EF92BC5E38C0006A36C /* SessionList */,
@@ -772,6 +783,7 @@
 				F05149172BD1BFB700CC3271 /* Timestamped.swift in Sources */,
 				F03D79292C6D4F1D003554EF /* WindowSceneDelegate.swift in Sources */,
 				F0417B282BED750F00B43979 /* CalendarView.swift in Sources */,
+				F03D79372C6D51EA003554EF /* QuickActions.swift in Sources */,
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0417B442BF55E9000B43979 /* DateBuilder.swift in Sources */,
 				F0FAEE162BAE74970015CF67 /* GPSProvider.swift in Sources */,

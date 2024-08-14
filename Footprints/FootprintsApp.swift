@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import GRDB
+import Combine
 
 private struct SqliteEnvironmentKey: EnvironmentKey {
     static let defaultValue: DatabaseQueue = try! .default

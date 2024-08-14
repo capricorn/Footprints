@@ -10,6 +10,8 @@ import SwiftData
 import Combine
 
 struct ContentView: View {
+    @Environment(\.quickActionPublisher) var quickActionPublisher
+    
     enum Navigation: String, CaseIterable, Identifiable {
         case logger
         case sessions
@@ -33,6 +35,9 @@ struct ContentView: View {
                 .tabItem {
                     Label("Stats", systemImage: "chart.bar")
                 }
+        }
+        .onReceive(quickActionPublisher) { action in
+            print("Received action: \(action)")
         }
     }
 }
