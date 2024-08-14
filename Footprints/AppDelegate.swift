@@ -21,6 +21,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let config = UISceneConfiguration()
+        config.delegateClass = WindowSceneDelegate.self
+        
+        return config
+    }
 }
 
 

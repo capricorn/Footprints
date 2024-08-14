@@ -27,6 +27,7 @@
 		F037C0BF2BDB03BB004E08A6 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */; };
 		F037C0C12BDB03BD004E08A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F037C0C02BDB03BD004E08A6 /* Assets.xcassets */; };
 		F037C0C52BDB03BD004E08A6 /* FootprintsLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F037C0B12BDB03BB004E08A6 /* FootprintsLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F03D79292C6D4F1D003554EF /* WindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03D79282C6D4F1D003554EF /* WindowSceneDelegate.swift */; };
 		F0417B252BED56EF00B43979 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B242BED56EF00B43979 /* StringFormatter.swift */; };
 		F0417B282BED750F00B43979 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B272BED750F00B43979 /* CalendarView.swift */; };
 		F0417B322BF3011200B43979 /* NumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0417B312BF3011200B43979 /* NumericExtensions.swift */; };
@@ -149,6 +150,7 @@
 		F037C0BE2BDB03BB004E08A6 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		F037C0C02BDB03BD004E08A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F037C0C22BDB03BD004E08A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F03D79282C6D4F1D003554EF /* WindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneDelegate.swift; sourceTree = "<group>"; };
 		F0417B242BED56EF00B43979 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		F0417B272BED750F00B43979 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F0417B312BF3011200B43979 /* NumericExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericExtensions.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				F0FAEDEF2BAE73360015CF67 /* Preview Content */,
 				F0FAEE1F2BB1110E0015CF67 /* AppDelegate.swift */,
 				F051490C2BCEEE4200CC3271 /* FootprintsIcon.swift */,
+				F03D79282C6D4F1D003554EF /* WindowSceneDelegate.swift */,
 			);
 			path = Footprints;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				F0417B342BF3F80000B43979 /* DateExtensions.swift in Sources */,
 				F0FAEDEA2BAE73350015CF67 /* ContentView.swift in Sources */,
 				F05149172BD1BFB700CC3271 /* Timestamped.swift in Sources */,
+				F03D79292C6D4F1D003554EF /* WindowSceneDelegate.swift in Sources */,
 				F0417B282BED750F00B43979 /* CalendarView.swift in Sources */,
 				F0F045D02BB365C700E8DF04 /* GPSLocation.swift in Sources */,
 				F0417B442BF55E9000B43979 /* DateBuilder.swift in Sources */,
