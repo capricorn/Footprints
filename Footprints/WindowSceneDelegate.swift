@@ -24,9 +24,11 @@ class WindowSceneDelegate: NSObject, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let shortcut = connectionOptions.shortcutItem, shortcut.type == QuickAction.record.rawValue {
-            quickActionCancellable = Just(NotificationCenter.default.publisher(for: LoggerViewModel.readyNotification.name)).sink { _ in
-                QuickActionPublisherEnvironmentKey.quickActionSubject.send(.record)
-            }
+            quickActionCancellable = NotificationCenter.default.publisher(for: LoggerViewModel.readyNotification.name)
+                .first()
+                .sink { @MainActor _ in
+                    QuickActionPublisherEnvironmentKey.quickActionSubject.send(.record)
+                }
         }
     }
 }
