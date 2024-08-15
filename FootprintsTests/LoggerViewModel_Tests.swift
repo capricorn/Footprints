@@ -420,4 +420,36 @@ final class LoggerViewModel_Tests: XCTestCase {
         
         XCTAssert(model.computePace() == 1)
     }
+    
+    func testQuickActionRecord() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        model.quickActionRecord()
+        
+        switch model.state {
+        case .recordingInProgress(_):
+            break
+        default:
+            XCTFail("Unexpected state: \(model.state)")
+        }
+    }
+    
+    func testQuickActionRecordInProgress() throws {
+        let dbQueue = try DatabaseQueue.createTemporaryDBQueue()
+        try dbQueue.setupFootprintsSchema()
+        let model = LoggerViewModel(dbQueue: dbQueue, gpsProvider: NoopGPSProvider())       
+        
+        model.record()
+        // Should be a no-op
+        model.quickActionRecord()
+        
+        switch model.state {
+        case .recordingInProgress(_):
+            break
+        default:
+            XCTFail("Unexpected state: \(model.state)")
+        }       
+    }
 }

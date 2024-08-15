@@ -53,14 +53,7 @@ struct ContentView: View {
             switch action {
             case .record:
                 tabSelection = .logger
-                // TODO: Move to logger vm as quickActionRecord(); can handle already recording, etc then.
-                // TODO: Test
-                if case .recordingInProgress(_) = loggerViewModel.state {
-                    print("Logger currently recording; ignoring action.")
-                    return
-                } else {
-                    loggerViewModel.record()
-                }
+                loggerViewModel.quickActionRecord()
             }
         }
     }

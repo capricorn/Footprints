@@ -140,6 +140,15 @@ class LoggerViewModel: ObservableObject {
         logNowDate = nil
     }
     
+    func quickActionRecord() {
+        if case .recordingInProgress(_) = state {
+            print("Logger currently recording; ignoring action.")
+            return
+        } else {
+            record()
+        }
+    }
+    
     private func startRecording() {
         let session = SessionModel(id: UUID(), startTimestamp: Date.now.timeIntervalSince1970, endTimestamp: 0, count: 0)
         // TODO: Just throw / handle..?
