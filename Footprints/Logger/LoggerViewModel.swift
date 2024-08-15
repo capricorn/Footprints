@@ -33,6 +33,7 @@ class LoggerViewModel: ObservableObject {
     }
     
     static var SPEED_UNDETERMINED: Double { -1 }
+    static let readyNotification = Notification(name: .init(rawValue: "LoggerReady"))
     
     @Published var logStartDate: Date?
     @Published var logNowDate: Date?

@@ -49,6 +49,9 @@ struct ContentView: View {
                     Label("Stats", systemImage: "chart.bar")
                 }
         }
+        .onAppear {
+            NotificationCenter.default.post(LoggerViewModel.readyNotification)
+        }
         .onReceive(quickActionPublisher) { action in
             switch action {
             case .record:
