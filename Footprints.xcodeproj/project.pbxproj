@@ -189,6 +189,7 @@
 		F0F045CB2BB35F3C00E8DF04 /* GPSLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationModel.swift; sourceTree = "<group>"; };
 		F0F045CD2BB360CA00E8DF04 /* LoggerViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewModel_Tests.swift; sourceTree = "<group>"; };
 		F0F045CF2BB365C700E8DF04 /* GPSLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocation.swift; sourceTree = "<group>"; };
+		F0F83CCF2CADB56A00BF58FA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F0FAEDE42BAE73350015CF67 /* Footprints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0FAEDE72BAE73350015CF67 /* FootprintsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintsApp.swift; sourceTree = "<group>"; };
 		F0FAEDE92BAE73350015CF67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -428,6 +429,7 @@
 		F0FAEDDB2BAE73350015CF67 = {
 			isa = PBXGroup;
 			children = (
+				F0F83CCF2CADB56A00BF58FA /* README.md */,
 				F0FAEDE62BAE73350015CF67 /* Footprints */,
 				F0FAEDF92BAE73370015CF67 /* FootprintsTests */,
 				F0FAEE032BAE73370015CF67 /* FootprintsUITests */,
